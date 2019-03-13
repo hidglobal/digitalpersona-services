@@ -1,8 +1,14 @@
 /*! Copyright 2019 HID Global Inc. */
 
-export * from './common/index';
-export * from './auth/index';
-export * from './claims/index';
-//export * from './enroll/index';
-//export * from './policy/index';
-//export * from './secrets/index';
+// import * as Auth from '@auth';
+// import * as Claims from '@claims';
+// import * as Enroll from '@enroll';
+// import * as Policy from '@policy';
+// import * as Secrets from '@secrets';
+// export { Auth, Claims, Policy, Enroll, Secrets };
+
+export * from '@common';
+export * from '@claims';
+export * from '@enroll';
+export * from '@policy';
+export * from '@secrets';
