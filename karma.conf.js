@@ -11,6 +11,7 @@ const dataFiles = [
 let exclude = (
   process.env.UUT
     ? [
+      , 'common'
       , 'auth'
       , 'policy'
       , 'secrets'
@@ -21,7 +22,7 @@ let exclude = (
     : []
   )
     .filter(ex => ex !== process.env.UUT)
-    .map(ex => `test/tests/${ex}/*.ts`)
+    .map(ex => `src/${ex}/*.ts`)
 
 
 exclude = exclude.concat(
@@ -33,16 +34,15 @@ exclude = exclude.concat(
 // exclude nodejs tests
 exclude = exclude.concat(['**/*.node.test.ts'])
 
-
 module.exports = function(config) {
   const args = []
 
   config.set({
     frameworks: ['jasmine', 'karma-typescript'],
     files: [
-      'src/**/*.ts',
-      'test/**/*.ts'
-    ].concat(dataFiles),
+      {pattern: 'src/**/*.ts' },
+    ]
+    .concat(dataFiles),
     exclude,
     preprocessors: {
       '**/*.ts': ['karma-typescript']
@@ -51,6 +51,9 @@ module.exports = function(config) {
       tsconfig: 'tsconfig.test.json'
     },
     browsers: ['Chrome'],
+    mime: {
+        'text/x-typescript': ['ts','tsx']
+    },
     browserNoActivityTimeout: 120000,
     browserDisconnectTolerance: 3,
     browserDisconnectTimeout : 120000,
