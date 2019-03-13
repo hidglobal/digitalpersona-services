@@ -3,12 +3,24 @@
     "outDir": "dist/commonjs",
     "module": "commonjs",
     "target": "es5",
-    "moduleResolution": "node",
-    "lib": ["es2015", "dom"],
+
+    "lib": ["dom", "es2015", "es2015.promise" ],
     "typeRoots": [
       "typings",
       "node_modules/@types"
     ],
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "paths": {
+        "@private" : ["private"],
+        "@common" : ["common"],
+        "@auth"   : ["auth"],
+        "@claims" : ["claims"],
+        "@enroll" : ["enroll"],
+        "@policy" : ["policy"],
+        "@secrets": ["secrets"],
+    },
+
     "removeComments": false,
     "preserveConstEnums": true,
     "emitDecoratorMetadata": true,
@@ -23,10 +35,6 @@
     "strictNullChecks": true,
     "importHelpers": true,
     "downlevelIteration": true
-  },
-  "formatCodeOptions": {
-    "indentSize": 2,
-    "tabSize": 2
   },
   "exclude": [
     "node_modules",
