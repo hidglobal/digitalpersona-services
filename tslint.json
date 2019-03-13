@@ -8,6 +8,7 @@
     "ordered-imports": false,
     "object-literal-sort-keys": false,
     "interface-name": false,
-    "member-ordering":false
+    "member-ordering":false,
+    "arrow-parens": false,
   }
 }
