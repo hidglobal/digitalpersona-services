@@ -1,56 +1,41 @@
-import { Utf16, Base64Url } from './encoder';
+import { Utf16 } from './encoders';
+import { ClaimSet } from './claims';
 
-export interface IJWTHeader {
-    typ: string;
-    alg: string;
+class JWTHeader {
+    public readonly typ?: string;
+    public readonly cty?: string;
+    public readonly alg?: string;
+
+    public constructor(typ?: string, alg?: string, cty?: string) {
+        this.typ = typ;
+        this.cty = cty;
+        this.alg = alg;
+    }
 }
 
+export type JSONWebToken = string;
+
+// Represents a JSON Web Token and gives access to the token's payload.
+// Note that this class does not allow to validate the token signature in the browser,
+// it must be done on a server side.
 export class JWT
 {
-    private readonly header: IJWTHeader;
-    private readonly payload: any;
-    private readonly signature: string; // TODO: should it be an ArrayBuffer or Uint8Array?
 
-    private constructor(header: IJWTHeader, payload: any, signature: string) {
-        this.header = header;
-        this.payload = payload;
-        this.signature = signature;
-    }
-    public static fromBase64(b64encoded: string): JWT  {
-        const [header, payload, signature ] = b64encoded.split('.');
-        // TODO: verify signature
-        return new JWT(
-            JSON.parse(Utf16.fromBase64Url(header)),
-            JSON.parse(Utf16.fromBase64Url(payload)),
-            JSON.parse(Utf16.fromBase64Url(signature)));
-    }
-
-    public static fromJSON(o: string): JWT {
-        return this.fromBase64(o);
-    }
-    public toJSON(): string {
-        return [
-            Base64Url.fromUtf16(JSON.stringify(this.header)),
-            Base64Url.fromUtf16(JSON.stringify(this.payload)),
-            Base64Url.fromUtf16(JSON.stringify(this.signature)),
-        ].join(".");
-    }
-
-    public static async create(header: IJWTHeader, payload: any) {
-        const content = btoa(JSON.stringify(header)) + "." + btoa(JSON.stringify(payload));
-        const encoder = new TextEncoder();
-
-        const sig = await crypto.subtle.digest(header.alg, encoder.encode(content));
-        const hexsig = String.fromCharCode(...new Uint8Array(sig));
-        return new JWT(header, payload, hexsig);
-    }
-
-    public async verifySignature() {
-        const content = btoa(JSON.stringify(this.header)) + "." + btoa(JSON.stringify(this.payload));
-        const encoder = new TextEncoder();
-
-        const sig = await crypto.subtle.digest(this.header.alg, encoder.encode(content));
-        const hexsig = String.fromCharCode(...new Uint8Array(sig));
-        return hexsig === this.signature;
+    public static claims(jwt: JSONWebToken): ClaimSet
+    {
+        const parts = jwt.split('.');
+        const header = JSON.parse(Utf16.fromBase64Url(parts[0]));
+        if (header.cty === "JWT") {
+            // we have a nested JWT with encrypted payload (JWE).
+            // Encrypted nested JWT may replicate some claims in the header to be publicly accessible.
+            return {
+                ...header,          // include all claims possibly replicated in the header
+                ...new JWTHeader()  // exclude JWT Header properties ("typ", "cty", "alg")
+            };
+        } else {
+            // unencrypted payload, use claims from the payload only
+            const payload = JSON.parse(Utf16.fromBase64Url(parts[1]));
+            return payload as ClaimSet;
+        }
     }
 }

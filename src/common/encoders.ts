@@ -6,10 +6,14 @@ export type Base64String    = string;
 export type Base64UrlString = string;
 export type HexString       = string;
 
+// NOTE: these converters work only with Base Multilingual Plane (BMP)!
+// Javascript strings represent astral planes using UTF16 surrogate pairs
+// and we do not try to restore genuine UTF32 codepoint from surrogates during conversion.
+
 export class Utf16
 {
     public static fromUtf8 = (s: Utf8String): Utf16String =>
-        escape(decodeURIComponent(Utf8.noBom(s)))
+        decodeURIComponent(escape(Utf8.noBom(s)))
 
     public static fromBase64 = (s: Base64String): Utf16String =>
         Utf16.fromUtf8(Utf8.fromBase64(s))
@@ -63,11 +67,11 @@ export class Base64Url
         Base64Url.fromBase64(Base64.fromUtf16(s))
 }
 
-export class Hex
-{
-    public static encode = (s: string): HexString =>
-        s.split('').map((v) => v.charCodeAt(0).toString(16)).join('')
+// export class Hex
+// {
+//     public static encode = (s: string): HexString =>
+//         s.split("").map(cp => ('000' + cp.charCodeAt(0).toString(16)).slice(-4)).join('')
 
-    public static decode = (s: HexString): string =>
-        decodeURIComponent(s.replace(/(..)/g, '%$1'))
-}
+//     public static decode = (s: HexString): string =>
+//         s.replace(/(..)/g, '%$1'))
+// }

@@ -8,6 +8,7 @@ export class CredentialType
     public static ContactlesCard  = new CredentialType("7BF3E290-5BA5-4C2D-AA33-24B48C189399");
     public static LifeQuestions   = new CredentialType("B49E99C6-6C94-42DE-ACD7-FD6B415DF503");
     public static Bluetooth       = new CredentialType("E750A180-577B-47f7-ACD9-F89A7E27FA49");
+    public static OneTimePassword = new CredentialType("324C38BD-0B51-4E4D-BD75-200DA0C8177F");
 
     public static fromJSON(o: { type: string}): CredentialType {
         return new CredentialType(o.type);
