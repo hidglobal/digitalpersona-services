@@ -6,7 +6,6 @@ export type AuthenticationHandle = number;
 
 export interface IAuthService
 {
-    Ping(): PromiseLike<boolean>;
     GetUserCredentials(user: User): PromiseLike<CredentialId[]>;
     GetEnrollmentData(user: User, credentialId: CredentialId): PromiseLike<Base64String>;
     IdentifyUser(credential: Credential): PromiseLike<Ticket>;

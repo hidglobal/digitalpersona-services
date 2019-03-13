@@ -56,21 +56,21 @@ export class EnrollService extends Service implements IEnrollService
     public DeleteUserCredentials(secOfficer: Ticket, owner: Ticket, credential: Credential): PromiseLike<boolean>
     {
         return this.endpoint.delete("DeleteUserCredentials"
-        , null
-        , { body: JSON.stringify({ secOfficer, owner, credential }) });
+            , null
+            , { body: JSON.stringify({ secOfficer, owner, credential }) });
 }
     public EnrollAltusUserCredentials(secOfficer: Ticket, owner: Ticket, credential: Credential): PromiseLike<boolean>
     {
         return this.endpoint.put("EnrollAltusUserCredentials"
-        , null
-        , { body: JSON.stringify({ secOfficer, owner, credential }) }
-        , true);
+            , null
+            , { body: JSON.stringify({ secOfficer, owner, credential }) }
+            , true);
 }
     public DeleteAltusUserCredentials(secOfficer: Ticket, owner: Ticket, credential: Credential): PromiseLike<boolean>
     {
         return this.endpoint.delete("DeleteAltusUserCredentials"
-        , null
-        , { body: JSON.stringify({ secOfficer, owner, credential }) });
+            , null
+            , { body: JSON.stringify({ secOfficer, owner, credential }) });
 }
     public GetUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName): PromiseLike<Attribute>
     {
