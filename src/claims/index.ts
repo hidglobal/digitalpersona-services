@@ -1,2 +1,2 @@
 export * from './claim';
-export * from './claimSet';
+export * from './service';
