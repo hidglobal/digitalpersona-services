@@ -1,3 +1,3 @@
 export * from './status';
 export * from './extendedResult';
-export * from './ticket';
+export * from './service';

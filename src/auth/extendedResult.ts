@@ -1,13 +1,13 @@
 import { AuthenticationStatus } from "./status";
-import { JWT } from "../common/jwt";
+import { JSONWebToken } from "../common/jwt";
 
 export class ExtendedAuthResult
 {
     public readonly status: AuthenticationStatus;
-    public readonly authData: string;
-    public readonly jwt: JWT;
+    public readonly authData?: string;
+    public readonly jwt?: JSONWebToken;
 
-    constructor(status: AuthenticationStatus, authData: string, jwt: JWT) {
+    constructor(status: AuthenticationStatus, authData?: string, jwt?: JSONWebToken) {
         this.status = status;
         this.authData = authData;
         this.jwt = jwt;
