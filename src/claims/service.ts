@@ -6,22 +6,28 @@ import { ClaimRequest } from './claim';
 // to the JSON Web Token issued by the AuthService
 export interface IClaimsService
 {
-    GetConfiguredClaims(ticket: Ticket): PromiseLike<Ticket>;
-    GetClaims(ticket: Ticket, request: ClaimRequest[]): PromiseLike<Ticket>;
+    GetConfiguredClaims(ticket: Ticket): Promise<Ticket>;
+    GetClaims(ticket: Ticket, request: ClaimRequest[]): Promise<Ticket>;
 }
 
 export class ClaimsService extends Service implements IClaimsService
 {
-    public GetConfiguredClaims(ticket: Ticket ): PromiseLike<Ticket>
+    constructor(endpointUrl: string) {
+        super(endpointUrl);
+    }
+
+    public GetConfiguredClaims(ticket: Ticket ): Promise<Ticket>
     {
         return this.endpoint.post("GetConfiguredClaims"
             , null
-            , { body: JSON.stringify({ ticket }) });
+            , { body: JSON.stringify({ ticket }) })
+        .then(result => result["ticket"]);
     }
-    public GetClaims(ticket: Ticket, request: ClaimRequest[]): PromiseLike<Ticket>
+    public GetClaims(ticket: Ticket, request: ClaimRequest[]): Promise<Ticket>
     {
         return this.endpoint.post("GetClaims"
             , null
-            , { body: JSON.stringify({ ticket, request}) });
-    }
+            , { body: JSON.stringify({ ticket, request}) })
+        .then(result => result["ticket"]);
+        }
 }
