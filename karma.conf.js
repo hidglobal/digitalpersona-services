@@ -11,6 +11,7 @@ const dataFiles = [
 let exclude = (
   process.env.UUT
     ? [
+      , 'private'
       , 'common'
       , 'auth'
       , 'policy'
@@ -43,7 +44,7 @@ module.exports = function(config) {
       {pattern: 'src/**/*.ts' },
     ]
     .concat(dataFiles),
-    exclude,
+//    exclude,
     preprocessors: {
       '**/*.ts': ['karma-typescript']
     },
@@ -51,6 +52,12 @@ module.exports = function(config) {
       tsconfig: 'tsconfig.test.json'
     },
     browsers: ['Chrome'],
+    customLaunchers: {
+        IE_no_addons: {
+          base:  'IE',
+          flags: ['-extoff']
+        }
+    },
     mime: {
         'text/x-typescript': ['ts','tsx']
     },

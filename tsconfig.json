@@ -19,6 +19,7 @@
         "@enroll" : ["enroll"],
         "@policy" : ["policy"],
         "@secrets": ["secrets"],
+        "@test"   : ["test"],
     },
 
     "removeComments": false,
