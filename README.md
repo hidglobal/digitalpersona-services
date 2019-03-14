@@ -40,6 +40,9 @@ To build API documentation:
 
 The build output (HTML and CSS files) will be put into a `./docs/` folder.
 
+To run unit tests:
+* from terminal: run `npm run-script test`
+
 ## Running Examples
 
 ### Examples/Browser

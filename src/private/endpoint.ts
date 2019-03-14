@@ -17,6 +17,12 @@ export class ServiceEndpoint
         this.defaultRequest = defaultRequest || this.defaultRequest;
     }
 
+    private static handleResponse(response: Response): Promise<any> {
+        return (response.ok) ?
+            response.json() :
+            ServiceEndpoint.handleError(response);
+    }
+
     private static getResult<T>(response: Response, dataName?: string, defaultValue?: T): Promise<T> {
         return (response.ok) ?
             ServiceEndpoint.handleSuccess(response, dataName, defaultValue) :
@@ -67,13 +73,13 @@ export class ServiceEndpoint
             ServiceEndpoint.getResult(response, `${path}Result`, defaultValue));
     }
 
-    public put<ResultT>(path: string, query: object | null, request: RequestInit, defaultValue?: ResultT): PromiseLike<ResultT>
+    public put<ResultT>(path: string, query: object | null, request: RequestInit, defaultValue?: ResultT): Promise<ResultT>
     {
         return fetch(
             Url.create(this.endpointUrl, path, query),
             { ...this.defaultRequest, ...request, method: 'PUT', mode: 'cors' })
         .then(response =>
-            ServiceEndpoint.getResult(response, `${path}Result`, defaultValue));
+            ServiceEndpoint.getResult(response, "", defaultValue));
     }
 
     public delete<ResultT>(path: string, query: object | null, request: RequestInit, defaultValue?: ResultT): Promise<ResultT>

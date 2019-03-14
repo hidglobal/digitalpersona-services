@@ -1,5 +1,5 @@
-import { User, UserNameType, Credential, Ticket, ServiceError, ClaimName } from '@common';
-import { AuthService, AuthenticationHandle, AuthenticationStatus, ExtendedAuthResult } from '@auth';
+import { User, UserNameType, Credential, Ticket, ServiceError } from '@common';
+import { AuthService, AuthenticationHandle, AuthenticationStatus } from '@auth';
 import { ServerStatus, HttpStatus } from '@test';
 
 var FetchMock = require('fetch-mock');
