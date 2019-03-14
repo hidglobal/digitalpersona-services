@@ -3,32 +3,36 @@ import { Service } from '@private';
 
 export interface ISecretService
 {
-    GetAuthPolicy(user: User, secretName: string, action: ResourceActions): PromiseLike<Policy[]>;
-    DoesSecretExist(user: User, secretName: string): PromiseLike<boolean>;
-    ReadSecret(ticket: Ticket, secretName: string): PromiseLike<Base64String>;
-    WriteSecret(ticket: Ticket, secretName: string, secretData: Base64String): PromiseLike<boolean>;
-    DeleteSecret(ticket: Ticket, secretName: string): PromiseLike<boolean>;
+    GetAuthPolicy(user: User, secretName: string, action: ResourceActions): Promise<Policy[]>;
+    DoesSecretExist(user: User, secretName: string): Promise<boolean>;
+    ReadSecret(ticket: Ticket, secretName: string): Promise<Base64String>;
+    WriteSecret(ticket: Ticket, secretName: string, secretData: Base64String): Promise<boolean>;
+    DeleteSecret(ticket: Ticket, secretName: string): Promise<boolean>;
 }
 
 export class SecretService extends Service implements ISecretService
 {
-    public GetAuthPolicy(user: User, secretName: string, action: ResourceActions): PromiseLike<Policy[]>
+    constructor(endpointUrl: string) {
+        super(endpointUrl)
+    }
+
+    public GetAuthPolicy(user: User, secretName: string, action: ResourceActions): Promise<Policy[]>
     {
         return this.endpoint.get("GetAuthPolicy"
             , { user: user.name, type: user.type, secretName, action });
     }
-    public DoesSecretExist(user: User, secretName: string): PromiseLike<boolean>
+    public DoesSecretExist(user: User, secretName: string): Promise<boolean>
     {
         return this.endpoint.get("DoesSecretExist"
             , { user: user.name, type: user.type, secretName });
     }
-    public ReadSecret(ticket: Ticket, secretName: string): PromiseLike<Base64String>
+    public ReadSecret(ticket: Ticket, secretName: string): Promise<Base64String>
     {
         return this.endpoint.post("ReadSecret"
             , null
             , { body: JSON.stringify({ ticket, secretName }) });
     }
-    public WriteSecret(ticket: Ticket, secretName: string, secretData: Base64String): PromiseLike<boolean>
+    public WriteSecret(ticket: Ticket, secretName: string, secretData: Base64String): Promise<boolean>
     {
         return this.endpoint.put("WriteSecret"
             , null
@@ -36,10 +40,11 @@ export class SecretService extends Service implements ISecretService
             , true);
     }
 
-    public DeleteSecret(ticket: Ticket, secretName: string): PromiseLike<boolean>
+    public DeleteSecret(ticket: Ticket, secretName: string): Promise<boolean>
     {
         return this.endpoint.delete("DeleteSecret"
             , null
-            , { body: JSON.stringify({ ticket, secretName }) });
+            , { body: JSON.stringify({ ticket, secretName }) }
+            , true);
     }
 }
