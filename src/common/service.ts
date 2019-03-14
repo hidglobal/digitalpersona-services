@@ -14,6 +14,10 @@ export class ServiceError extends Error
         Object.setPrototypeOf(this, new.target.prototype);
     }
 
+    public static fromServiceFault(fault: ServiceFault): ServiceError {
+        return new ServiceError(fault.error_code, fault.description);
+    }
+
     public isHttpError(): boolean { return this.code < 0x8000000; }
 }
 

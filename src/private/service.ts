@@ -1,7 +1,7 @@
 import { IService } from "@common";
 import { ServiceEndpoint } from './endpoint';
 
-export abstract class Service implements IService
+export class Service implements IService
 {
     protected endpoint: ServiceEndpoint;
 
