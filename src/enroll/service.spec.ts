@@ -39,7 +39,7 @@ describe("EnrollService:", ()=>
 
     describe("GetUserCredentials", ()=>
     {
-        it('must get claims', async () => {
+        it('must succeed', async () => {
             const result = creds;
             FetchMock.getOnce(`*`
                 , { GetUserCredentialsResult: result });
@@ -47,7 +47,7 @@ describe("EnrollService:", ()=>
                 service.GetUserCredentials(user))
                 .toBeResolvedTo(result);
         })
-        it('must get service fault', async () => {
+        it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.getOnce(`*`
                 , new Response(JSON.stringify(fault)
@@ -241,25 +241,25 @@ describe("EnrollService:", ()=>
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
         })
     })
-    describe("CustomAction", ()=>
-    {
-        const result = "==== custom action result ===";
-        it('must succeed', async () => {
-            FetchMock.postOnce(`*`, result);
-            await expectAsync(
-                service.CustomAction(officerTicket, user, fingerprints, 123))
-                .toBeResolvedTo(result);
-        })
-        it('must fail', async () => {
-            const fault = ServerStatus.E_FAIL;
-            FetchMock.postOnce(`*`
-                , new Response(JSON.stringify(fault)
-                , HttpStatus.NotFound));
-            await expectAsync(
-                service.CustomAction(officerTicket, user, fingerprints, 123))
-                .toBeRejectedWith(ServiceError.fromServiceFault(fault));
-        })
-    })
+    // describe("CustomAction", ()=>
+    // {
+    //     const result = "==== custom action result ===";
+    //     it('must succeed', async () => {
+    //         FetchMock.postOnce(`*`, result);
+    //         await expectAsync(
+    //             service.CustomAction(officerTicket, user, fingerprints, 123))
+    //             .toBeResolvedTo(result);
+    //     })
+    //     it('must fail', async () => {
+    //         const fault = ServerStatus.E_FAIL;
+    //         FetchMock.postOnce(`*`
+    //             , new Response(JSON.stringify(fault)
+    //             , HttpStatus.NotFound));
+    //         await expectAsync(
+    //             service.CustomAction(officerTicket, user, fingerprints, 123))
+    //             .toBeRejectedWith(ServiceError.fromServiceFault(fault));
+    //     })
+    // })
     describe("IsEnrollmentAllowed", ()=>
     {
         it('must succeed', async () => {

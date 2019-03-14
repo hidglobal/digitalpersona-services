@@ -23,7 +23,7 @@ describe('PolicyService: ', () =>
         FetchMock.restore();
     })
 
-    it('must get policies', async () => {
+    it('must succeed', async () => {
         const result = {
             policyList: [],
             policyTriggers: []
@@ -35,7 +35,7 @@ describe('PolicyService: ', () =>
             .toBeResolvedTo(result);
     })
 
-    it('must get service fault', async () => {
+    it('must fail', async () => {
         const fault = ServerStatus.E_FAIL;
         FetchMock.getOnce(`*`
             , new Response(JSON.stringify(fault)

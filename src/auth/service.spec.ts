@@ -32,7 +32,7 @@ describe("AuthService:", ()=>
 
     describe("GetUserCredentials", ()=>
     {
-        it('must get claims', async () => {
+        it('must succeed', async () => {
             const result = creds;
             FetchMock.getOnce(`*`
                 , { GetUserCredentialsResult: result });
@@ -40,7 +40,7 @@ describe("AuthService:", ()=>
                 service.GetUserCredentials(user))
                 .toBeResolvedTo(result);
         })
-        it('must get service fault', async () => {
+        it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.getOnce(`*`
                 , new Response(JSON.stringify(fault)
@@ -52,7 +52,7 @@ describe("AuthService:", ()=>
     })
     describe("GetEnrollmentData", ()=>
     {
-        it('must get claims', async () => {
+        it('must succeed', async () => {
             const result = "==== enrollment data =====";
             FetchMock.getOnce(`*`
                 , { GetEnrollmentDataResult: result });
@@ -60,7 +60,7 @@ describe("AuthService:", ()=>
                 service.GetEnrollmentData(user, Credential.Password))
                 .toBeResolvedTo(result);
         })
-        it('must get service fault', async () => {
+        it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.getOnce(`*`
                 , new Response(JSON.stringify(fault)
@@ -72,7 +72,7 @@ describe("AuthService:", ()=>
     })
     describe("IdentifyUser", ()=>
     {
-        it('must get claims', async () => {
+        it('must succeed', async () => {
             const result = ticket;
             FetchMock.postOnce(`*`
                 , { IdentifyUserResult: result });
@@ -80,7 +80,7 @@ describe("AuthService:", ()=>
                 service.IdentifyUser(fingerprints))
                 .toBeResolvedTo(result);
         })
-        it('must get service fault', async () => {
+        it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`
                 , new Response(JSON.stringify(fault)
@@ -92,7 +92,7 @@ describe("AuthService:", ()=>
     })
     describe("AuthenticateUser", ()=>
     {
-        it('must get claims', async () => {
+        it('must succeed', async () => {
             const result = ticket;
             FetchMock.postOnce(`*`
                 , { AuthenticateUserResult: result });
@@ -100,7 +100,7 @@ describe("AuthService:", ()=>
                 service.AuthenticateUser(user, fingerprints))
                 .toBeResolvedTo(result);
         })
-        it('must get service fault', async () => {
+        it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`
                 , new Response(JSON.stringify(fault)
@@ -112,7 +112,7 @@ describe("AuthService:", ()=>
     })
     describe("AuthenticateTicket", ()=>
     {
-        it('must get claims', async () => {
+        it('must succeed', async () => {
             const result = ticket;
             FetchMock.postOnce(`*`
                 , { AuthenticateTicketResult: result });
@@ -120,7 +120,7 @@ describe("AuthService:", ()=>
                 service.AuthenticateTicket(ticket, fingerprints))
                 .toBeResolvedTo(result);
         })
-        it('must get service fault', async () => {
+        it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`
                 , new Response(JSON.stringify(fault)
@@ -132,7 +132,7 @@ describe("AuthService:", ()=>
     })
     describe("CustomAction", ()=>
     {
-        it('must get claims', async () => {
+        it('must succeed', async () => {
             const result = "====custom action result====";
             FetchMock.postOnce(`*`
                 , { CustomActionResult: result });
@@ -140,7 +140,7 @@ describe("AuthService:", ()=>
                 service.CustomAction(ticket, user, fingerprints, 101))
                 .toBeResolvedTo(result);
         })
-        it('must get service fault', async () => {
+        it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`
                 , new Response(JSON.stringify(fault)
@@ -152,7 +152,7 @@ describe("AuthService:", ()=>
     })
     describe("CreateUserAuthentication", ()=>
     {
-        it('must get claims', async () => {
+        it('must succeed', async () => {
             const result = 12345 as AuthenticationHandle;
             FetchMock.postOnce(`*`
                 , { CreateUserAuthenticationResult: result });
@@ -160,7 +160,7 @@ describe("AuthService:", ()=>
                 service.CreateUserAuthentication(user, Credential.Fingerprints))
                 .toBeResolvedTo(result);
         })
-        it('must get service fault', async () => {
+        it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`
                 , new Response(JSON.stringify(fault)
@@ -172,7 +172,7 @@ describe("AuthService:", ()=>
     })
     describe("CreateTicketAuthentication", ()=>
     {
-        it('must get claims', async () => {
+        it('must succeed', async () => {
             const result = 12345 as AuthenticationHandle;
             FetchMock.postOnce(`*`
                 , { CreateTicketAuthenticationResult: result });
@@ -180,7 +180,7 @@ describe("AuthService:", ()=>
                 service.CreateTicketAuthentication(ticket, Credential.Fingerprints))
                 .toBeResolvedTo(result);
         })
-        it('must get service fault', async () => {
+        it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`
                 , new Response(JSON.stringify(fault)
@@ -192,7 +192,7 @@ describe("AuthService:", ()=>
     })
     describe("ContinueAuthentication", ()=>
     {
-        it('must get claims', async () => {
+        it('must succeed', async () => {
             const result = {
                 ...ticket,
                 status: AuthenticationStatus.Continue,
@@ -204,7 +204,7 @@ describe("AuthService:", ()=>
                 service.ContinueAuthentication(12345, ticket.jwt))
                 .toBeResolvedTo(result);
         })
-        it('must get service fault', async () => {
+        it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`
                 , new Response(JSON.stringify(fault)
@@ -216,13 +216,13 @@ describe("AuthService:", ()=>
     })
     describe("DestroyAuthentication", ()=>
     {
-        it('must get claims', async () => {
+        it('must succeed', async () => {
             FetchMock.deleteOnce(`*`, HttpStatus.Ok);
             await expectAsync(
                 service.DestroyAuthentication(12345))
                 .toBeResolved();
         })
-        it('must get service fault', async () => {
+        it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.deleteOnce(`*`
                 , new Response(JSON.stringify(fault)

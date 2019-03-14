@@ -22,7 +22,7 @@ describe("ClaimsService:", ()=>
 
     describe("GetConfiguredClaims", ()=>
     {
-        it('must get claims', async () => {
+        it('must succeed', async () => {
             const result = {
                 ticket
             }
@@ -32,7 +32,7 @@ describe("ClaimsService:", ()=>
                 service.GetConfiguredClaims(ticket))
                 .toBeResolvedTo(ticket);
         })
-        it('must get service fault', async () => {
+        it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`
                 , new Response(JSON.stringify(fault)
@@ -50,7 +50,7 @@ describe("ClaimsService:", ()=>
             attr: "memberOf"
         }];
 
-        it('must get claims', async () => {
+        it('must succeed', async () => {
             const result = {
                 ticket
             }
@@ -60,7 +60,7 @@ describe("ClaimsService:", ()=>
                 service.GetClaims(ticket, request))
                 .toBeResolvedTo(ticket);
         })
-        it('must get service fault', async () => {
+        it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`
                 , new Response(JSON.stringify(fault)
