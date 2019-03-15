@@ -6,6 +6,7 @@ export class ServiceEndpoint
     private readonly endpointUrl: string;
     private readonly defaultRequest: RequestInit = {
         cache: "no-cache",
+        mode: "cors",
         headers: {
             "Content-Type": "application/json",
             "Accept": "application/json; charset=utf-8"
@@ -23,21 +24,6 @@ export class ServiceEndpoint
             ServiceEndpoint.handleError(response);
     }
 
-    private static getResult<T>(response: Response, dataName?: string, defaultValue?: T): Promise<T> {
-        return (response.ok) ?
-            ServiceEndpoint.handleSuccess(response, dataName, defaultValue) :
-            ServiceEndpoint.handleError(response);
-    }
-
-    private static handleSuccess<T>(response: Response, dataName?: string, defaultValue?: T|void): Promise<T>
-    {
-        return response.json().then(data =>
-//            !dataName        ?  (defaultValue || (()=>{})()) :
-            data && dataName ?  data[dataName] as T :  // result returned in a body as a JSON object
-            defaultValue     ?  defaultValue :         // no result returned in a body, use default value
-                                (()=>{throw new Error('missing data and no default value');})()
-        );
-    }
     private static handleError<T>(response: Response): Promise<T> {
         if (response.status === 404) {
             // DP WebServices dump all errors under a single 404 error
@@ -55,41 +41,52 @@ export class ServiceEndpoint
         throw new ServiceError(response.status, response.statusText);
     }
 
-    public get<ResultT>(path: string, query?: object | null, request?: RequestInit, defaultValue?: ResultT): Promise<ResultT>
+    public get(path: string, query?: object|null, request?: RequestInit): Promise<any>
     {
         return fetch(
-            Url.create(this.endpointUrl, path, query),
-            { ...this.defaultRequest, ...request, method: 'GET' })
-        .then(response =>
-            ServiceEndpoint.getResult(response, `${path}Result`, defaultValue));
+            Url.create(this.endpointUrl, path, query)
+            , { ...this.defaultRequest
+                , ...request
+                , method: 'GET'
+            })
+            .then(ServiceEndpoint.handleResponse);
     }
 
-    public post<ResultT>(path: string, query: object | null, request: RequestInit, defaultValue?: ResultT): Promise<ResultT>
+    public post(path: string, query: object|null, body: object|null, request?: RequestInit): Promise<any>
     {
         return fetch(
-            Url.create(this.endpointUrl, path, query),
-            { ...this.defaultRequest, ...request, method: 'POST', mode: 'cors' })
-        .then(response =>
-            ServiceEndpoint.getResult(response, `${path}Result`, defaultValue));
-    }
+            Url.create(this.endpointUrl, path, query)
+            , { ...this.defaultRequest
+                , ...request
+                , method: 'POST'
+                , ...(body ? { body: JSON.stringify(body) } : {})
+            })
+            .then(ServiceEndpoint.handleResponse);
+        }
 
-    public put<ResultT>(path: string, query: object | null, request: RequestInit, defaultValue?: ResultT): Promise<ResultT>
+    public put(path: string, query: object|null, body: object|null, request?: RequestInit): Promise<any>
     {
         return fetch(
-            Url.create(this.endpointUrl, path, query),
-            { ...this.defaultRequest, ...request, method: 'PUT', mode: 'cors' })
-        .then(response =>
-            ServiceEndpoint.getResult(response, "", defaultValue));
-    }
+            Url.create(this.endpointUrl, path, query)
+            , { ...this.defaultRequest
+                , ...request
+                , method: 'PUT'
+                , ...(body ? { body: JSON.stringify(body) } : {})
+            })
+            .then(ServiceEndpoint.handleResponse);
+        }
 
-    public delete<ResultT>(path: string, query: object | null, request: RequestInit, defaultValue?: ResultT): Promise<ResultT>
+    public delete(path: string, query: object|null, body: object|null, request?: RequestInit): Promise<any>
     {
         return fetch(
-            Url.create(this.endpointUrl, path, query),
-            { ...this.defaultRequest, ...request, method: 'DELETE', mode: 'cors' })
-        .then(response =>
-            ServiceEndpoint.getResult(response, "", defaultValue));
-    }
+            Url.create(this.endpointUrl, path, query)
+            , { ...this.defaultRequest
+                , ...request
+                , method: 'DELETE'
+                , ...(body ? { body: JSON.stringify(body) } : {})
+            })
+            .then(ServiceEndpoint.handleResponse);
+        }
 
     public ping(path: string = 'Ping'): Promise<boolean> {
         return fetch(

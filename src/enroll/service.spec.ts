@@ -83,7 +83,7 @@ describe("EnrollService:", ()=>
             FetchMock.putOnce(`*`, HttpStatus.Ok);
             await expectAsync(
                 service.CreateUser(officerTicket, user, "password"))
-                .toBeResolvedTo(true);
+                .toBeResolved();
         })
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
@@ -101,7 +101,7 @@ describe("EnrollService:", ()=>
             FetchMock.deleteOnce(`*`, HttpStatus.Ok);
             await expectAsync(
                 service.DeleteUser(officerTicket, user))
-                .toBeResolvedTo(true);
+                .toBeResolved();
         })
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
@@ -119,7 +119,7 @@ describe("EnrollService:", ()=>
             FetchMock.putOnce(`*`, HttpStatus.Ok);
             await expectAsync(
                 service.EnrollUserCredentials(officerTicket, userTicket, fingerprints))
-                .toBeResolvedTo(true);
+                .toBeResolved();
         })
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
@@ -137,7 +137,7 @@ describe("EnrollService:", ()=>
             FetchMock.deleteOnce(`*`, HttpStatus.Ok);
             await expectAsync(
                 service.DeleteUserCredentials(officerTicket, userTicket, fingerprints))
-                .toBeResolvedTo(true);
+                .toBeResolved();
         })
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
@@ -155,7 +155,7 @@ describe("EnrollService:", ()=>
             FetchMock.putOnce(`*`, HttpStatus.Ok);
             await expectAsync(
                 service.EnrollAltusUserCredentials(officerTicket, userTicket, fingerprints))
-                .toBeResolvedTo(true);
+                .toBeResolved();
         })
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
@@ -173,7 +173,7 @@ describe("EnrollService:", ()=>
             FetchMock.deleteOnce(`*`, HttpStatus.Ok);
             await expectAsync(
                 service.DeleteAltusUserCredentials(officerTicket, userTicket, fingerprints))
-                .toBeResolvedTo(true);
+                .toBeResolved();
         })
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
@@ -211,7 +211,7 @@ describe("EnrollService:", ()=>
             FetchMock.putOnce(`*`, HttpStatus.Ok);
             await expectAsync(
                 service.PutUserAttribute(officerTicket, user, "group", AttributeAction.Update, attribute))
-                .toBeResolvedTo(true);
+                .toBeResolved();
         })
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
@@ -241,25 +241,26 @@ describe("EnrollService:", ()=>
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
         })
     })
-    // describe("CustomAction", ()=>
-    // {
-    //     const result = "==== custom action result ===";
-    //     it('must succeed', async () => {
-    //         FetchMock.postOnce(`*`, result);
-    //         await expectAsync(
-    //             service.CustomAction(officerTicket, user, fingerprints, 123))
-    //             .toBeResolvedTo(result);
-    //     })
-    //     it('must fail', async () => {
-    //         const fault = ServerStatus.E_FAIL;
-    //         FetchMock.postOnce(`*`
-    //             , new Response(JSON.stringify(fault)
-    //             , HttpStatus.NotFound));
-    //         await expectAsync(
-    //             service.CustomAction(officerTicket, user, fingerprints, 123))
-    //             .toBeRejectedWith(ServiceError.fromServiceFault(fault));
-    //     })
-    // })
+    describe("CustomAction", ()=>
+    {
+        const result = "==== custom action result ===";
+        it('must succeed', async () => {
+            FetchMock.postOnce(`*`
+                , { CustomActionResult: result });
+            await expectAsync(
+                service.CustomAction(officerTicket, user, fingerprints, 123))
+                .toBeResolvedTo(result);
+        })
+        it('must fail', async () => {
+            const fault = ServerStatus.E_FAIL;
+            FetchMock.postOnce(`*`
+                , new Response(JSON.stringify(fault)
+                , HttpStatus.NotFound));
+            await expectAsync(
+                service.CustomAction(officerTicket, user, fingerprints, 123))
+                .toBeRejectedWith(ServiceError.fromServiceFault(fault));
+        })
+    })
     describe("IsEnrollmentAllowed", ()=>
     {
         it('must succeed', async () => {

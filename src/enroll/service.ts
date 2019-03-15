@@ -7,17 +7,17 @@ export interface IEnrollService
 {
     GetUserCredentials(user: User): Promise<CredentialId[]>;
     GetEnrollmentData(user: User, credentialId: CredentialId): Promise<Base64UrlString>;
-    CreateUser(securityOfficer: Ticket, user: User, password: string): Promise<boolean>;
-    DeleteUser(securityOfficer: Ticket, user: User): Promise<boolean>;
-    EnrollUserCredentials(securityOfficer: Ticket, owner: Ticket, credential: Credential): Promise<boolean>;
-    DeleteUserCredentials(securityOfficer: Ticket, owner: Ticket, credential: Credential): Promise<boolean>;
-    EnrollAltusUserCredentials(securityOfficer: Ticket, owner: Ticket, credential: Credential): Promise<boolean>;
-    DeleteAltusUserCredentials(securityOfficer: Ticket, owner: Ticket, credential: Credential): Promise<boolean>;
+    CreateUser(securityOfficer: Ticket, user: User, password: string): Promise<void>;
+    DeleteUser(securityOfficer: Ticket, user: User): Promise<void>;
+    EnrollUserCredentials(securityOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>;
+    DeleteUserCredentials(securityOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>;
+    EnrollAltusUserCredentials(securityOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>;
+    DeleteAltusUserCredentials(securityOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>;
     GetUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName): Promise<Attribute>;
-    PutUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName, action: AttributeAction, attributeData: Attribute): Promise<boolean>;
-    UnlockUser(user: User, credential: Credential): Promise<boolean>;
+    PutUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName, action: AttributeAction, attributeData: Attribute): Promise<void>;
+    UnlockUser(user: User, credential: Credential): Promise<void>;
     CustomAction(ticket: Ticket, user: User, credential: Credential, actionId: number): Promise<Base64UrlString>;
-    IsEnrollmentAllowed(securityOfficer: Ticket, user: User, credentialId: CredentialId): Promise<boolean>;
+    IsEnrollmentAllowed(securityOfficer: Ticket, user: User, credentialId: CredentialId): Promise<void>;
 }
 
 export class EnrollService extends Service implements IEnrollService
@@ -28,91 +28,73 @@ export class EnrollService extends Service implements IEnrollService
 
     public GetUserCredentials(user: User): Promise<CredentialId[]>
     {
-        return this.endpoint.get("GetUserCredentials"
-            , { user: user.name, type: user.type });
+        return this.endpoint
+            .get("GetUserCredentials", { user: user.name, type: user.type })
+            .then(result => result.GetUserCredentialsResult);
     }
 
     public GetEnrollmentData(user: User, credentialId: CredentialId): Promise<Base64UrlString>
     {
-        return this.endpoint.get("GetEnrollmentData"
-            , { user: user.name, type: user.type, cred_id: credentialId });
+        return this.endpoint
+            .get("GetEnrollmentData", { user: user.name, type: user.type, cred_id: credentialId })
+            .then(result => result.GetEnrollmentDataResult);
     }
-    public CreateUser(secOfficer: Ticket, user: User, password: string): Promise<boolean>
+    public CreateUser(secOfficer: Ticket, user: User, password: string): Promise<void>
     {
-        return this.endpoint.put("CreateUser"
-            , null
-            , { body: JSON.stringify({ secOfficer, user, password }) }
-            , true);
+        return this.endpoint
+            .put("CreateUser", null, { secOfficer, user, password });
     }
-    public DeleteUser(secOfficer: Ticket, user: User): Promise<boolean>
+    public DeleteUser(secOfficer: Ticket, user: User): Promise<void>
     {
-        return this.endpoint.delete("DeleteUser"
-            , null
-            , { body: JSON.stringify({ secOfficer, user }) }
-            , true);
+        return this.endpoint
+            .delete("DeleteUser", null, { secOfficer, user });
     }
-    public EnrollUserCredentials(secOfficer: Ticket, owner: Ticket, credential: Credential): Promise<boolean>
+    public EnrollUserCredentials(secOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>
     {
-        return this.endpoint.put("EnrollUserCredentials"
-            , null
-            , { body: JSON.stringify({ secOfficer, owner, credential }) }
-            , true);
+        return this.endpoint
+            .put("EnrollUserCredentials", null, { secOfficer, owner, credential });
     }
-    public DeleteUserCredentials(secOfficer: Ticket, owner: Ticket, credential: Credential): Promise<boolean>
+    public DeleteUserCredentials(secOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>
     {
-        return this.endpoint.delete("DeleteUserCredentials"
-            , null
-            , { body: JSON.stringify({ secOfficer, owner, credential }) }
-            , true);
-}
-    public EnrollAltusUserCredentials(secOfficer: Ticket, owner: Ticket, credential: Credential): Promise<boolean>
+        return this.endpoint
+            .delete("DeleteUserCredentials", null, { secOfficer, owner, credential });
+    }
+    public EnrollAltusUserCredentials(secOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>
     {
-        return this.endpoint.put("EnrollAltusUserCredentials"
-            , null
-            , { body: JSON.stringify({ secOfficer, owner, credential }) }
-            , true);
-}
-    public DeleteAltusUserCredentials(secOfficer: Ticket, owner: Ticket, credential: Credential): Promise<boolean>
+        return this.endpoint
+            .put("EnrollAltusUserCredentials", null, { secOfficer, owner, credential });
+    }
+    public DeleteAltusUserCredentials(secOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>
     {
-        return this.endpoint.delete("DeleteAltusUserCredentials"
-            , null
-            , { body: JSON.stringify({ secOfficer, owner, credential }) }
-            , true);
-}
+        return this.endpoint
+            .delete("DeleteAltusUserCredentials", null, { secOfficer, owner, credential });
+    }
     public GetUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName): Promise<Attribute>
     {
-        return this.endpoint.post("GetUserAttribute"
-            , null
-            , { body: JSON.stringify({ ticket, user, attributeName }) });
+        return this.endpoint
+            .post("GetUserAttribute", null, { ticket, user, attributeName })
+            .then(result => result.GetUserAttributeResult);
     }
-    public PutUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName, action: AttributeAction, attributeData: Attribute): Promise<boolean>
+    public PutUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName, action: AttributeAction, attributeData: Attribute): Promise<void>
     {
-        return this.endpoint.put("PutUserAttribute"
-            , null
-            , { body: JSON.stringify({ ticket, user, attributeName, action, attributeData }) }
-            , true);
-
+        return this.endpoint
+            .put("PutUserAttribute", null, { ticket, user, attributeName, action, attributeData });
     }
-    public UnlockUser(user: User, credential: Credential): Promise<boolean>
+    public UnlockUser(user: User, credential: Credential): Promise<void>
     {
-        return this.endpoint.post("UnlockUser"
-            , null
-            , { body: JSON.stringify({ user, credential }) }
-            , true);
+        return this.endpoint
+            .post("UnlockUser", null, { user, credential });
     }
     public CustomAction(ticket: Ticket, user: User, credential: Credential, actionId: number): Promise<Base64UrlString>
     {
-        return this.endpoint.post("CustomAction"
-            , null
-            , { body: JSON.stringify({ ticket, user, credential, actionId }) }
-            , "");
+        return this.endpoint
+            .post("CustomAction", null, { ticket, user, credential, actionId })
+            .then(result => result.CustomActionResult);
     }
-    public IsEnrollmentAllowed(secOfficer: Ticket, user: User, credentialId: CredentialId): Promise<boolean>
+    public IsEnrollmentAllowed(secOfficer: Ticket, user: User, credentialId: CredentialId): Promise<void>
     {
-        return this.endpoint.post("IsEnrollmentAllowed"
-            , null
-            , { body: JSON.stringify({ secOfficer, user, credentialId }) }
-            , true);
-        }
+        return this.endpoint
+            .post("IsEnrollmentAllowed", null, { secOfficer, user, credentialId });
+    }
 
 }

@@ -16,7 +16,8 @@ export class PolicyService extends Service implements IPolicyService
     }
     public GetPolicyInfo(user: User, resourceUri: string, action: ResourceActions, info: ContextualInfo) : Promise<PolicyInfo>
     {
-        return this.endpoint.get("GetPolicyInfo"
-            , { user: user.name, type: user.type, resourceUri, action, info });
+        return this.endpoint
+            .get("GetPolicyInfo", { user: user.name, type: user.type, resourceUri, action, info })
+            .then(result => result.GetPolicyInfoResult);
     }
 }

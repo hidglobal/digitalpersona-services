@@ -9,7 +9,7 @@ export class Service implements IService
         this.endpoint = new ServiceEndpoint(endpoint);
     }
 
-    public Ping(): PromiseLike<boolean> {
+    public Ping(): Promise<boolean> {
         return this.endpoint.ping();
     }
 }

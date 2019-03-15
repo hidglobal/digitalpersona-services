@@ -1,9 +1,12 @@
+// A server fault object.
+// When server error occurs, the server returns the fault object in a response body.
 export interface ServiceFault
 {
     error_code: number;
     description: string;
 }
 
+// Maps service faults on the Javascript exception model
 export class ServiceError extends Error
 {
     public readonly code: number;
@@ -23,5 +26,7 @@ export class ServiceError extends Error
 
 export interface IService
 {
-    Ping(): PromiseLike<boolean>;
+    // Pings the service endpoint to detect connectivity status.
+    // Returns `true` on success, `false` on failure. The promise is never rejected.
+    Ping(): Promise<boolean>;
 }

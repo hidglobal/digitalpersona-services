@@ -11,11 +11,11 @@ export interface IAuthService
     IdentifyUser(credential: Credential): Promise<Ticket>;
     AuthenticateUser(user: User, credential: Credential): Promise<Ticket>;
     AuthenticateTicket(ticket: Ticket, credential: Credential): Promise<Ticket>;
-    CustomAction(ticket: Ticket, user: User, credential: Credential, actionId: number): Promise<Base64String|boolean>;
+    CustomAction(ticket: Ticket, user: User, credential: Credential, actionId: number): Promise<Base64String>;
     CreateUserAuthentication(user: User, credentialId: CredentialId): Promise<AuthenticationHandle>;
     CreateTicketAuthentication(ticket: Ticket, credentialId: CredentialId): Promise<AuthenticationHandle>;
     ContinueAuthentication(auth: AuthenticationHandle, data: string): Promise<ExtendedAuthResult>;
-    DestroyAuthentication(auth: AuthenticationHandle): Promise<boolean>;
+    DestroyAuthentication(auth: AuthenticationHandle): Promise<void>;
 }
 
 export class AuthService extends Service implements IAuthService
@@ -26,64 +26,63 @@ export class AuthService extends Service implements IAuthService
 
     public GetUserCredentials(user: User): Promise<CredentialId[]>
     {
-        return this.endpoint.get("GetUserCredentials"
-            , { user: user.name, type: user.type });
+        return this.endpoint
+            .get("GetUserCredentials", { user: user.name, type: user.type })
+            .then(response => response.GetUserCredentialsResult);
     }
     public GetEnrollmentData(user: User, credentialId: CredentialId): Promise<Base64String>
     {
-        return this.endpoint.get("GetEnrollmentData"
-            , { user: user.name, type: user.type, cred_id: credentialId });
+        return this.endpoint
+            .get("GetEnrollmentData", { user: user.name, type: user.type, cred_id: credentialId })
+            .then(response => response.GetEnrollmentDataResult);
     };
     public IdentifyUser(credential: Credential): Promise<Ticket>
     {
-        return this.endpoint.post("IdentifyUser"
-            , null
-            , { body: JSON.stringify({ credential }) });
+        return this.endpoint
+            .post("IdentifyUser", null, { credential })
+            .then(response => response.IdentifyUserResult);
     }
     public AuthenticateUser(user: User, credential: Credential): Promise<Ticket>
     {
-        return this.endpoint.post("AuthenticateUser"
-            , null
-            , { body: JSON.stringify({ user, credential }) });
+        return this.endpoint
+            .post("AuthenticateUser", null, { user, credential })
+            .then(response => response.AuthenticateUserResult);
     }
 
     public AuthenticateTicket(ticket: Ticket, credential: Credential): Promise<Ticket>
     {
-        return this.endpoint.post("AuthenticateTicket"
-            , null
-            , { body: JSON.stringify({ ticket, credential }) });
+        return this.endpoint
+            .post("AuthenticateTicket", null, { ticket, credential })
+            .then(response => response.AuthenticateTicketResult);
     }
-    public CustomAction(ticket: Ticket, user: User, credential: Credential, actionId: number): Promise<Base64String|boolean>
+    public CustomAction(ticket: Ticket, user: User, credential: Credential, actionId: number): Promise<Base64String>
     {
-        return this.endpoint.post("CustomAction"
-            , null
-            , { body: JSON.stringify({ ticket, user, credential, actionId }) }
-            , true);
+        return this.endpoint
+            .post("CustomAction", null, { ticket, user, credential, actionId })
+            .then(response => response.CustomActionResult);
     }
     public CreateUserAuthentication(user: User, credentialId: CredentialId): Promise<AuthenticationHandle>
     {
-        return this.endpoint.post("CreateUserAuthentication"
-            , null
-            , { body: JSON.stringify({ user, credentialId }) });
+        return this.endpoint
+            .post("CreateUserAuthentication", null, { user, credentialId })
+            .then(response => response.CreateUserAuthenticationResult);
     }
     public CreateTicketAuthentication(ticket: Ticket, credentialId: CredentialId): Promise<AuthenticationHandle>
     {
-        return this.endpoint.post("CreateTicketAuthentication"
-            , null
-            , { body: JSON.stringify({ ticket, credentialId }) });
+        return this.endpoint
+            .post("CreateTicketAuthentication", null, { ticket, credentialId })
+            .then(response => response.CreateTicketAuthenticationResult);
     }
     public ContinueAuthentication(authId: AuthenticationHandle, authData: string): Promise<ExtendedAuthResult>
     {
-        return this.endpoint.post("ContinueAuthentication"
-            , null
-            , { body: JSON.stringify({ authId, authData }) });
+        return this.endpoint
+            .post("ContinueAuthentication", null, { authId, authData })
+            .then(response => response.ContinueAuthenticationResult);
     }
-    public DestroyAuthentication(authId: AuthenticationHandle): Promise<boolean>
+    public DestroyAuthentication(authId: AuthenticationHandle): Promise<void>
     {
-        return this.endpoint.delete("DestroyAuthentication"
-            , null,
-            { body: JSON.stringify({ authId }) }
-            , true);
+        return this.endpoint
+            .delete("DestroyAuthentication", null, { authId });
     }
 
 }

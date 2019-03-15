@@ -18,16 +18,14 @@ export class ClaimsService extends Service implements IClaimsService
 
     public GetConfiguredClaims(ticket: Ticket ): Promise<Ticket>
     {
-        return this.endpoint.post("GetConfiguredClaims"
-            , null
-            , { body: JSON.stringify({ ticket }) })
-        .then(result => result["ticket"]);
+        return this.endpoint
+            .post("GetConfiguredClaims", null, { ticket })
+            .then(result => result.GetConfiguredClaimsResult.ticket);
     }
     public GetClaims(ticket: Ticket, request: ClaimRequest[]): Promise<Ticket>
     {
-        return this.endpoint.post("GetClaims"
-            , null
-            , { body: JSON.stringify({ ticket, request}) })
-        .then(result => result["ticket"]);
-        }
+        return this.endpoint
+            .post("GetClaims", null, { ticket, request})
+            .then(result => result.GetClaimsResult.ticket);
+    }
 }

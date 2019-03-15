@@ -140,6 +140,13 @@ describe("AuthService:", ()=>
                 service.CustomAction(ticket, user, fingerprints, 101))
                 .toBeResolvedTo(result);
         })
+        it('must succeed, returns nothing', async () => {
+            FetchMock.postOnce(`*`
+                , { CustomActionResult: null });
+            await expectAsync(
+                service.CustomAction(ticket, user, fingerprints, 101))
+                .toBeResolved();
+        })
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`
