@@ -14,7 +14,7 @@ const exclude = excludes.map(({ dir, exceptions }) => {
 
 module.exports = {
   mode: 'file',
-  out: 'docs',
+  out: 'dist/docs',
   module: 'commonjs',
   target: 'es5',
   theme: 'default',
@@ -23,6 +23,7 @@ module.exports = {
   excludePrivate: true,
   excludeNotExported: true,
   stripInternal: true,
+  readme: "none",
 //  externalPattern: 'node_modules/@tensorflow',
   exclude
 }
