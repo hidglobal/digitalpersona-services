@@ -1,6 +1,6 @@
-import { Ticket, ServiceError, ClaimName } from '@common';
-import { ClaimsService, Database } from '@claims';
-import { ServerStatus, HttpStatus } from '@test';
+import { Ticket, ServiceError, ClaimName } from '../../common';
+import { ClaimsService, Database } from '.';
+import { ServerStatus, HttpStatus } from '../../test';
 
 var FetchMock = require('fetch-mock');
 FetchMock.config.sendAsJson = true;

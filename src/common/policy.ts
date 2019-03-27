@@ -1,4 +1,4 @@
-import { CredentialId } from '@common';
+import { CredentialId } from './credential';
 
 export interface PolicyElement
 {

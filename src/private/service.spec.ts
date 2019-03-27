@@ -1,5 +1,5 @@
 import { Service } from "./service";
-import { HttpStatus } from '@test';
+import { HttpStatus } from '../test';
 
 var fetchMock = require('fetch-mock');
 

@@ -1,5 +1,5 @@
-import { Ticket } from '@common';
-import { Service } from '@private';
+import { Ticket } from '../../common';
+import { Service } from '../../private';
 import { ClaimRequest } from './claim';
 
 // This service allows to request additional claims to be added

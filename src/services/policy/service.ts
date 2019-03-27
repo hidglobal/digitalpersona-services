@@ -1,5 +1,5 @@
-import { User, ResourceActions } from '@common';
-import { Service } from '@private';
+import { User, ResourceActions } from '../../common';
+import { Service } from '../../private';
 import { PolicyInfo } from './policyInfo';
 import { ContextualInfo } from './stepUp';
 

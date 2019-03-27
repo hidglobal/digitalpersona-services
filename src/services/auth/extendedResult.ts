@@ -1,5 +1,5 @@
 import { AuthenticationStatus } from "./status";
-import { Ticket } from '@common';
+import { Ticket } from '../../common';
 
 export interface ExtendedAuthResult extends Ticket
 {

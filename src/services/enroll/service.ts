@@ -1,6 +1,6 @@
-import { User, CredentialId, Ticket, Credential, Base64UrlString } from '@common';
-import { Service } from '@private';
-import { AttributeName } from '@claims';
+import { User, CredentialId, Ticket, Credential, Base64UrlString } from '../../common';
+import { Service } from '../../private';
+import { AttributeName } from '../../services';
 import { Attribute, AttributeAction } from './attribute';
 
 export interface IEnrollService
@@ -47,7 +47,7 @@ export class EnrollService extends Service implements IEnrollService
     public DeleteUser(secOfficer: Ticket, user: User): Promise<void>
     {
         return this.endpoint
-            .delete("DeleteUser", null, { secOfficer, user });
+            .del("DeleteUser", null, { secOfficer, user });
     }
     public EnrollUserCredentials(secOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>
     {
@@ -57,7 +57,7 @@ export class EnrollService extends Service implements IEnrollService
     public DeleteUserCredentials(secOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>
     {
         return this.endpoint
-            .delete("DeleteUserCredentials", null, { secOfficer, owner, credential });
+            .del("DeleteUserCredentials", null, { secOfficer, owner, credential });
     }
     public EnrollAltusUserCredentials(secOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>
     {
@@ -67,7 +67,7 @@ export class EnrollService extends Service implements IEnrollService
     public DeleteAltusUserCredentials(secOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>
     {
         return this.endpoint
-            .delete("DeleteAltusUserCredentials", null, { secOfficer, owner, credential });
+            .del("DeleteAltusUserCredentials", null, { secOfficer, owner, credential });
     }
     public GetUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName): Promise<Attribute>
     {

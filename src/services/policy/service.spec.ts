@@ -1,6 +1,6 @@
-import { User, ResourceActions, ServiceError } from '@common';
-import { PolicyService } from '@policy';
-import { ServerStatus, HttpStatus } from '@test';
+import { User, ResourceActions, ServiceError } from '../../common';
+import { PolicyService } from '.';
+import { ServerStatus, HttpStatus } from '../../test';
 
 var FetchMock = require('fetch-mock');
 FetchMock.config.sendAsJson = true;

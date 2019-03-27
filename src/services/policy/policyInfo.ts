@@ -1,4 +1,4 @@
-import { Policy } from '@common';
+import { Policy } from '../../common';
 import { PolicyTrigger } from './stepUp';
 
 export interface PolicyInfo

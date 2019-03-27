@@ -1,4 +1,4 @@
-import { ServiceFault, ServiceError } from '@common';
+import { ServiceFault, ServiceError } from '../common';
 import { Url } from './url';
 
 export class ServiceEndpoint
@@ -8,8 +8,8 @@ export class ServiceEndpoint
         cache: "no-cache",
         mode: "cors",
         headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json; charset=utf-8"
+            "Content-Type": "application/json;charset=utf-8",
+            "Accept": "application/json"
         },
     }
 
@@ -76,7 +76,8 @@ export class ServiceEndpoint
             .then(ServiceEndpoint.handleResponse);
         }
 
-    public delete(path: string, query: object|null, body: object|null, request?: RequestInit): Promise<any>
+    // cannot use "delete" as it is a reserved Javascript word
+    public del(path: string, query: object|null, body: object|null, request?: RequestInit): Promise<any>
     {
         return fetch(
             Url.create(this.endpointUrl, path, query)

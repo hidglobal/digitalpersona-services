@@ -1,4 +1,4 @@
-import { IService } from "@common";
+import { IService } from "../common";
 import { ServiceEndpoint } from './endpoint';
 
 export class Service implements IService

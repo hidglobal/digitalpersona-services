@@ -1,5 +1,5 @@
-import { User, Ticket, ResourceActions, Policy, Base64String } from '@common';
-import { Service } from '@private';
+import { User, Ticket, ResourceActions, Policy, Base64String } from '../../common';
+import { Service } from '../../private';
 
 export interface ISecretService
 {
@@ -43,6 +43,6 @@ export class SecretService extends Service implements ISecretService
     public DeleteSecret(ticket: Ticket, secretName: string): Promise<void>
     {
         return this.endpoint
-            .delete("DeleteSecret", null, { ticket, secretName });
+            .del("DeleteSecret", null, { ticket, secretName });
     }
 }

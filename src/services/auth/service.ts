@@ -1,6 +1,6 @@
-import { User, Ticket, Credential, CredentialId, Base64String } from '@common';
+import { User, Ticket, Credential, CredentialId, Base64String } from '../../common';
 import { ExtendedAuthResult } from './extendedResult';
-import { Service } from '@private';
+import { Service } from '../../private';
 
 export type AuthenticationHandle = number;
 
@@ -12,7 +12,7 @@ export interface IAuthService
     AuthenticateUser(user: User, credential: Credential): Promise<Ticket>;
     AuthenticateTicket(ticket: Ticket, credential: Credential): Promise<Ticket>;
     CustomAction(ticket: Ticket, user: User, credential: Credential, actionId: number): Promise<Base64String>;
-    CreateUserAuthentication(user: User, credentialId: CredentialId): Promise<AuthenticationHandle>;
+    CreateUserAuthentication(user: User|null, credentialId: CredentialId): Promise<AuthenticationHandle>;
     CreateTicketAuthentication(ticket: Ticket, credentialId: CredentialId): Promise<AuthenticationHandle>;
     ContinueAuthentication(auth: AuthenticationHandle, data: string): Promise<ExtendedAuthResult>;
     DestroyAuthentication(auth: AuthenticationHandle): Promise<void>;
@@ -61,7 +61,7 @@ export class AuthService extends Service implements IAuthService
             .post("CustomAction", null, { ticket, user, credential, actionId })
             .then(response => response.CustomActionResult);
     }
-    public CreateUserAuthentication(user: User, credentialId: CredentialId): Promise<AuthenticationHandle>
+    public CreateUserAuthentication(user: User|null, credentialId: CredentialId): Promise<AuthenticationHandle>
     {
         return this.endpoint
             .post("CreateUserAuthentication", null, { user, credentialId })
@@ -82,7 +82,7 @@ export class AuthService extends Service implements IAuthService
     public DestroyAuthentication(authId: AuthenticationHandle): Promise<void>
     {
         return this.endpoint
-            .delete("DestroyAuthentication", null, { authId });
+            .del("DestroyAuthentication", null, { authId });
     }
 
 }

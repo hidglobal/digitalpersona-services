@@ -1,6 +1,6 @@
-import { User, UserNameType, Credential, Ticket, ResourceActions, Policy, ServiceError } from '@common';
-import { SecretService } from '@secrets';
-import { ServerStatus, HttpStatus } from '@test';
+import { User, UserNameType, Credential, Ticket, ResourceActions, Policy, ServiceError } from '../../common';
+import { SecretService } from '.';
+import { ServerStatus, HttpStatus } from '../../test';
 
 var FetchMock = require('fetch-mock');
 FetchMock.config.sendAsJson = true;

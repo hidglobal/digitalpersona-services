@@ -1,6 +1,6 @@
-import { User, UserNameType, Credential, Ticket, ServiceError } from '@common';
-import { EnrollService, AttributeType, Attribute, AttributeAction } from '@enroll';
-import { ServerStatus, HttpStatus } from '@test';
+import { User, UserNameType, Credential, Ticket, ServiceError } from '../../common';
+import { EnrollService, AttributeType, Attribute, AttributeAction } from '.';
+import { ServerStatus, HttpStatus } from '../../test';
 
 var FetchMock = require('fetch-mock');
 FetchMock.config.sendAsJson = true;

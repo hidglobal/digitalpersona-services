@@ -38,4 +38,12 @@ export class JWT
             return payload as ClaimSet;
         }
     }
+
+    public static validate(jwt: JSONWebToken): Error[]|null
+    {
+        // TODO: checks:
+        // iat < nbf < now < exp
+        // n
+        return null;
+    }
 }
