@@ -30,3 +30,24 @@ It is still recommended to use the `async/await` pattern in unit tests, as code 
 
 The ES6 object spread syntax adds an overhead to the es5-transpiled code, but it is negligible comparing to the manual
 object merging, so it is ok to use it.
+
+## Modular design
+
+The library uses TypeScript/ES2015 module system. You must understand what modules are and are not.
+
+**Do not use namespaces!** Module is a "namespace" by itself because the module consumer will give
+a named scope for all exports of the module, e.g: `import * as shapes from './Shapes'` or `var shapes = require('./Shapes')`.
+There is no need to create your own namespaces in the library.
+
+**Keep every module as small as possible!** It is ok to have a single export class/enum/interface per module. 
+This allows "tree-shaking" algorithms to work more effectively when the final JS bundle is created, 
+thus potentially reducing the size of the bundle. To avoid long imports you can group several modules 
+in a larger super-module using a "barrel" module approach: create an `index.ts` file which re-exports
+every sub-module, and you can import the `index.ts` instead of individual sub-modules.
+
+**Do not bundle prematurely!** Prefer to keep your modules pure and unbundled, as premature bundling
+may reduce tree-shaking effeciveness. If you deliver your library in formats like `commonjs` or `umd`,
+the benefit is that they are immediately ready to load into a browser, but a downside is that bundlers
+like Webkpack, Browserify, Rollup or Parcel have a hard time to remove unneeded code. As your library consumer
+most probably will use a bundler, it is better to let the end user to generate the bundle from pure ES2015 modules.
+The `commonjs` or `umd` modules can be provided as a convenience only and should not be consumed directly.

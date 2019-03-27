@@ -17,9 +17,8 @@ To build the library:
 * from VS Code: press `Ctrl+Shift+B`
 
 The build output (JavaScript files) will be put into following locations, according to a target:
-* CommonJS (for NodeJS): `./dist/commonjs/`
-* ES6 (for modern browsers): `./dist/es6/`
-* ES5 (UMD, for older browsers): `./dist/es5/`
+* ES6 unbundled (for modern browsers): `./dist/es6/`
+* ES5 bundled into UMD and IIFE (for older browsers): `./dist/es5/`
 
 
 <a name="documentation"></a>
