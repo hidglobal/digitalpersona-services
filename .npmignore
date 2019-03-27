@@ -1,9 +1,6 @@
 node_modules
 .rpt2_cache
+.vscode
+build
+*.spec.*
 
-examples
-proto
-data
-test
-tools
-docs
