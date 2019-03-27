@@ -2,7 +2,8 @@
      "compilerOptions": {
         "lib": ["dom" ],
         "typeRoots": [
-            "node_modules/@types"
+            "node_modules/@types",
+            "dist/typings"
         ],
         "moduleResolution": "node",
         "baseUrl": "./src",

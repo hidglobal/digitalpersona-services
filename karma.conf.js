@@ -1,55 +1,23 @@
-const dataFiles = [
-  'data/**/*'
-].map(pattern => ({
-  pattern,
-  watched: false,
-  included: false,
-  served: true,
-  nocache: false
-}))
-
 let exclude = (
-  process.env.UUT
-    ? [
-      , 'private'
-      , 'common'
-      , 'auth'
-      , 'policy'
-      , 'secrets'
-      , 'claims'
-      , 'admin'
-      , 'enroll'
-      ]
-    : []
-  )
+    process.env.UUT
+        ? [ 'auth', 'policy', 'secrets', 'claims', 'admin', 'enroll']
+        : [])
     .filter(ex => ex !== process.env.UUT)
     .map(ex => `src/${ex}/*.ts`)
-
-
-exclude = exclude.concat(
-  process.env.EXCLUDE_UNCOMPRESSED
-    ? ['**/*.uncompressed.test.ts']
-    : []
-)
-
-// exclude nodejs tests
-exclude = exclude.concat(['**/*.node.test.ts'])
 
 module.exports = function(config) {
   const args = []
 
-  config.set({
-    frameworks: ['jasmine', 'karma-typescript'],
+    config.set({
     files: [
-      {pattern: 'src/**/*.ts' },
-    ]
-    .concat(dataFiles),
-//    exclude,
+        {pattern: 'src/**/*.ts' },
+    ],
+    frameworks: ['jasmine', 'karma-typescript'],
     preprocessors: {
-      '**/*.ts': ['karma-typescript']
+        'src/**/*.ts': ['karma-typescript']
     },
     karmaTypescriptConfig: {
-      tsconfig: 'tsconfig.test.json'
+        tsconfig: 'tsconfig.test.json'
     },
     browsers: ['Chrome'],
     customLaunchers: {
