@@ -46,7 +46,6 @@
     "rollup": "npm run rollup-es5 && npm run rollup-es5-min && npm run rollup-es6 && npm run rollup-es6-min",
     "test": "karma start",
     "test-once": "karma start --single-run",
-    "test-all": "npm run test-browser",
     "test-private": "set UUT=private&& karma start",
     "test-common": "set UUT=common&& karma start",
     "test-auth": "set UUT=auth&& karma start",
