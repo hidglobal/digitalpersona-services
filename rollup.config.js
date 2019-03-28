@@ -1,46 +1,30 @@
-import commonjs from 'rollup-plugin-commonjs';
-import node from 'rollup-plugin-node-resolve';
-import typescript from 'rollup-plugin-typescript2';
-import { uglify } from 'rollup-plugin-uglify';
-import path from 'path';
+// This configuration expects environment parameters passed to the rollup:
+// (e.g. "rollup -c rollup.config.js --environment target:es5,format:umd,minify",
+const {
+    minify,     // true: minify the bundle, false|undefined: do not minify the bundle (default)
+    target,     // target syntax (es5, es6, ...). Default: es5
+    format,      // bundle format (umd, cjs, ...). Default: umd
+    npm_package_globalObject,
+} = {
+    target: "es5",
+    format: "umd",
+    ...process.env
+}
 
-const { minify } = process.env
+import node from 'rollup-plugin-node-resolve';
+import { terser } from 'rollup-plugin-terser';
 
 export default {
-  input: 'src/index.ts',
-  plugins: [
-    typescript({
-      tsconfigOverride: {
-        compilerOptions: {
-          module: 'ES2015',
-          declaration: true
-        }
-      }
-    }),
-    node(),
-    commonjs({
-      include: 'node_modules/**'
-    })
-  ].concat(minify ? uglify() : []),
-  output: {
-    extend: true,
-    file: `dist/es5/access-management${minify ? '.min' : ''}.js`,
-    format: 'umd',
-    name: 'AccessManagement',
-    globals: {
-      'crypto': 'crypto'
+    input: `dist/${target}/index.js`,
+    output: {
+        format,
+        extend: true,
+        name: npm_package_globalObject, //'dp.accessManagement',
+        file: `dist/${target}.bundles/index.${format}${minify ? '.min' : ''}.js`,
+        sourcemap: true
     },
-    sourcemap: minify ? false : true
-  },
-  external: ['crypto'],
-  onwarn: (warning) => {
-    const ignoreWarnings = ['CIRCULAR_DEPENDENCY', 'CIRCULAR', 'THIS_IS_UNDEFINED']
-    if (ignoreWarnings.some(w => w === warning.code))
-      return
-
-    if (warning.missing === 'alea')
-      return
-
-    console.warn(warning.message)
-  }
+    plugins: [
+        node(),
+        (minify ? terser() : [])
+    ]
 }

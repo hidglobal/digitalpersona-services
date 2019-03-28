@@ -19,9 +19,9 @@ module.exports = function(config) {
     karmaTypescriptConfig: {
         tsconfig: 'tsconfig.test.json'
     },
-    browsers: ['Chrome'],
+    browsers: ['Chrome' ],
     customLaunchers: {
-        IE_no_addons: {
+        IE_no_addons: {  // does not work for now because one of Karma dependencies use ES6 features
           base:  'IE',
           flags: ['-extoff']
         }
