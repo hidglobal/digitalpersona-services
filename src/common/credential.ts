@@ -1,4 +1,4 @@
-import { Base64String } from './encoders';
+import { Base64String, Base64Url } from './encoders';
 
 export type CredentialId = string;
 
@@ -17,14 +17,25 @@ export class Credential
     public static OneTimePassword   : CredentialId = "324C38BD-0B51-4E4D-BD75-200DA0C8177F";
     public static U2F               : CredentialId = "5D5F73AF-BCE5-4161-9584-42A61AED0E48";
     public static IWA               : CredentialId = "AE922666-9667-49BC-97DA-1EB0E1EF73D2";
+    public static Email				: CredentialId = "7845D71D-AB67-4EA7-913C-F81E75C3A087";
+    public static Behavior          : CredentialId = "193C41F6-5CF6-4525-84CC-223603DAC9AB";
     // pseudo-credentials
     public static Cards             : CredentialId = "FCFA704C-144B-42DB-8DF3-13F5CD20C525"; // all card types
 
     public readonly id: CredentialId;
-    public readonly data: Base64String;
+    public readonly data: Base64String|null;
 
-    public constructor(id: string, data: string) {
+    public constructor(id: CredentialId, data?: string | object | null, encode: boolean = true) {
         this.id = id;
-        this.data = data;
+        this.data = !data       ? null
+                  : !encode     ? JSON.stringify(data)
+                  : Base64Url.fromUtf16(JSON.stringify(data));
+    }
+
+    public static None(): Credential {
+        return new Credential("");
+    }
+    public static Any(): Credential {
+        return new Credential("*");
     }
 }
