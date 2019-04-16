@@ -8,4 +8,8 @@ export class Ticket
     {
         this.jwt = jwt;
     }
+
+    public static None(): Ticket {
+        return new Ticket("");
+    }
 }

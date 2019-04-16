@@ -14,4 +14,12 @@ export class User
             reGUID.test(name)           ? UserNameType.UID
                                         : UserNameType.DP;
     }
+
+    public static Anonymous(): User
+    {
+        return new User("", UserNameType.Unknown);
+    }
+    public static Everyone(): User {
+        return new User("*", UserNameType.Unknown);
+    }
 }
