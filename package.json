@@ -1,7 +1,7 @@
 {
   "name": "@digitalpersona/access-management",
   "globalObject": "dp.accessManagement",
-  "version": "0.0.9",
+  "version": "0.0.14",
   "publishConfig": {
     "registry": "http://localhost:4873"
   },
@@ -55,7 +55,8 @@
     "test-admin": "set UUT=admin&& karma start",
     "test-enroll": "set UUT=enroll&& karma start",
     "docs": "typedoc --options ./build/typedoc.config.js ./src",
-    "prepublishOnly": "npm run build && npm shrinkwrap"
+    "local-npm": "start verdaccio",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "tslib": "^1.9.3"
