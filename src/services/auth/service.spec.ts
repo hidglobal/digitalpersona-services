@@ -137,14 +137,14 @@ describe("AuthService:", ()=>
             FetchMock.postOnce(`*`
                 , { CustomActionResult: result });
             await expectAsync(
-                service.CustomAction(ticket, user, fingerprints, 101))
+                service.CustomAction(101, ticket, user, fingerprints))
                 .toBeResolvedTo(result);
         })
         it('must succeed, returns nothing', async () => {
             FetchMock.postOnce(`*`
                 , { CustomActionResult: null });
             await expectAsync(
-                service.CustomAction(ticket, user, fingerprints, 101))
+                service.CustomAction(101, ticket, user, fingerprints))
                 .toBeResolved();
         })
         it('must fail', async () => {
@@ -153,7 +153,7 @@ describe("AuthService:", ()=>
                 , new Response(JSON.stringify(fault)
                 , HttpStatus.NotFound));
             await expectAsync(
-                service.CustomAction(ticket, user, fingerprints, 101))
+                service.CustomAction(101, ticket, user, fingerprints))
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
         })
     })

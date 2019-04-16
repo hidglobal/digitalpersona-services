@@ -11,7 +11,7 @@ export interface IAuthService
     IdentifyUser(credential: Credential): Promise<Ticket>;
     AuthenticateUser(user: User, credential: Credential): Promise<Ticket>;
     AuthenticateTicket(ticket: Ticket, credential: Credential): Promise<Ticket>;
-    CustomAction(ticket: Ticket, user: User, credential: Credential, actionId: number): Promise<Base64String>;
+    CustomAction(actionId: number, ticket: Ticket, user: User, credential: Credential): Promise<Base64String>;
     CreateUserAuthentication(user: User|null, credentialId: CredentialId): Promise<AuthenticationHandle>;
     CreateTicketAuthentication(ticket: Ticket, credentialId: CredentialId): Promise<AuthenticationHandle>;
     ContinueAuthentication(auth: AuthenticationHandle, data: string): Promise<ExtendedAuthResult>;
@@ -55,10 +55,10 @@ export class AuthService extends Service implements IAuthService
             .post("AuthenticateTicket", null, { ticket, credential })
             .then(response => response.AuthenticateTicketResult);
     }
-    public CustomAction(ticket: Ticket, user: User, credential: Credential, actionId: number): Promise<Base64String>
+    public CustomAction(actionId: number, ticket?: Ticket, user?: User, credential?: Credential): Promise<Base64String>
     {
         return this.endpoint
-            .post("CustomAction", null, { ticket, user, credential, actionId })
+            .post("CustomAction", null, { actionId, ticket, user, credential })
             .then(response => response.CustomActionResult);
     }
     public CreateUserAuthentication(user: User|null, credentialId: CredentialId): Promise<AuthenticationHandle>
