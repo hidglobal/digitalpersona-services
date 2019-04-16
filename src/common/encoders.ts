@@ -53,6 +53,9 @@ export class Base64
         (s.length % 4 === 3) ? s + "=" : s)
         .replace(/-/g, "+")
         .replace(/_/g, "/")
+
+    public static fromJSON = (obj: object|string) =>
+        Base64.fromUtf16(JSON.stringify(obj))
 }
 
 export class Base64Url
@@ -65,6 +68,9 @@ export class Base64Url
 
     public static fromUtf16 = (s: Utf16String) =>
         Base64Url.fromBase64(Base64.fromUtf16(s))
+
+    public static fromJSON = (obj: object|string) =>
+        Base64Url.fromUtf16(JSON.stringify(obj))
 }
 
 // export class Hex
