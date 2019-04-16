@@ -21,7 +21,7 @@ export class ServiceError extends Error
         return new ServiceError(fault.error_code, fault.description);
     }
 
-    public isHttpError(): boolean { return this.code < 0x8000000; }
+    public isHttpError(): boolean { return this.code >= 400 && this.code < 600 }
 }
 
 export interface IService

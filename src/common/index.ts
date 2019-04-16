@@ -7,4 +7,4 @@ export * from './policy';
 export * from './jwt';
 export * from './ticket';
 export * from './claims';
-export * from './service';
+export * from './errors';
