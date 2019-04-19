@@ -3401,6 +3401,11 @@ typescript@3.3.3333:
   resolved "http://localhost:4873/typescript/-/typescript-3.3.3333.tgz#171b2c5af66c59e9431199117a3bcadc66fdcfd6"
   integrity sha512-JjSKsAfuHBE/fB2oZ8NxtRTk5iGcg6hkYXMnZ3Wc+b2RSqejEqTaem11mHASMnFilHrax3sLK0GDzcJrekZYLw==
 
+u2f-api@^1.0.10:
+  version "1.0.10"
+  resolved "http://localhost:4873/u2f-api/-/u2f-api-1.0.10.tgz#38d898a72daa6362040b27e37c8286d96cb8d320"
+  integrity sha512-0Zh+IqM2l6xaA/IUJDT9WwoEM6nwPx6ive4flVVYEfzzgXIrKFRaenieItsEkbXIgOZEw13nO3o3oLtSDOyesA==
+
 uglify-js@^3.1.4:
   version "3.5.3"
   resolved "http://localhost:4873/uglify-js/-/uglify-js-3.5.3.tgz#d490bb5347f23025f0c1bc0dee901d98e4d6b063"

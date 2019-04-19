@@ -3,6 +3,7 @@ export * from './userNameType';
 export * from './user';
 export * from './resource';
 export * from './credential';
+export * from './factor';
 export * from './policy';
 export * from './jwt';
 export * from './ticket';
