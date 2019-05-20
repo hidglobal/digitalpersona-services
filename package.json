@@ -1,11 +1,11 @@
 {
-  "name": "@digitalpersona/access-management",
-  "globalObject": "dp.accessManagement",
-  "version": "0.0.16",
+  "name": "@digitalpersona/services",
+  "globalObject": "dp.services",
+  "version": "0.1.6",
   "publishConfig": {
     "registry": "http://localhost:4873"
   },
-  "description": "JavaScript Client for DigitalPersona Web Access Management",
+  "description": "DigitalPersona Web Access Services",
   "author": "HID Global",
   "license": "MIT",
   "maintainers": [
@@ -61,14 +61,14 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "tslib": "^1.9.3",
-    "u2f-api": "^1.0.10"
+    "@digitalpersona/core": "^0.1.6",
+    "tslib": "^1.9.3"
   },
   "devDependencies": {
-    "@types/jasmine": "^3.3.9",
+    "@types/jasmine": "^3.3.12",
     "@types/node": "^11.12.0",
     "fetch-mock": "^7.3.1",
-    "jasmine": "^3.3.1",
+    "jasmine": "^3.4.0",
     "jasmine-core": "^3.3.0",
     "karma": "^4.0.1",
     "karma-chrome-launcher": "^2.2.0",
@@ -83,7 +83,6 @@
     "rollup-plugin-typescript2": "^0.20.1",
     "terser": "^3.17.0",
     "tslint": "^5.14.0",
-    "typedoc": "^0.14.2",
-    "typescript": "3.3.3333"
+    "typescript": "^3.4.5"
   }
 }

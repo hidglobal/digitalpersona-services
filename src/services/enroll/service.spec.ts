@@ -1,4 +1,5 @@
-import { User, UserNameType, Credential, Ticket, ServiceError } from '../../common';
+import { User, UserNameType, Credential, Ticket } from '@digitalpersona/core';
+import { ServiceError } from '../../common';
 import { EnrollService, AttributeType, Attribute, AttributeAction } from '.';
 import { ServerStatus, HttpStatus } from '../../test';
 

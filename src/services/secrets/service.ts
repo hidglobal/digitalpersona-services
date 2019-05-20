@@ -1,4 +1,5 @@
-import { User, Ticket, ResourceActions, Policy, Base64String } from '../../common';
+import { User, Ticket, Base64String } from '@digitalpersona/core';
+import { ResourceActions, Policy } from '../../common';
 import { Service } from '../../private';
 
 export interface ISecretService

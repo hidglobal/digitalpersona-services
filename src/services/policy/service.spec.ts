@@ -1,4 +1,5 @@
-import { User, ResourceActions, ServiceError } from '../../common';
+import { User } from '@digitalpersona/core';
+import { ResourceActions, ServiceError } from '../../common';
 import { PolicyService } from '.';
 import { ServerStatus, HttpStatus } from '../../test';
 

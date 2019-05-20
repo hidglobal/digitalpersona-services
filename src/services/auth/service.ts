@@ -1,4 +1,4 @@
-import { User, Ticket, Credential, CredentialId, Base64String } from '../../common';
+import { User, Ticket, Credential, CredentialId, Base64String } from '@digitalpersona/core';
 import { ExtendedAuthResult } from './extendedResult';
 import { Service } from '../../private';
 
@@ -8,12 +8,10 @@ export interface IAuthService
 {
     GetUserCredentials(user: User): Promise<CredentialId[]>;
     GetEnrollmentData(user: User, credentialId: CredentialId): Promise<Base64String>;
-    IdentifyUser(credential: Credential): Promise<Ticket>;
-    AuthenticateUser(user: User, credential: Credential): Promise<Ticket>;
-    AuthenticateTicket(ticket: Ticket, credential: Credential): Promise<Ticket>;
+    Identify(credential: Credential): Promise<Ticket>;
+    Authenticate(identity: User|Ticket, credential: Credential): Promise<Ticket>;
     CustomAction(actionId: number, ticket: Ticket, user: User, credential: Credential): Promise<Base64String>;
-    CreateUserAuthentication(user: User|null, credentialId: CredentialId): Promise<AuthenticationHandle>;
-    CreateTicketAuthentication(ticket: Ticket, credentialId: CredentialId): Promise<AuthenticationHandle>;
+    CreateAuthentication(identity: User|Ticket|null, credentialId: CredentialId): Promise<AuthenticationHandle>;
     ContinueAuthentication(auth: AuthenticationHandle, data: string): Promise<ExtendedAuthResult>;
     DestroyAuthentication(auth: AuthenticationHandle): Promise<void>;
 }
@@ -36,42 +34,38 @@ export class AuthService extends Service implements IAuthService
             .get("GetEnrollmentData", { user: user.name, type: user.type, cred_id: credentialId })
             .then(response => response.GetEnrollmentDataResult);
     };
-    public IdentifyUser(credential: Credential): Promise<Ticket>
+    public Identify(credential: Credential): Promise<Ticket>
     {
         return this.endpoint
             .post("IdentifyUser", null, { credential })
             .then(response => response.IdentifyUserResult);
     }
-    public AuthenticateUser(user: User, credential: Credential): Promise<Ticket>
+    public Authenticate(identity: User|Ticket, credential: Credential): Promise<Ticket>
     {
-        return this.endpoint
-            .post("AuthenticateUser", null, { user, credential })
-            .then(response => response.AuthenticateUserResult);
+        return (identity instanceof Ticket) ?
+            this.endpoint
+                .post("AuthenticateUserTicket", null, { ticket: identity, credential })
+                .then(response => response.AuthenticateUserTicketResult)
+        :   this.endpoint
+                .post("AuthenticateUser", null, { user: identity, credential })
+                .then(response => response.AuthenticateUserResult);
     }
 
-    public AuthenticateTicket(ticket: Ticket, credential: Credential): Promise<Ticket>
-    {
-        return this.endpoint
-            .post("AuthenticateTicket", null, { ticket, credential })
-            .then(response => response.AuthenticateTicketResult);
-    }
     public CustomAction(actionId: number, ticket?: Ticket, user?: User, credential?: Credential): Promise<Base64String>
     {
         return this.endpoint
             .post("CustomAction", null, { actionId, ticket, user, credential })
             .then(response => response.CustomActionResult);
     }
-    public CreateUserAuthentication(user: User|null, credentialId: CredentialId): Promise<AuthenticationHandle>
+    public CreateAuthentication(identity: User|Ticket|null, credentialId: CredentialId): Promise<AuthenticationHandle>
     {
-        return this.endpoint
-            .post("CreateUserAuthentication", null, { user, credentialId })
-            .then(response => response.CreateUserAuthenticationResult);
-    }
-    public CreateTicketAuthentication(ticket: Ticket, credentialId: CredentialId): Promise<AuthenticationHandle>
-    {
-        return this.endpoint
-            .post("CreateTicketAuthentication", null, { ticket, credentialId })
-            .then(response => response.CreateTicketAuthenticationResult);
+        return (identity instanceof Ticket) ?
+            this.endpoint
+                .post("CreateTicketAuthentication", null, { ticket: identity, credentialId })
+                .then(response => response.CreateTicketAuthenticationResult)
+        :   this.endpoint
+                .post("CreateUserAuthentication", null, { user: identity, credentialId })
+                .then(response => response.CreateUserAuthenticationResult);
     }
     public ContinueAuthentication(authId: AuthenticationHandle, authData: string): Promise<ExtendedAuthResult>
     {

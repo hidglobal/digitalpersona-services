@@ -1,4 +1,4 @@
-import { Base64UrlString } from '../../common'
+import { Base64UrlString } from '@digitalpersona/core'
 import { AuthenticationData} from './data';
 
 export interface IAuthenticationClient

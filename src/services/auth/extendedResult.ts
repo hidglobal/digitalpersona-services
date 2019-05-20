@@ -1,5 +1,5 @@
 import { AuthenticationStatus } from "./status";
-import { Ticket } from '../../common';
+import { Ticket } from '@digitalpersona/core';
 
 export interface ExtendedAuthResult extends Ticket
 {

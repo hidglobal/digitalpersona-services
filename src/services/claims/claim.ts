@@ -1,4 +1,4 @@
-import { ClaimNames } from '../../common';
+import { ClaimNames } from '@digitalpersona/core';
 
 export enum Database {
     AD = "AD",

@@ -1,4 +1,4 @@
-import { Base64UrlString } from '../../common';
+import { Base64UrlString } from '@digitalpersona/core';
 
 export enum AttributeAction
 {

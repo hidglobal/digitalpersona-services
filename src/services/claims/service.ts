@@ -1,4 +1,4 @@
-import { Ticket } from '../../common';
+import { Ticket } from '@digitalpersona/core';
 import { Service } from '../../private';
 import { ClaimRequest } from './claim';
 

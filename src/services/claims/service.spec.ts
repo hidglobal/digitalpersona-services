@@ -1,4 +1,5 @@
-import { Ticket, ServiceError, ClaimName } from '../../common';
+import { Ticket, ClaimName } from '@digitalpersona/core';
+import { ServiceError } from '../../common';
 import { ClaimsService, Database } from '.';
 import { ServerStatus, HttpStatus } from '../../test';
 

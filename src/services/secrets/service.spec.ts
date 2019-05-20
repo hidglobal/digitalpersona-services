@@ -1,4 +1,5 @@
-import { User, UserNameType, Credential, Ticket, ResourceActions, Policy, ServiceError } from '../../common';
+import { User, UserNameType, Credential, Ticket } from '@digitalpersona/core';
+import { ResourceActions, Policy, ServiceError } from '../../common';
 import { SecretService } from '.';
 import { ServerStatus, HttpStatus } from '../../test';
 

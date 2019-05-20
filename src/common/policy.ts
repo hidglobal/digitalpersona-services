@@ -1,4 +1,4 @@
-import { CredentialId } from './credential';
+import { CredentialId } from '@digitalpersona/core';
 
 export interface PolicyElement
 {
