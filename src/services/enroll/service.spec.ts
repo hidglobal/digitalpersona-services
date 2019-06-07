@@ -9,20 +9,10 @@ FetchMock.config.sendAsJson = true;
 describe("EnrollService:", ()=>
 {
     const app = "http://test.local/service";
-    const user: User = {
-        name: "john.doe@test.local",
-        type: UserNameType.UPN
-    }
-    const officerTicket: Ticket = {
-        jwt: "===== security officer's ticket====="
-    }
-    const userTicket: Ticket = {
-        jwt: "===== user's officer ticket====="
-    }
-    const attribute: Attribute = {
-        type: AttributeType.String,
-        values: [ "Domain Users", "Authenticated Users" ]
-    }
+    const user = new User("john.doe@test.local", UserNameType.UPN);
+    const officerTicket = new Ticket ("===== security officer's ticket=====");
+    const userTicket = new Ticket("===== user's officer ticket=====");
+    const attribute = new Attribute(AttributeType.String, [ "Domain Users", "Authenticated Users" ]);
     const creds = [
         Credential.Password,
         Credential.Fingerprints
@@ -155,7 +145,7 @@ describe("EnrollService:", ()=>
         it('must succeed', async () => {
             FetchMock.putOnce(`*`, HttpStatus.Ok);
             await expectAsync(
-                service.EnrollAltusUserCredentials(officerTicket, userTicket, fingerprints))
+                service.EnrollAltusUserCredentials(officerTicket, user, fingerprints))
                 .toBeResolved();
         })
         it('must fail', async () => {
@@ -164,7 +154,7 @@ describe("EnrollService:", ()=>
                 , new Response(JSON.stringify(fault)
                 , HttpStatus.NotFound));
             await expectAsync(
-                service.EnrollAltusUserCredentials(officerTicket, userTicket, fingerprints))
+                service.EnrollAltusUserCredentials(officerTicket, user, fingerprints))
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
         })
     })
@@ -173,7 +163,7 @@ describe("EnrollService:", ()=>
         it('must succeed', async () => {
             FetchMock.deleteOnce(`*`, HttpStatus.Ok);
             await expectAsync(
-                service.DeleteAltusUserCredentials(officerTicket, userTicket, fingerprints))
+                service.DeleteAltusUserCredentials(officerTicket, user, fingerprints))
                 .toBeResolved();
         })
         it('must fail', async () => {
@@ -182,7 +172,7 @@ describe("EnrollService:", ()=>
                 , new Response(JSON.stringify(fault)
                 , HttpStatus.NotFound));
             await expectAsync(
-                service.DeleteAltusUserCredentials(officerTicket, userTicket, fingerprints))
+                service.DeleteAltusUserCredentials(officerTicket, user, fingerprints))
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
         })
     })

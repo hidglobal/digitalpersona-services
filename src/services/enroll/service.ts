@@ -11,8 +11,8 @@ export interface IEnrollService
     DeleteUser(securityOfficer: Ticket, user: User): Promise<void>;
     EnrollUserCredentials(securityOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>;
     DeleteUserCredentials(securityOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>;
-    EnrollAltusUserCredentials(securityOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>;
-    DeleteAltusUserCredentials(securityOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>;
+    EnrollAltusUserCredentials(securityOfficer: Ticket, user: User, credential: Credential): Promise<void>;
+    DeleteAltusUserCredentials(securityOfficer: Ticket, user: User, credential: Credential): Promise<void>;
     GetUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName): Promise<Attribute>;
     PutUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName, action: AttributeAction, attributeData: Attribute): Promise<void>;
     UnlockUser(user: User, credential: Credential): Promise<void>;
@@ -59,15 +59,15 @@ export class EnrollService extends Service implements IEnrollService
         return this.endpoint
             .del("DeleteUserCredentials", null, { secOfficer, owner, credential });
     }
-    public EnrollAltusUserCredentials(secOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>
+    public EnrollAltusUserCredentials(secOfficer: Ticket, user: User, credential: Credential): Promise<void>
     {
         return this.endpoint
-            .put("EnrollAltusUserCredentials", null, { secOfficer, owner, credential });
+            .put("EnrollAltusUserCredentials", null, { secOfficer, user, credential });
     }
-    public DeleteAltusUserCredentials(secOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>
+    public DeleteAltusUserCredentials(secOfficer: Ticket, user: User, credential: Credential): Promise<void>
     {
         return this.endpoint
-            .del("DeleteAltusUserCredentials", null, { secOfficer, owner, credential });
+            .del("DeleteAltusUserCredentials", null, { secOfficer, user, credential });
     }
     public GetUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName): Promise<Attribute>
     {

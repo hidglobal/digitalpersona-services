@@ -9,16 +9,9 @@ FetchMock.config.sendAsJson = true;
 describe("SecretService:", ()=>
 {
     const app = "http://test.local/service";
-    const user: User = {
-        name: "john.doe@test.local",
-        type: UserNameType.UPN
-    }
-    const officerTicket: Ticket = {
-        jwt: "===== security officer's ticket====="
-    }
-    const userTicket: Ticket = {
-        jwt: "===== user's officer ticket====="
-    }
+    const user = new User("john.doe@test.local", UserNameType.UPN);
+    const officerTicket = new Ticket("===== security officer's ticket=====");
+    const userTicket = new Ticket("===== user's officer ticket=====");
     const creds = [
         Credential.Password,
         Credential.Fingerprints

@@ -9,13 +9,8 @@ FetchMock.config.sendAsJson = true;
 describe("AuthService:", ()=>
 {
     const app = "http://test.local/service";
-    const user: User = {
-        name: "john.doe@test.local",
-        type: UserNameType.UPN
-    }
-    const ticket: Ticket = {
-        jwt: "=====ticket====="
-    }
+    const user = new User("john.doe@test.local", UserNameType.UPN);
+    const ticket = new Ticket("=====ticket=====");
     const creds = [
         Credential.Password,
         Credential.Fingerprints
