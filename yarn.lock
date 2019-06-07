@@ -18,10 +18,10 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@digitalpersona/core@^0.1.5":
-  version "0.1.5"
-  resolved "http://localhost:4873/@digitalpersona%2fcore/-/core-0.1.5.tgz#62c5a72b852ff50903e7af15911b69c492d6cd66"
-  integrity sha512-PK4OVPSHktU4abx8HF5dctiKxcWOt0JL/tPZW5m2jBD5Sd4iwFszsJm3BKMaXlDRqFdBoaDFb8HG3zYGG5UQTQ==
+"@digitalpersona/core@^0.2.1":
+  version "0.2.1"
+  resolved "http://localhost:4873/@digitalpersona%2fcore/-/core-0.2.1.tgz#86509a7c0b698f8e5ccb226b27f1d886a787f87d"
+  integrity sha512-uzTTOgiBQxBqSyf7HNsdSVmtT0N0y1u0brSPbmgeVV+86k/ThMLGPVG2mfg2V5KLNdkH/w+x8hh13DyDGTvKbQ==
   dependencies:
     tslib "^1.9.3"
     u2f-api "^1.0.10"
