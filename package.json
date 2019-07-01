@@ -1,7 +1,7 @@
 {
   "name": "@digitalpersona/services",
   "globalObject": "dp.services",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "publishConfig": {
     "registry": "http://localhost:4873"
   },
@@ -56,13 +56,15 @@
     "test-enroll": "set UUT=enroll&& karma start",
     "docs": "typedoc --options ./build/typedoc.config.js ./src",
     "local-npm": "start verdaccio",
-    "api": "npx api-extractor run --local --verbose",
-    "api-doc": "npx api-documenter markdown -i ./dist/api -o ./dist/api/doc",
+    "api": "mkdirp ./docs/api/ && npx api-extractor run --local --verbose",
+    "api-doc": "tsc && npm run api && npx api-documenter markdown -i ./dist/api -o ./docs/api",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@digitalpersona/core": "^0.2.1",
     "tslib": "^1.9.3"
+  },
+  "peerDependencies": {
+    "@digitalpersona/core": "^0.2.3"
   },
   "devDependencies": {
     "@types/jasmine": "^3.3.12",
