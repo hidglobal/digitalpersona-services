@@ -1,16 +1,20 @@
+/**
+ * A context of an authentication.
+ */
 export class ContextualInfo
 {
-    behavior?: boolean;
-    ip?: boolean;
-    device?: boolean;
-    altusInstalled?: boolean;
-    computer?: string;
-    domain?: string;
-    user?: string;
-    insideFirewall?: boolean;
-    remoteSession?: boolean;
+    public behavior?: boolean;
+    public ip?: boolean;
+    public device?: boolean;
+    public altusInstalled?: boolean;
+    public computer?: string;
+    public domain?: string;
+    public user?: string;
+    public insideFirewall?: boolean;
+    public remoteSession?: boolean;
 }
 
+/** Enumerates step-up triggers. */
 export enum TriggerName
 {
     Behavior = 'behavior',
@@ -23,8 +27,12 @@ export enum TriggerName
     InsideFirewall = 'insideFirewall',
     RemoteSession = 'remoteSession',
 }
-export type TriggerNames = { [K in keyof ContextualInfo]: ContextualInfo[K] extends Function ? never : K }[keyof ContextualInfo];
 
+/** Alias type for supported step-up trigger names. */
+export type TriggerNames =
+    { [K in keyof ContextualInfo]: ContextualInfo[K] extends Function ? never : K }[keyof ContextualInfo];
+
+/** A policy step-up trigger. */
 export interface PolicyTrigger
 {
     trigger: TriggerNames;
