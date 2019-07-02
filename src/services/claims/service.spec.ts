@@ -2,37 +2,38 @@ import { Ticket, ClaimName } from '@digitalpersona/core';
 import { ServiceError } from '../../common';
 import { ClaimsService, Database } from '.';
 import { ServerStatus, HttpStatus } from '../../test';
+import { ClaimRequest } from './claim';
 
-var FetchMock = require('fetch-mock');
+const FetchMock = require('fetch-mock');
 FetchMock.config.sendAsJson = true;
 
-describe("ClaimsService:", ()=>
+describe("ClaimsService:", () =>
 {
     const app = "http://test.local/service";
     const ticket: Ticket = {
-        jwt: "=====ticket====="
-    }
+        jwt: "=====ticket=====",
+    };
     let service: ClaimsService;
 
-    beforeEach(()=>{
+    beforeEach(() => {
         service = new ClaimsService(app);
-    })
-    afterEach(()=>{
+    });
+    afterEach(() => {
         FetchMock.restore();
-    })
+    });
 
-    describe("GetConfiguredClaims", ()=>
+    describe("GetConfiguredClaims", () =>
     {
         it('must succeed', async () => {
             const result = {
-                ticket
-            }
+                ticket,
+            };
             FetchMock.postOnce(`*`
                 , { GetConfiguredClaimsResult: result });
             await expectAsync(
                 service.GetConfiguredClaims(ticket))
                 .toBeResolvedTo(ticket);
-        })
+        });
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`
@@ -41,26 +42,24 @@ describe("ClaimsService:", ()=>
             await expectAsync(
                 service.GetConfiguredClaims(ticket))
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
-        })
-    })
-    describe("GetClaims", ()=>
+        });
+    });
+    describe("GetClaims", () =>
     {
-        const request = [{
-            name: ClaimName.Group,
-            db: Database.AD,
-            attr: "memberOf"
-        }];
+        const request = [
+            new ClaimRequest(ClaimName.Group, Database.AD, "memberOf")
+        ];
 
         it('must succeed', async () => {
             const result = {
-                ticket
-            }
+                ticket,
+            };
             FetchMock.postOnce(`*`
                 , { GetClaimsResult: result });
             await expectAsync(
                 service.GetClaims(ticket, request))
                 .toBeResolvedTo(ticket);
-        })
+        });
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`
@@ -69,7 +68,6 @@ describe("ClaimsService:", ()=>
             await expectAsync(
                 service.GetClaims(ticket, request))
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
-        })
-    })
-
-})
+        });
+    });
+});
