@@ -6,6 +6,5 @@ etc.
 
 * [Details](details.md)
 * [Tutorial](tutorial.md)
-* [Examples](examples.md)
 * [How-to](how-to.md)
 * [Reference](reference.md)
