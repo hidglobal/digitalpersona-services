@@ -15,3 +15,5 @@ This library provides a client for the DigitalPersona Web Access Management API.
 * [Document](maintain/document.md)
 * [Version](maintain/version.md)
 * [Deploy](maintain/deploy.md)
+
+Docs/index.md
