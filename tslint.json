@@ -9,6 +9,7 @@
     "object-literal-sort-keys": false,
     "interface-name": false,
     "member-ordering":false,
-    "arrow-parens": false
+    "arrow-parens": false,
+    "typedef-whitespace": false
   }
 }
