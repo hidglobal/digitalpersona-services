@@ -1,3 +1,11 @@
+---
+layout: default
+title: Overview
+nav_order: 1
+---
+##### [DigitalPersona Access Management API ](https://lenhodgeman.github.io/digitalpersona-access-management-api/)/ Enrollment API / Overview  
+![](docs/assets/HID-DPAM-svcs.png)  
+
 # JavaScript Client for DigitalPersona Web Access Management
 
 This library provides a client for the DigitalPersona Web Access Management API.
