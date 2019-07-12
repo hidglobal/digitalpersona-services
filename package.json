@@ -2,8 +2,12 @@
   "name": "@digitalpersona/services",
   "globalObject": "dp.services",
   "version": "0.2.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hidglobal/digitalpersona-services"
+  },
   "publishConfig": {
-    "registry": "http://localhost:4873"
+    "access": "public"
   },
   "description": "DigitalPersona Web Access Services",
   "author": "HID Global",
@@ -11,7 +15,7 @@
   "maintainers": [
     {
       "name": "Andrey Bronnikov",
-      "email": "andrey.bronnikov@hidgroup.com"
+      "email": "Andrey.Bronnikov@hidglobal.com"
     }
   ],
   "keywords": [
