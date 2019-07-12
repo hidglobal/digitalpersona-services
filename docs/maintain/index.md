@@ -1,3 +1,10 @@
+---
+layout: default
+title: Library Maintenance
+nav_order: 2
+has_children: true
+permalink: /docs/maintain
+---
 # Information for library maintainers
 
 ## Recommended Tools

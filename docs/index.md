@@ -3,6 +3,7 @@ layout: default
 title: Overview
 nav_order: 1
 has_children: true
+permalink: /docs
 ---
 ##### [DigitalPersona Access Management API ](https://hidglobal.github.io/digitalpersona-access-management-api/)/ Enrollment API / Overview  
 ![](docs/assets/HID-DPAM-svcs.png)  
