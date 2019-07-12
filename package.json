@@ -60,8 +60,9 @@
     "test-enroll": "set UUT=enroll&& karma start",
     "docs": "typedoc --options ./build/typedoc.config.js ./src",
     "local-npm": "start verdaccio",
-    "api": "mkdirp ./docs/api/ && npx api-extractor run --local --verbose",
-    "api-doc": "tsc && npm run api && npx api-documenter markdown -i ./dist/api -o ./docs/api",
+    "api": "npx api-extractor run --local --verbose",
+    "api-doc": "npx api-documenter markdown -i ./dist/api -o ./dist/api/docs",
+    "api-all": "tsc && npm run api && npm run api-doc",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
