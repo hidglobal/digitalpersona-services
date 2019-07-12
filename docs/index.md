@@ -8,20 +8,38 @@ nav_order: 1
 
 # JavaScript Client for DigitalPersona Web Access Management
 
-This library provides a client for the DigitalPersona Web Access Management API.
+DigitalPersona Web Access Management (DP WAM) is a set of web services 
+for different access management tasks, like user enrollment, identification,
+authentication, identity claims issuance, access policy management etc.
 
-## [Usage](use/index.md)
-* [Details](use/details.md)
-* [Tutorial](use/tutorial.md)
-* [How-to](use/how-to.md)
-* [Reference](use/reference.md)
+The library consists of following major parts:
 
-## [Information for maintainers](maintain/index.md)
-* [Build](maintain/build.md)
-* [Test](maintain/test.md)
-* [Code](maintain/code.md)
-* [Document](maintain/document.md)
-* [Version](maintain/version.md)
-* [Deploy](maintain/deploy.md)
+* Common classes
+* Authentication Service client
+* Policy Service client
+* Claims Service client
+* Enrollment Service client
+* Secrets Service client
 
-Docs/index.md
+## Requirements
+
+Major browsers (Chrome, Firefox, Edge, IE11) and Node JS are supported.
+
+The library uses TypeScript as its main language.
+It is also transpiled to Javascript (ES5 and ES6 platforms are supported) 
+for browsers and distributed both in unbundled and bundled (UMD) form.
+
+### Browsers
+
+{% include shims/promise.md %}
+{% include shims/fetch.md %}
+
+### Node JS
+
+{% include shims/node-base64.md %}
+
+## Additional documentation:
+
+* [Tutorial](./tutorial.md)
+* [How-to](./how-to.md)
+* [Reference](./reference.md)

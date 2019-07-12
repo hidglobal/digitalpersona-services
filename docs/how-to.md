@@ -1,0 +1,9 @@
+---
+layout: default
+title: How to ...
+has_toc: false
+nav_order: 3  
+---
+##### [DigitalPersona Access Management API ](https://hidglobal.github.io/digitalpersona-access-management-api/)/ Web Access Core / How to ...  
+![](assets/HID-DPAM-Core.png)  
+# How to ...
