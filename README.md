@@ -11,4 +11,4 @@ following DPAM services:
 * Enrollment Service client (DPWebEnroll)
 * Secrets Service client (DPWebSecrets)
 
-## [Learn more >](https://hidglobal.github.io/digitalpersona-services/)
+## <a href="https://hidglobal.github.io/digitalpersona-services/" _target="blank">Learn more ></a>
