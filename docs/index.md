@@ -6,35 +6,32 @@ nav_order: 1
 ##### [DigitalPersona Access Management API ](https://hidglobal.github.io/digitalpersona-access-management-api/)/ Enrollment API / Overview  
 ![](docs/assets/HID-DPAM-svcs.png)  
 
-# JavaScript Client for DigitalPersona Web Access Management
+# JavaScript Web Service Clients for DigitalPersona Web Access Management
 
-DigitalPersona Web Access Management (DP WAM) is a set of web services 
-for different access management tasks, like user enrollment, identification,
-authentication, identity claims issuance, access policy management etc.
+{% include dpam-intro.md %}
 
-The library consists of following major parts:
+As a part of DPAM this Typescript/Javascript library provides client for 
+following DPAM services:
 
-* Common classes
-* Authentication Service client
-* Policy Service client
-* Claims Service client
-* Enrollment Service client
-* Secrets Service client
+* Authentication Service client (DPWebAuth)
+* Policy Service client (DPWebPolicies)
+* Claims Service client (DPWebClaims)
+* Enrollment Service client (DPWebEnroll)
+* Secrets Service client (DPWebSecrets)
 
 ## Requirements
 
-Major browsers (Chrome, Firefox, Edge, IE11) and Node JS are supported.
+{% include reqs/platforms.md %}
 
-The library uses TypeScript as its main language.
-It is also transpiled to Javascript (ES5 and ES6 platforms are supported) 
-for browsers and distributed both in unbundled and bundled (UMD) form.
+{% include reqs/languages.md %}
 
-### Browsers
+### Browser support
 
 {% include shims/promise.md %}
+
 {% include shims/fetch.md %}
 
-### Node JS
+### Node JS support
 
 {% include shims/node-base64.md %}
 

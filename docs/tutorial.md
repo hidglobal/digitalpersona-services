@@ -14,7 +14,7 @@ nav_order: 2
 
 Using NPM:
 ```bash
-npm install @digitalpersona/services -s
+npm install @digitalpersona/services
 ```
 Using Yarn:
 ```bash

@@ -1,19 +1,14 @@
-# JavaScript Client for DigitalPersona Web Access Management
+# JavaScript Web Service Clients for DigitalPersona Web Access Management
 
-This library provides a client for the DigitalPersona Web Access Management API.
+{% include dpam-intro.md %}
 
-## [Usage](docs/use/index.md)
-* [Details](docs/use/details.md)
-* [Tutorial](docs/use/tutorial.md)
-* [How-to](docs/use/how-to.md)
-* [Reference](docs/use/reference.md)
+As a part of DPAM this Typescript/Javascript library provides client for 
+following DPAM services:
 
-## [Information for maintainers](docs/maintain/index.md)
-* [Build](docs/maintain/build.md)
-* [Test](docs/maintain/test.md)
-* [Code](docs/maintain/code.md)
-* [Document](docs/maintain/document.md)
-* [Version](docs/maintain/version.md)
-* [Deploy](docs/maintain/deploy.md)
+* Authentication Service client (DPWebAuth)
+* Policy Service client (DPWebPolicies)
+* Claims Service client (DPWebClaims)
+* Enrollment Service client (DPWebEnroll)
+* Secrets Service client (DPWebSecrets)
 
-Check
+## [Learn more >](https://hidglobal.github.io/digitalpersona-services/)
