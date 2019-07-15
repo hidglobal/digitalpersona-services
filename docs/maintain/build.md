@@ -31,7 +31,7 @@ npm install -g yarn npx @microsoft/api-extractor @microsoft/api-documenter
 To clone a repository:
 
 ```
-git clone {{- site.data.lib.git-}}/{{- site.data.lib.repo -}}.git
+git clone {{site.data.lib.git}}/{{-site.data.lib.repo-}}.git
 ```
 
 <a name="deps"></a>
@@ -41,7 +41,7 @@ git clone {{- site.data.lib.git-}}/{{- site.data.lib.repo -}}.git
 To get started with the library, install dependencies first:
 
 ```
-cd ./{{- site.data.lib.repo -}}
+cd ./{{site.data.lib.repo}}
 yarn
 ```
 
