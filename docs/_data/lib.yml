@@ -1,4 +1,4 @@
 name: DigitalPersona Web Access Services
 shortName: DPAM Services
 repo: digitalpersona-services
-npm: @digitalpersona/services
+npm: '@digitalpersona/services'
