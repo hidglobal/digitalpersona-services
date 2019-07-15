@@ -14,13 +14,13 @@ nav_order: 2
 
 Using NPM:
 
-```bash
+```
 npm install {{site.data.lib.package}}
 ```
 
 Using Yarn:
 
-```bash
+```
 yarn add {{site.data.lib.package}}
 ```
 
