@@ -9,6 +9,6 @@ nav_order: 4
 ## Reference
 
 See reference documentation
-<a href="https://github.com/hidglobal/digitalpersona-services/blob/master/dist/api/docs/services.md" target="_blank">here</a>.
+<a href="{{- site.data.lib.git -}}/{{- site.data.lib.repo -}}/blob/master/dist/api/docs/{{- site.data.lib.api -}}.md" target="_blank">here</a>.
 
 The reference documentation is generated from source code. To [re]generate documentation, follow [this guide](./maintain/build#documentation).

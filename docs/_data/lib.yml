@@ -1,4 +1,6 @@
 name: DigitalPersona Web Access Services
 shortName: DPAM Services
+git: 'https://github.com/hidglobal'
 repo: digitalpersona-services
-npm: '@digitalpersona/services'
+package: '@digitalpersona/services'
+api: services

@@ -5,7 +5,7 @@ nav_order: 1
 ---
 {% include header.html %}
 
-# JavaScript Web Service Clients for DigitalPersona Web Access Management
+# JavaScript Web Service Clients for {{ site.data.product.name }}
 
 {% include dpam-intro.md %}
 

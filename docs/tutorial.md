@@ -14,11 +14,11 @@ nav_order: 2
 
 Using NPM:
 ```bash
-npm install @digitalpersona/services
+npm install {{- site.data.lib.package -}}
 ```
 Using Yarn:
 ```bash
-yarn add @digitalpersona/services
+yarn add {{- site.data.lib.package -}}
 ```
 
 #### Write some code

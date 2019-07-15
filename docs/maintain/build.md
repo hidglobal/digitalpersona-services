@@ -31,7 +31,7 @@ npm install -g yarn npx @microsoft/api-extractor @microsoft/api-documenter
 To clone a repository:
 
 ```
-git clone https://github.com/hidglobal/{{- site.data.lib.repo -}}.git
+git clone {{- site.data.lib.git-}}/{{- site.data.lib.repo -}}.git
 ```
 
 <a name="deps"></a>
