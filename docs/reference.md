@@ -4,8 +4,8 @@ title: Reference
 has_toc: false
 nav_order: 4  
 ---
-##### [DigitalPersona Access Management API ](https://hidglobal.github.io/digitalpersona-access-management-api/)/ Web Access Core / Reference  
-![](assets/HID-DPAM-Core.png)  
+{% include nav/breadcrumbs.md %}
+{% include logo.md %}
 
 ## Reference
 

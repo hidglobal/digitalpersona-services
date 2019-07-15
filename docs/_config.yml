@@ -1,3 +1,9 @@
 remote_theme: pmarsceill/just-the-docs
 title: ''
 search_enabled: true
+product_name: DigitalPersona Access Management API
+product_name_short: DPAM
+product_docs: https://hidglobal.github.io/digitalpersona-access-management-api/
+lib_name: DigitalPersona Web Access Services
+lib_name_short: DPAM Services
+lib_docs: https://hidglobal.github.io/digitalpersona-services/

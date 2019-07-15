@@ -4,8 +4,9 @@ title: Tutorial
 has_toc: false
 nav_order: 2
 ---
-##### [DigitalPersona Access Management API ](https://hidglobal.github.io/digitalpersona-access-management-api/)/ Web Access Core / Tutorial  
-![](assets/HID-DPAM-Core.png)  
+{% include nav/breadcrumbs.md %}
+{% include logo.md %}
+
 ## Tutorial
 
 ### Getting started
