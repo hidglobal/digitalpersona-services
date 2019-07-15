@@ -13,12 +13,15 @@ nav_order: 2
 #### Add the package to your project
 
 Using NPM:
+
 ```bash
-npm install {{- site.data.lib.package -}}
+npm install {{site.data.lib.package}}
 ```
+
 Using Yarn:
+
 ```bash
-yarn add {{- site.data.lib.package -}}
+yarn add {{site.data.lib.package}}
 ```
 
 #### Write some code
