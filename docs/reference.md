@@ -4,8 +4,7 @@ title: Reference
 has_toc: false
 nav_order: 4  
 ---
-{% include nav/breadcrumbs.md %}
-{% include logo.md %}
+{% include header.md %}
 
 ## Reference
 

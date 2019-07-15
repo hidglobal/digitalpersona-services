@@ -3,8 +3,7 @@ layout: default
 title: Overview
 nav_order: 1
 ---
-{% include nav/breadcrumbs.md %}
-{% include logo.md %}
+{% include header.md %}
 
 # JavaScript Web Service Clients for DigitalPersona Web Access Management
 

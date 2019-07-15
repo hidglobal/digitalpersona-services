@@ -4,8 +4,7 @@ title: Tutorial
 has_toc: false
 nav_order: 2
 ---
-{% include nav/breadcrumbs.md %}
-{% include logo.md %}
+{% include header.md %}
 
 ## Tutorial
 

@@ -1,1 +1,1 @@
-![]({{site.url}}/assets/HID.png)  
+![]({{site.url}}/{{- site.data.lib.repo -}}/assets/HID.png)
