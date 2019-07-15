@@ -1,1 +1,1 @@
-![](docs/assets/HID.png)  
+![]({{site.url}}/HID.png)  
