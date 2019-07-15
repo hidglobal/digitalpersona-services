@@ -4,6 +4,6 @@ title: How to ...
 has_toc: false
 nav_order: 3  
 ---
-{% include header.md %}
+{% include header.html %}
 
 # How to ...

@@ -4,7 +4,7 @@ title: Tutorial
 has_toc: false
 nav_order: 2
 ---
-{% include header.md %}
+{% include header.html %}
 
 ## Tutorial
 

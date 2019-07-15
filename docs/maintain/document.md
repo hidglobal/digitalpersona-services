@@ -5,7 +5,7 @@ has_toc: false
 parent: Library Maintenance
 nav_order: 4  
 ---
-{% include header.md %}
+{% include header.html %}
 
 ## Documenting Guidelines
 
