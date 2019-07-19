@@ -9,8 +9,8 @@ nav_order: 1
 
 {% include dpam-intro.md %}
 
-As a part of DPAM this Typescript/Javascript library provides client for 
-following DPAM services:
+As a part of DPAM this Typescript/Javascript library provides  clients for
+the following DPAM services.
 
 * Authentication Service client (DPWebAuth)
 * Policy Service client (DPWebPolicies)
@@ -39,3 +39,4 @@ following DPAM services:
 * [Tutorial](./tutorial.md)
 * [How-to](./how-to.md)
 * [Reference](./reference.md)
+* [Maintenance](maintain/index.md)
