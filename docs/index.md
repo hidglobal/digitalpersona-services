@@ -6,7 +6,7 @@ nav_order: 1
 {% include header.html %}
 <BR>
 
-# JavaScript Web Service Clients for {{ site.data.product.name }}
+# Overview
 
 {% include dpam-intro.md %}
 
