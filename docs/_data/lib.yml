@@ -1,5 +1,5 @@
 name: JavaScript Web Service Clients
-shortName: DPAM WEB SERVICEC CLIENTS
+shortName: DPAM Web Service Clients
 git: 'https://github.com/hidglobal'
 repo: digitalpersona-services
 package: '@digitalpersona/services'
