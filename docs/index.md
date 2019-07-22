@@ -10,7 +10,7 @@ nav_order: 1
 
 {% include dpam-intro.md %}
 
-As a part of DPAM this Typescript/Javascript library provides  clients for
+As a part of DPAM this Typescript/Javascript library provides clients for
 the following DPAM services.
 
 * Authentication Service client (DPWebAuth)

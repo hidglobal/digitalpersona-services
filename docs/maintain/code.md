@@ -57,7 +57,9 @@ thus potentially reducing the size of the bundle.
 To avoid long imports you can group several modules into a larger super-module using a "barrel" module approach: create an `index.ts` file which re-exports
 every sub-module, and then import the `index.ts` instead of the individual sub-modules.
 
-**Do not bundle prematurely!** Prefer to keep your modules pure and unbundled, as premature bundling
+### Do not bundle prematurely!
+
+Prefer to keep your modules pure and unbundled, as premature bundling
 may reduce tree-shaking effeciveness. If you deliver your library in formats like `commonjs` or `umd`,
 the benefit is that they are immediately ready to load into a browser, but a downside is that bundlers
 like Webkpack, Browserify, Rollup or Parcel have a hard time to remove unneeded code. As your library consumer
