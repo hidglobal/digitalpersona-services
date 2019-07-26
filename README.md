@@ -1,6 +1,6 @@
 # JavaScript Web Service Clients for DigitalPersona Web Access Management (DPAM)
 
-This library provides Typescript/Javascript clients for following DPAM services:
+This library provides Typescript/Javascript clients for the following DPAM services:
 
 * Authentication Service client (DPWebAuth)
 * Policy Service client (DPWebPolicies)
