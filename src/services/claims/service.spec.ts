@@ -1,6 +1,6 @@
 import { Ticket, ClaimName } from '@digitalpersona/core';
-import { ServiceError } from '../../common';
-import { ClaimsService, Database } from '.';
+import { ServiceError, DatabaseType } from '../../common';
+import { ClaimsService } from '.';
 import { ServerStatus, HttpStatus } from '../../test';
 import { ClaimRequest } from './claim';
 
@@ -47,7 +47,7 @@ describe("ClaimsService:", () =>
     describe("GetClaims", () =>
     {
         const request = [
-            new ClaimRequest(ClaimName.Group, Database.AD, "memberOf")
+            new ClaimRequest(ClaimName.Group, DatabaseType.AD, "memberOf")
         ];
 
         it('must succeed', async () => {
