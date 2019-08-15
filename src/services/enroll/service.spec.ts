@@ -8,7 +8,7 @@ FetchMock.config.sendAsJson = true;
 
 describe("EnrollService:", () =>
 {
-    const app = "http://test.local/service";
+    const app = "http://test.local";
     const user = new User("john.doe@test.local", UserNameType.UPN);
     const officerTicket = new Ticket ("===== security officer's ticket=====");
     const userTicket = new Ticket("===== user's officer ticket=====");
@@ -35,7 +35,7 @@ describe("EnrollService:", () =>
     {
         it('must succeed', async () => {
             const result = creds;
-            FetchMock.getOnce(`*`
+            FetchMock.getOnce(`path:/GetUserCredentials`
                 , { GetUserCredentialsResult: result });
             await expectAsync(
                 service.GetUserCredentials(user))
@@ -55,7 +55,7 @@ describe("EnrollService:", () =>
     {
         it('must succeed', async () => {
             const result = "==== enrollment data =====";
-            FetchMock.getOnce(`*`
+            FetchMock.getOnce(`path:/GetEnrollmentData`
                 , { GetEnrollmentDataResult: result });
             await expectAsync(
                 service.GetEnrollmentData(user, Credential.Password))
@@ -74,7 +74,7 @@ describe("EnrollService:", () =>
     describe("CreateUser", () =>
     {
         it('must succeed', async () => {
-            FetchMock.putOnce(`*`, HttpStatus.Ok);
+            FetchMock.putOnce(`path:/CreateUser`, HttpStatus.Ok);
             await expectAsync(
                 service.CreateUser(officerTicket, user, "password"))
                 .toBeResolved();
@@ -92,7 +92,7 @@ describe("EnrollService:", () =>
     describe("DeleteUser", () =>
     {
         it('must succeed', async () => {
-            FetchMock.deleteOnce(`*`, HttpStatus.Ok);
+            FetchMock.deleteOnce(`path:/DeleteUser`, HttpStatus.Ok);
             await expectAsync(
                 service.DeleteUser(officerTicket, user))
                 .toBeResolved();
@@ -110,7 +110,7 @@ describe("EnrollService:", () =>
     describe("EnrollUserCredentials", () =>
     {
         it('must succeed', async () => {
-            FetchMock.putOnce(`*`, HttpStatus.Ok);
+            FetchMock.putOnce(`path:/EnrollUserCredentials`, HttpStatus.Ok);
             await expectAsync(
                 service.EnrollUserCredentials(officerTicket, userTicket, fingerprints))
                 .toBeResolved();
@@ -128,7 +128,7 @@ describe("EnrollService:", () =>
     describe("DeleteUserCredentials", () =>
     {
         it('must succeed', async () => {
-            FetchMock.deleteOnce(`*`, HttpStatus.Ok);
+            FetchMock.deleteOnce(`path:/DeleteUserCredentials`, HttpStatus.Ok);
             await expectAsync(
                 service.DeleteUserCredentials(officerTicket, userTicket, fingerprints))
                 .toBeResolved();
@@ -146,7 +146,7 @@ describe("EnrollService:", () =>
     describe("EnrollAltusUserCredentials", () =>
     {
         it('must succeed', async () => {
-            FetchMock.putOnce(`*`, HttpStatus.Ok);
+            FetchMock.putOnce(`path:/EnrollAltusUserCredentials`, HttpStatus.Ok);
             await expectAsync(
                 service.EnrollAltusUserCredentials(officerTicket, user, fingerprints))
                 .toBeResolved();
@@ -164,7 +164,7 @@ describe("EnrollService:", () =>
     describe("DeleteAltusUserCredentials", () =>
     {
         it('must succeed', async () => {
-            FetchMock.deleteOnce(`*`, HttpStatus.Ok);
+            FetchMock.deleteOnce(`path:/DeleteAltusUserCredentials`, HttpStatus.Ok);
             await expectAsync(
                 service.DeleteAltusUserCredentials(officerTicket, user, fingerprints))
                 .toBeResolved();
@@ -186,7 +186,7 @@ describe("EnrollService:", () =>
                 name: "group",
                 data: attribute,
             };
-            FetchMock.postOnce(`*`
+            FetchMock.postOnce(`path:/GetUserAttribute`
                 , { GetUserAttributeResult: attribute });
             await expectAsync(
                 service.GetUserAttribute(officerTicket, user, "group"))
@@ -209,7 +209,7 @@ describe("EnrollService:", () =>
             data: attribute,
         };
         it('must succeed', async () => {
-            FetchMock.putOnce(`*`, HttpStatus.Ok);
+            FetchMock.putOnce(`path:/PutUserAttribute`, HttpStatus.Ok);
             await expectAsync(
                 service.PutUserAttribute(officerTicket, user, attr, AttributeAction.Update))
                 .toBeResolved();
@@ -227,7 +227,7 @@ describe("EnrollService:", () =>
     describe("UnlockUser", () =>
     {
         it('must succeed', async () => {
-            FetchMock.postOnce(`*`, HttpStatus.Ok);
+            FetchMock.postOnce(`path:/UnlockUser`, HttpStatus.Ok);
             await expectAsync(
                 service.UnlockUser(user, fingerprints))
                 .toBeResolved();
@@ -246,7 +246,7 @@ describe("EnrollService:", () =>
     {
         const result = "==== custom action result ===";
         it('must succeed', async () => {
-            FetchMock.postOnce(`*`
+            FetchMock.postOnce(`path:/CustomAction`
                 , { CustomActionResult: result });
             await expectAsync(
                 service.CustomAction(officerTicket, user, fingerprints, 123))
@@ -265,7 +265,7 @@ describe("EnrollService:", () =>
     describe("IsEnrollmentAllowed", () =>
     {
         it('must succeed', async () => {
-            FetchMock.postOnce(`*`, HttpStatus.Ok);
+            FetchMock.postOnce(`path:/IsEnrollmentAllowed`, HttpStatus.Ok);
             await expectAsync(
                 service.IsEnrollmentAllowed(officerTicket, user, Credential.Password))
                 .toBeResolved();

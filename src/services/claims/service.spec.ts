@@ -1,15 +1,14 @@
 import { Ticket, ClaimName } from '@digitalpersona/core';
 import { ServiceError, DatabaseType } from '../../common';
-import { ClaimsService } from '.';
+import { ClaimsService, ClaimRequest } from '.';
 import { ServerStatus, HttpStatus } from '../../test';
-import { ClaimRequest } from './claim';
 
 const FetchMock = require('fetch-mock');
 FetchMock.config.sendAsJson = true;
 
 describe("ClaimsService:", () =>
 {
-    const app = "http://test.local/service";
+    const app = "http://test.local";
     const ticket: Ticket = {
         jwt: "=====ticket=====",
     };
@@ -28,7 +27,7 @@ describe("ClaimsService:", () =>
             const result = {
                 ticket,
             };
-            FetchMock.postOnce(`*`
+            FetchMock.postOnce(`path:/GetConfiguredClaims`
                 , { GetConfiguredClaimsResult: result });
             await expectAsync(
                 service.GetConfiguredClaims(ticket))
@@ -47,14 +46,14 @@ describe("ClaimsService:", () =>
     describe("GetClaims", () =>
     {
         const request = [
-            new ClaimRequest(ClaimName.Group, DatabaseType.AD, "memberOf")
+            new ClaimRequest(ClaimName.Group, DatabaseType.AD, "memberOf"),
         ];
 
         it('must succeed', async () => {
             const result = {
                 ticket,
             };
-            FetchMock.postOnce(`*`
+            FetchMock.postOnce(`path:/GetClaims`
                 , { GetClaimsResult: result });
             await expectAsync(
                 service.GetClaims(ticket, request))

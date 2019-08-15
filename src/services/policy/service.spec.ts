@@ -8,7 +8,7 @@ FetchMock.config.sendAsJson = true;
 
 describe('PolicyService: ', () =>
 {
-    const app = "http://test.local/service";
+    const app = "http://test.local";
     const resource = "http://test.local/resource";
     const user = new User('john_doe+test@test.local', 5);
     const context = {
@@ -24,25 +24,28 @@ describe('PolicyService: ', () =>
         FetchMock.restore();
     });
 
-    it('must succeed', async () => {
-        const result = {
-            policyList: [],
-            policyTriggers: [],
-        };
-        FetchMock.postOnce(`*`
-            , { GetPolicyInfoResult: result });
-        await expectAsync(
-            service.GetPolicyInfo(user, resource, ResourceActions.Read, context))
-            .toBeResolvedTo(result);
-    });
+    describe('GetPolicyinfo', () =>
+    {
+        it('must succeed', async () => {
+            const result = {
+                policyList: [],
+                policyTriggers: [],
+            };
+            FetchMock.postOnce(`path:/GetPolicyInfo`
+                , { GetPolicyInfoResult: result });
+            await expectAsync(
+                service.GetPolicyInfo(user, resource, ResourceActions.Read, context))
+                .toBeResolvedTo(result);
+        });
 
-    it('must fail', async () => {
-        const fault = ServerStatus.E_FAIL;
-        FetchMock.postOnce(`*`
-            , new Response(JSON.stringify(fault)
-            , HttpStatus.NotFound));
-        await expectAsync(
-            service.GetPolicyInfo(user, resource, ResourceActions.Read, context))
-            .toBeRejectedWith(ServiceError.fromServiceFault(fault));
+        it('must fail', async () => {
+            const fault = ServerStatus.E_FAIL;
+            FetchMock.postOnce(`*`
+                , new Response(JSON.stringify(fault)
+                , HttpStatus.NotFound));
+            await expectAsync(
+                service.GetPolicyInfo(user, resource, ResourceActions.Read, context))
+                .toBeRejectedWith(ServiceError.fromServiceFault(fault));
+        });
     });
 });

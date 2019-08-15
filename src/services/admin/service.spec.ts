@@ -1,12 +1,13 @@
 import { User, UserNameType, Credential, Ticket } from '@digitalpersona/core';
 import { ServiceError, VarType, VarString, Attribute, VarInt } from '../../common';
-import { AdminService } from '.';
 import { ServerStatus, HttpStatus } from '../../test';
-import { SearchQuery, SearchScope } from './search';
-import { PSKCOutput } from './pskc';
-import { ServerSettingType } from './settings';
-import { LicenseType, LicenseInfo } from './license';
-import { UserInfo, UserAccountType, UACFlags } from './uac';
+import {
+    AdminService,
+    SearchQuery, SearchScope,
+    PSKCOutput,
+    ServerSettingType,
+    LicenseType, LicenseInfo,
+    UserInfo, UserAccountType, UACFlags } from '.';
 
 const FetchMock = require('fetch-mock');
 FetchMock.config.sendAsJson = true;
