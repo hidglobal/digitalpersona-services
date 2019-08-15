@@ -8,7 +8,7 @@
 <b>Signature:</b>
 
 ```typescript
-GetUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName): Promise<Attribute>;
+GetUserAttribute(ticket: Ticket, user: User, attributeName: string): Promise<Attribute>;
 ```
 
 ## Parameters
@@ -17,7 +17,7 @@ GetUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName): Prom
 |  --- | --- | --- |
 |  ticket | <code>Ticket</code> |  |
 |  user | <code>User</code> |  |
-|  attributeName | <code>AttributeName</code> |  |
+|  attributeName | <code>string</code> |  |
 
 <b>Returns:</b>
 

@@ -27,6 +27,6 @@ export interface IEnrollService
 |  [GetUserAttribute(ticket, user, attributeName)](./services.ienrollservice.getuserattribute.md) |  |
 |  [GetUserCredentials(user)](./services.ienrollservice.getusercredentials.md) |  |
 |  [IsEnrollmentAllowed(securityOfficer, user, credentialId)](./services.ienrollservice.isenrollmentallowed.md) |  |
-|  [PutUserAttribute(ticket, user, attributeName, action, attributeData)](./services.ienrollservice.putuserattribute.md) |  |
+|  [PutUserAttribute(ticket, user, attribute, action)](./services.ienrollservice.putuserattribute.md) |  |
 |  [UnlockUser(user, credential)](./services.ienrollservice.unlockuser.md) |  |
 
