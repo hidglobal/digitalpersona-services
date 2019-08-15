@@ -1,8 +1,8 @@
 var _this = this;
 import * as tslib_1 from "tslib";
 import { ClaimName } from '@digitalpersona/core';
-import { ServiceError } from '../../common';
-import { ClaimsService, Database } from '.';
+import { ServiceError, DatabaseType } from '../../common';
+import { ClaimsService } from '.';
 import { ServerStatus, HttpStatus } from '../../test';
 import { ClaimRequest } from './claim';
 var FetchMock = require('fetch-mock');
@@ -55,7 +55,7 @@ describe("ClaimsService:", function () {
     });
     describe("GetClaims", function () {
         var request = [
-            new ClaimRequest(ClaimName.Group, Database.AD, "memberOf")
+            new ClaimRequest(ClaimName.Group, DatabaseType.AD, "memberOf")
         ];
         it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
             var result;

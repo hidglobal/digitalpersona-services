@@ -24,17 +24,17 @@ export class AuthService extends Service {
     Identify(credential) {
         return this.endpoint
             .post("IdentifyUser", null, { credential })
-            .then(response => response.IdentifyUserResult);
+            .then(response => new Ticket(response.IdentifyUserResult.jwt));
     }
     /** @inheritdoc */
     Authenticate(identity, credential) {
         return (identity instanceof Ticket) ?
             this.endpoint
                 .post("AuthenticateUserTicket", null, { ticket: identity, credential })
-                .then(response => response.AuthenticateUserTicketResult)
+                .then(response => new Ticket(response.AuthenticateUserTicketResult.jwt))
             : this.endpoint
                 .post("AuthenticateUser", null, { user: identity, credential })
-                .then(response => response.AuthenticateUserResult);
+                .then(response => new Ticket(response.AuthenticateUserResult.jwt));
     }
     /** @inheritdoc */
     CustomAction(actionId, ticket, user, credential) {

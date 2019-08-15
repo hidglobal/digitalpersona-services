@@ -11,7 +11,7 @@ describe('PolicyService: ', function () {
     var resource = "http://test.local/resource";
     var user = new User('john_doe+test@test.local', 5);
     var context = {
-        ip: true
+        ip: true,
     };
     var service;
     beforeEach(function () {
@@ -27,9 +27,9 @@ describe('PolicyService: ', function () {
                 case 0:
                     result = {
                         policyList: [],
-                        policyTriggers: []
+                        policyTriggers: [],
                     };
-                    FetchMock.getOnce("*", { GetPolicyInfoResult: result });
+                    FetchMock.postOnce("*", { GetPolicyInfoResult: result });
                     return [4 /*yield*/, expectAsync(service.GetPolicyInfo(user, resource, ResourceActions.Read, context))
                             .toBeResolvedTo(result)];
                 case 1:
@@ -44,7 +44,7 @@ describe('PolicyService: ', function () {
             switch (_a.label) {
                 case 0:
                     fault = ServerStatus.E_FAIL;
-                    FetchMock.getOnce("*", new Response(JSON.stringify(fault), HttpStatus.NotFound));
+                    FetchMock.postOnce("*", new Response(JSON.stringify(fault), HttpStatus.NotFound));
                     return [4 /*yield*/, expectAsync(service.GetPolicyInfo(user, resource, ResourceActions.Read, context))
                             .toBeRejectedWith(ServiceError.fromServiceFault(fault))];
                 case 1:

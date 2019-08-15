@@ -4,6 +4,57 @@
     (global = global || self, factory((global.dp = global.dp || {}, global.dp.services = global.dp.services || {}), global.dp.core));
 }(this, function (exports, core) { 'use strict';
 
+    (function (VarType) {
+        /** The variant holds a boolean value. */
+        VarType[VarType["Boolean"] = 1] = "Boolean";
+        /** The variant holds an integer value. */
+        VarType[VarType["Integer"] = 2] = "Integer";
+        /** The variant holds a string value.  */
+        VarType[VarType["String"] = 3] = "String";
+        /** The variant holds a binary object (in a form of a Base64Url-encoded string). */
+        VarType[VarType["Blob"] = 4] = "Blob";
+    })(exports.VarType || (exports.VarType = {}));
+    /** A variant data holding a boolean value. */
+    class VarBool {
+        constructor(values) {
+            this.values = values;
+            this.type = exports.VarType.Boolean;
+        }
+    }
+    /** A variant data holding an integer value. */
+    class VarInt {
+        constructor(values) {
+            this.values = values;
+            this.type = exports.VarType.Integer;
+        }
+    }
+    /** A variant data holding a string value.  */
+    class VarString {
+        constructor(values) {
+            this.values = values;
+            this.type = exports.VarType.String;
+        }
+    }
+    /** A variant data holding a binary object (in a form of a Base64Url-encoded string). */
+    class VarBlob {
+        constructor(values) {
+            this.values = values;
+            this.type = exports.VarType.Blob;
+        }
+    }
+
+    /** Enumerates supported actions that can be performed on user's attributes. */
+    (function (AttributeAction) {
+        /** Clear an attribute's value. */
+        AttributeAction[AttributeAction["Clear"] = 1] = "Clear";
+        /** Update an attribute's value.  */
+        AttributeAction[AttributeAction["Update"] = 2] = "Update";
+        /** Append a value to the existing multi-value attribute. */
+        AttributeAction[AttributeAction["Append"] = 3] = "Append";
+        /** Delete an attribute. */
+        AttributeAction[AttributeAction["Delete"] = 4] = "Delete";
+    })(exports.AttributeAction || (exports.AttributeAction = {}));
+
     /**
      * Enumerates supported resource actions.
      */
@@ -38,6 +89,16 @@
     }
 
     /**
+     * Enumerates supported identity databases.
+     */
+    (function (DatabaseType) {
+        /** ActiveDirectory (AD) */
+        DatabaseType["AD"] = "AD";
+        /** Lightweight Directory Service (LDS) */
+        DatabaseType["LDS"] = "ADLDS";
+    })(exports.DatabaseType || (exports.DatabaseType = {}));
+
+    /**
      * Client-side authentication data used by the {@link IAuthenticationClient} during authentication handshake.
      */
     class AuthenticationData {
@@ -55,25 +116,6 @@
         AuthenticationStatus[AuthenticationStatus["Completed"] = 2] = "Completed";
     })(exports.AuthenticationStatus || (exports.AuthenticationStatus = {}));
 
-    class Url {
-        constructor(base, path, query) {
-            this.href = Url.create(base, path, query);
-        }
-        static getSanitizedQuery(query) {
-            return Object
-                .keys(query)
-                .map(key => [key, query[key]]
-                .map(encodeURIComponent)
-                .join("="))
-                .join("&");
-        }
-        static create(base, path, query) {
-            return base
-                + (path ? `/${encodeURIComponent(path)}` : "")
-                + (query ? `?${Url.getSanitizedQuery(query)}` : "");
-        }
-    }
-
     class ServiceEndpoint {
         constructor(endpointUrl, defaultRequest) {
             this.defaultRequest = {
@@ -81,7 +123,7 @@
                 mode: "cors",
                 headers: {
                     "Content-Type": "application/json;charset=utf-8",
-                    "Accept": "application/json"
+                    "Accept": "application/json",
                 },
             };
             this.endpointUrl = endpointUrl;
@@ -109,24 +151,24 @@
             throw new ServiceError(response.status, response.statusText);
         }
         get(path, query, request) {
-            return fetch(Url.create(this.endpointUrl, path, query), Object.assign({}, this.defaultRequest, request, { method: 'GET' }))
+            return fetch(core.Url.create(this.endpointUrl, path, query), Object.assign({}, this.defaultRequest, request, { method: 'GET' }))
                 .then(ServiceEndpoint.handleResponse);
         }
         post(path, query, body, request) {
-            return fetch(Url.create(this.endpointUrl, path, query), Object.assign({}, this.defaultRequest, request, { method: 'POST' }, (body ? { body: JSON.stringify(body) } : {})))
+            return fetch(core.Url.create(this.endpointUrl, path, query), Object.assign({}, this.defaultRequest, request, { method: 'POST' }, (body ? { body: JSON.stringify(body) } : {})))
                 .then(ServiceEndpoint.handleResponse);
         }
         put(path, query, body, request) {
-            return fetch(Url.create(this.endpointUrl, path, query), Object.assign({}, this.defaultRequest, request, { method: 'PUT' }, (body ? { body: JSON.stringify(body) } : {})))
+            return fetch(core.Url.create(this.endpointUrl, path, query), Object.assign({}, this.defaultRequest, request, { method: 'PUT' }, (body ? { body: JSON.stringify(body) } : {})))
                 .then(ServiceEndpoint.handleResponse);
         }
         // cannot use "delete" as it is a reserved Javascript word
         del(path, query, body, request) {
-            return fetch(Url.create(this.endpointUrl, path, query), Object.assign({}, this.defaultRequest, request, { method: 'DELETE' }, (body ? { body: JSON.stringify(body) } : {})))
+            return fetch(core.Url.create(this.endpointUrl, path, query), Object.assign({}, this.defaultRequest, request, { method: 'DELETE' }, (body ? { body: JSON.stringify(body) } : {})))
                 .then(ServiceEndpoint.handleResponse);
         }
         ping(path = 'Ping') {
-            return fetch(Url.create(this.endpointUrl, path), Object.assign({}, this.defaultRequest, { method: "GET" }))
+            return fetch(core.Url.create(this.endpointUrl, path), Object.assign({}, this.defaultRequest, { method: "GET" }))
                 .then(response => response.ok)
                 .catch(reason => false);
         }
@@ -165,17 +207,17 @@
         Identify(credential) {
             return this.endpoint
                 .post("IdentifyUser", null, { credential })
-                .then(response => response.IdentifyUserResult);
+                .then(response => new core.Ticket(response.IdentifyUserResult.jwt));
         }
         /** @inheritdoc */
         Authenticate(identity, credential) {
             return (identity instanceof core.Ticket) ?
                 this.endpoint
                     .post("AuthenticateUserTicket", null, { ticket: identity, credential })
-                    .then(response => response.AuthenticateUserTicketResult)
+                    .then(response => new core.Ticket(response.AuthenticateUserTicketResult.jwt))
                 : this.endpoint
                     .post("AuthenticateUser", null, { user: identity, credential })
-                    .then(response => response.AuthenticateUserResult);
+                    .then(response => new core.Ticket(response.AuthenticateUserResult.jwt));
         }
         /** @inheritdoc */
         CustomAction(actionId, ticket, user, credential) {
@@ -206,15 +248,6 @@
         }
     }
 
-    /**
-     * Enumerates supported identity databases.
-     */
-    (function (Database) {
-        /** ActiveDirectory (AD) */
-        Database["AD"] = "AD";
-        /** Lightweight Directory Service (LDS) */
-        Database["LDS"] = "ADLDS";
-    })(exports.Database || (exports.Database = {}));
     /**
      * A request for a identity claim.
      * The service will search an {@link ClaimRequest.attr | attribute} in a {@link ClaimRequest.database}
@@ -256,41 +289,6 @@
             return this.endpoint
                 .post("GetClaims", null, { ticket, request })
                 .then(result => result.GetClaimsResult.ticket);
-        }
-    }
-
-    /** Enumerates supported actions that can be performed on user's attributes. */
-    (function (AttributeAction) {
-        /** Clear an attribute's value. */
-        AttributeAction[AttributeAction["Clear"] = 1] = "Clear";
-        /** Update an attribute's value.  */
-        AttributeAction[AttributeAction["Update"] = 2] = "Update";
-        /** Append a value to the existing multi-value attribute. */
-        AttributeAction[AttributeAction["Append"] = 3] = "Append";
-        /** Delete an attribute. */
-        AttributeAction[AttributeAction["Delete"] = 4] = "Delete";
-    })(exports.AttributeAction || (exports.AttributeAction = {}));
-    (function (AttributeType) {
-        /** The attribute can have a boolean value. */
-        AttributeType[AttributeType["Boolean"] = 1] = "Boolean";
-        /** The attribute can have an integer value. */
-        AttributeType[AttributeType["Integer"] = 2] = "Integer";
-        /** The attribute can have a text value. */
-        AttributeType[AttributeType["String"] = 3] = "String";
-        /** The attribute can have a binary object value. */
-        AttributeType[AttributeType["Blob"] = 4] = "Blob";
-    })(exports.AttributeType || (exports.AttributeType = {}));
-    /**
-     * Represents a single attribute in an identity database.
-     */
-    class Attribute {
-        constructor(
-        /** An attribute type. */
-        type, 
-        /** A list of attribute values. */
-        values) {
-            this.type = type;
-            this.values = values;
         }
     }
 
@@ -350,12 +348,19 @@
         GetUserAttribute(ticket, user, attributeName) {
             return this.endpoint
                 .post("GetUserAttribute", null, { ticket, user, attributeName })
-                .then(result => result.GetUserAttributeResult);
+                .then(result => ({
+                name: attributeName,
+                data: result.GetUserAttributeResult,
+            }));
         }
         /** @inheritdoc */
-        PutUserAttribute(ticket, user, attributeName, action, attributeData) {
+        PutUserAttribute(ticket, user, attribute, action) {
             return this.endpoint
-                .put("PutUserAttribute", null, { ticket, user, attributeName, action, attributeData });
+                .put("PutUserAttribute", null, {
+                ticket, user, action,
+                attributeName: attribute.name,
+                attributeData: attribute.data
+            });
         }
         /** @inheritdoc */
         UnlockUser(user, credential) {
@@ -450,9 +455,73 @@
         }
     }
 
-    /*! Copyright 2019 HID Global Inc. */
+    /** DigitalPersona WebAuth (DPWebAuth) service client wrapper. */
+    class AdminService extends Service {
+        /** Constructs a service wrapper.
+         * @param endpointUrl - a URL to the DPWebClaims service.
+         */
+        constructor(endpointUrl) {
+            super(endpointUrl);
+        }
+        /** @inheritdoc */
+        ExecuteSearch(ticket, query) {
+            return this.endpoint
+                .post("ExecuteSearch", null, Object.assign({ ticket }, query))
+                .then(response => JSON.parse(response.ExecuteSearchResult));
+        }
+        /** @inheritdoc */
+        PSKCImport(ticket, PSKCData, PSKCFileName, password, sharedKey) {
+            return this.endpoint
+                .post("PSKCImport", null, { ticket, PSKCData, PSKCFileName, password, sharedKey })
+                .then(response => response.PSKCImportResult);
+        }
+        /** @inheritdoc */
+        GetServerSettings(ticket, user, settings) {
+            return this.endpoint
+                .post("GetServerSettings", null, { ticket, user, settings })
+                .then(response => response.GetServerSettingsResult);
+        }
+        /** @inheritdoc */
+        SetServerSettings(ticket, type, settings) {
+            return this.endpoint
+                .put("SetServerSettings", null, { ticket, type, settings });
+        }
+        /** @inheritdoc */
+        GetLicenseInfo(type) {
+            return this.endpoint
+                .get("GetLicenseInfo", { type })
+                .then(response => response.GetLicenseInfoResult);
+        }
+        /** @inheritdoc */
+        GetUserRecoveryPassword(ticket, user, encryptedPwd) {
+            return this.endpoint
+                .post("GetUserRecoveryPassword", null, { ticket, user, encryptedPwd })
+                .then(response => response.GetUserRecoveryPasswordResult);
+        }
+        /** @inheritdoc */
+        AdminDeleteUserCredentials(ticket, user, credentials) {
+            return this.endpoint
+                .del("AdminDeleteUserCredentials", null, { ticket, user, credentials });
+        }
+        /** @inheritdoc */
+        GetUserInfo(ticket, user) {
+            return this.endpoint
+                .post("GetUserInfo", null, { ticket, user })
+                .then(response => response.GetUserInfoResult);
+        }
+        /** @inheritdoc */
+        UnlockUserAccount(ticket, user) {
+            return this.endpoint
+                .put("UnlockUserAccount", null, { ticket, user });
+        }
+        /** @inheritdoc */
+        SetUserAccountControl(ticket, user, control) {
+            return this.endpoint
+                .put("SetUserAccountControl", null, { ticket, user, control });
+        }
+    }
 
-    exports.Attribute = Attribute;
+    exports.AdminService = AdminService;
     exports.AuthService = AuthService;
     exports.AuthenticationData = AuthenticationData;
     exports.ClaimRequest = ClaimRequest;
@@ -462,6 +531,10 @@
     exports.PolicyService = PolicyService;
     exports.SecretService = SecretService;
     exports.ServiceError = ServiceError;
+    exports.VarBlob = VarBlob;
+    exports.VarBool = VarBool;
+    exports.VarInt = VarInt;
+    exports.VarString = VarString;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

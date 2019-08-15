@@ -4,6 +4,61 @@
     (global = global || self, factory((global.dp = global.dp || {}, global.dp.services = global.dp.services || {}), global.dp.core));
 }(this, function (exports, core) { 'use strict';
 
+    (function (VarType) {
+        /** The variant holds a boolean value. */
+        VarType[VarType["Boolean"] = 1] = "Boolean";
+        /** The variant holds an integer value. */
+        VarType[VarType["Integer"] = 2] = "Integer";
+        /** The variant holds a string value.  */
+        VarType[VarType["String"] = 3] = "String";
+        /** The variant holds a binary object (in a form of a Base64Url-encoded string). */
+        VarType[VarType["Blob"] = 4] = "Blob";
+    })(exports.VarType || (exports.VarType = {}));
+    /** A variant data holding a boolean value. */
+    var VarBool = /** @class */ (function () {
+        function VarBool(values) {
+            this.values = values;
+            this.type = exports.VarType.Boolean;
+        }
+        return VarBool;
+    }());
+    /** A variant data holding an integer value. */
+    var VarInt = /** @class */ (function () {
+        function VarInt(values) {
+            this.values = values;
+            this.type = exports.VarType.Integer;
+        }
+        return VarInt;
+    }());
+    /** A variant data holding a string value.  */
+    var VarString = /** @class */ (function () {
+        function VarString(values) {
+            this.values = values;
+            this.type = exports.VarType.String;
+        }
+        return VarString;
+    }());
+    /** A variant data holding a binary object (in a form of a Base64Url-encoded string). */
+    var VarBlob = /** @class */ (function () {
+        function VarBlob(values) {
+            this.values = values;
+            this.type = exports.VarType.Blob;
+        }
+        return VarBlob;
+    }());
+
+    /** Enumerates supported actions that can be performed on user's attributes. */
+    (function (AttributeAction) {
+        /** Clear an attribute's value. */
+        AttributeAction[AttributeAction["Clear"] = 1] = "Clear";
+        /** Update an attribute's value.  */
+        AttributeAction[AttributeAction["Update"] = 2] = "Update";
+        /** Append a value to the existing multi-value attribute. */
+        AttributeAction[AttributeAction["Append"] = 3] = "Append";
+        /** Delete an attribute. */
+        AttributeAction[AttributeAction["Delete"] = 4] = "Delete";
+    })(exports.AttributeAction || (exports.AttributeAction = {}));
+
     /**
      * Enumerates supported resource actions.
      */
@@ -82,6 +137,16 @@
     }(Error));
 
     /**
+     * Enumerates supported identity databases.
+     */
+    (function (DatabaseType) {
+        /** ActiveDirectory (AD) */
+        DatabaseType["AD"] = "AD";
+        /** Lightweight Directory Service (LDS) */
+        DatabaseType["LDS"] = "ADLDS";
+    })(exports.DatabaseType || (exports.DatabaseType = {}));
+
+    /**
      * Client-side authentication data used by the {@link IAuthenticationClient} during authentication handshake.
      */
     var AuthenticationData = /** @class */ (function () {
@@ -102,26 +167,6 @@
         AuthenticationStatus[AuthenticationStatus["Completed"] = 2] = "Completed";
     })(exports.AuthenticationStatus || (exports.AuthenticationStatus = {}));
 
-    var Url = /** @class */ (function () {
-        function Url(base, path, query) {
-            this.href = Url.create(base, path, query);
-        }
-        Url.getSanitizedQuery = function (query) {
-            return Object
-                .keys(query)
-                .map(function (key) { return [key, query[key]]
-                .map(encodeURIComponent)
-                .join("="); })
-                .join("&");
-        };
-        Url.create = function (base, path, query) {
-            return base
-                + (path ? "/" + encodeURIComponent(path) : "")
-                + (query ? "?" + Url.getSanitizedQuery(query) : "");
-        };
-        return Url;
-    }());
-
     var ServiceEndpoint = /** @class */ (function () {
         function ServiceEndpoint(endpointUrl, defaultRequest) {
             this.defaultRequest = {
@@ -129,7 +174,7 @@
                 mode: "cors",
                 headers: {
                     "Content-Type": "application/json;charset=utf-8",
-                    "Accept": "application/json"
+                    "Accept": "application/json",
                 },
             };
             this.endpointUrl = endpointUrl;
@@ -157,25 +202,25 @@
             throw new ServiceError(response.status, response.statusText);
         };
         ServiceEndpoint.prototype.get = function (path, query, request) {
-            return fetch(Url.create(this.endpointUrl, path, query), __assign({}, this.defaultRequest, request, { method: 'GET' }))
+            return fetch(core.Url.create(this.endpointUrl, path, query), __assign({}, this.defaultRequest, request, { method: 'GET' }))
                 .then(ServiceEndpoint.handleResponse);
         };
         ServiceEndpoint.prototype.post = function (path, query, body, request) {
-            return fetch(Url.create(this.endpointUrl, path, query), __assign({}, this.defaultRequest, request, { method: 'POST' }, (body ? { body: JSON.stringify(body) } : {})))
+            return fetch(core.Url.create(this.endpointUrl, path, query), __assign({}, this.defaultRequest, request, { method: 'POST' }, (body ? { body: JSON.stringify(body) } : {})))
                 .then(ServiceEndpoint.handleResponse);
         };
         ServiceEndpoint.prototype.put = function (path, query, body, request) {
-            return fetch(Url.create(this.endpointUrl, path, query), __assign({}, this.defaultRequest, request, { method: 'PUT' }, (body ? { body: JSON.stringify(body) } : {})))
+            return fetch(core.Url.create(this.endpointUrl, path, query), __assign({}, this.defaultRequest, request, { method: 'PUT' }, (body ? { body: JSON.stringify(body) } : {})))
                 .then(ServiceEndpoint.handleResponse);
         };
         // cannot use "delete" as it is a reserved Javascript word
         ServiceEndpoint.prototype.del = function (path, query, body, request) {
-            return fetch(Url.create(this.endpointUrl, path, query), __assign({}, this.defaultRequest, request, { method: 'DELETE' }, (body ? { body: JSON.stringify(body) } : {})))
+            return fetch(core.Url.create(this.endpointUrl, path, query), __assign({}, this.defaultRequest, request, { method: 'DELETE' }, (body ? { body: JSON.stringify(body) } : {})))
                 .then(ServiceEndpoint.handleResponse);
         };
         ServiceEndpoint.prototype.ping = function (path) {
             if (path === void 0) { path = 'Ping'; }
-            return fetch(Url.create(this.endpointUrl, path), __assign({}, this.defaultRequest, { method: "GET" }))
+            return fetch(core.Url.create(this.endpointUrl, path), __assign({}, this.defaultRequest, { method: "GET" }))
                 .then(function (response) { return response.ok; })
                 .catch(function (reason) { return false; });
         };
@@ -217,17 +262,17 @@
         AuthService.prototype.Identify = function (credential) {
             return this.endpoint
                 .post("IdentifyUser", null, { credential: credential })
-                .then(function (response) { return response.IdentifyUserResult; });
+                .then(function (response) { return new core.Ticket(response.IdentifyUserResult.jwt); });
         };
         /** @inheritdoc */
         AuthService.prototype.Authenticate = function (identity, credential) {
             return (identity instanceof core.Ticket) ?
                 this.endpoint
                     .post("AuthenticateUserTicket", null, { ticket: identity, credential: credential })
-                    .then(function (response) { return response.AuthenticateUserTicketResult; })
+                    .then(function (response) { return new core.Ticket(response.AuthenticateUserTicketResult.jwt); })
                 : this.endpoint
                     .post("AuthenticateUser", null, { user: identity, credential: credential })
-                    .then(function (response) { return response.AuthenticateUserResult; });
+                    .then(function (response) { return new core.Ticket(response.AuthenticateUserResult.jwt); });
         };
         /** @inheritdoc */
         AuthService.prototype.CustomAction = function (actionId, ticket, user, credential) {
@@ -259,15 +304,6 @@
         return AuthService;
     }(Service));
 
-    /**
-     * Enumerates supported identity databases.
-     */
-    (function (Database) {
-        /** ActiveDirectory (AD) */
-        Database["AD"] = "AD";
-        /** Lightweight Directory Service (LDS) */
-        Database["LDS"] = "ADLDS";
-    })(exports.Database || (exports.Database = {}));
     /**
      * A request for a identity claim.
      * The service will search an {@link ClaimRequest.attr | attribute} in a {@link ClaimRequest.database}
@@ -314,42 +350,6 @@
         };
         return ClaimsService;
     }(Service));
-
-    /** Enumerates supported actions that can be performed on user's attributes. */
-    (function (AttributeAction) {
-        /** Clear an attribute's value. */
-        AttributeAction[AttributeAction["Clear"] = 1] = "Clear";
-        /** Update an attribute's value.  */
-        AttributeAction[AttributeAction["Update"] = 2] = "Update";
-        /** Append a value to the existing multi-value attribute. */
-        AttributeAction[AttributeAction["Append"] = 3] = "Append";
-        /** Delete an attribute. */
-        AttributeAction[AttributeAction["Delete"] = 4] = "Delete";
-    })(exports.AttributeAction || (exports.AttributeAction = {}));
-    (function (AttributeType) {
-        /** The attribute can have a boolean value. */
-        AttributeType[AttributeType["Boolean"] = 1] = "Boolean";
-        /** The attribute can have an integer value. */
-        AttributeType[AttributeType["Integer"] = 2] = "Integer";
-        /** The attribute can have a text value. */
-        AttributeType[AttributeType["String"] = 3] = "String";
-        /** The attribute can have a binary object value. */
-        AttributeType[AttributeType["Blob"] = 4] = "Blob";
-    })(exports.AttributeType || (exports.AttributeType = {}));
-    /**
-     * Represents a single attribute in an identity database.
-     */
-    var Attribute = /** @class */ (function () {
-        function Attribute(
-        /** An attribute type. */
-        type, 
-        /** A list of attribute values. */
-        values) {
-            this.type = type;
-            this.values = values;
-        }
-        return Attribute;
-    }());
 
     /**
      * DigitalPersona Web Enroll (DPWebEnroll) service client wrapper.
@@ -408,12 +408,19 @@
         EnrollService.prototype.GetUserAttribute = function (ticket, user, attributeName) {
             return this.endpoint
                 .post("GetUserAttribute", null, { ticket: ticket, user: user, attributeName: attributeName })
-                .then(function (result) { return result.GetUserAttributeResult; });
+                .then(function (result) { return ({
+                name: attributeName,
+                data: result.GetUserAttributeResult,
+            }); });
         };
         /** @inheritdoc */
-        EnrollService.prototype.PutUserAttribute = function (ticket, user, attributeName, action, attributeData) {
+        EnrollService.prototype.PutUserAttribute = function (ticket, user, attribute, action) {
             return this.endpoint
-                .put("PutUserAttribute", null, { ticket: ticket, user: user, attributeName: attributeName, action: action, attributeData: attributeData });
+                .put("PutUserAttribute", null, {
+                ticket: ticket, user: user, action: action,
+                attributeName: attribute.name,
+                attributeData: attribute.data
+            });
         };
         /** @inheritdoc */
         EnrollService.prototype.UnlockUser = function (user, credential) {
@@ -516,9 +523,75 @@
         return SecretService;
     }(Service));
 
-    /*! Copyright 2019 HID Global Inc. */
+    /** DigitalPersona WebAuth (DPWebAuth) service client wrapper. */
+    var AdminService = /** @class */ (function (_super) {
+        __extends(AdminService, _super);
+        /** Constructs a service wrapper.
+         * @param endpointUrl - a URL to the DPWebClaims service.
+         */
+        function AdminService(endpointUrl) {
+            return _super.call(this, endpointUrl) || this;
+        }
+        /** @inheritdoc */
+        AdminService.prototype.ExecuteSearch = function (ticket, query) {
+            return this.endpoint
+                .post("ExecuteSearch", null, __assign({ ticket: ticket }, query))
+                .then(function (response) { return JSON.parse(response.ExecuteSearchResult); });
+        };
+        /** @inheritdoc */
+        AdminService.prototype.PSKCImport = function (ticket, PSKCData, PSKCFileName, password, sharedKey) {
+            return this.endpoint
+                .post("PSKCImport", null, { ticket: ticket, PSKCData: PSKCData, PSKCFileName: PSKCFileName, password: password, sharedKey: sharedKey })
+                .then(function (response) { return response.PSKCImportResult; });
+        };
+        /** @inheritdoc */
+        AdminService.prototype.GetServerSettings = function (ticket, user, settings) {
+            return this.endpoint
+                .post("GetServerSettings", null, { ticket: ticket, user: user, settings: settings })
+                .then(function (response) { return response.GetServerSettingsResult; });
+        };
+        /** @inheritdoc */
+        AdminService.prototype.SetServerSettings = function (ticket, type, settings) {
+            return this.endpoint
+                .put("SetServerSettings", null, { ticket: ticket, type: type, settings: settings });
+        };
+        /** @inheritdoc */
+        AdminService.prototype.GetLicenseInfo = function (type) {
+            return this.endpoint
+                .get("GetLicenseInfo", { type: type })
+                .then(function (response) { return response.GetLicenseInfoResult; });
+        };
+        /** @inheritdoc */
+        AdminService.prototype.GetUserRecoveryPassword = function (ticket, user, encryptedPwd) {
+            return this.endpoint
+                .post("GetUserRecoveryPassword", null, { ticket: ticket, user: user, encryptedPwd: encryptedPwd })
+                .then(function (response) { return response.GetUserRecoveryPasswordResult; });
+        };
+        /** @inheritdoc */
+        AdminService.prototype.AdminDeleteUserCredentials = function (ticket, user, credentials) {
+            return this.endpoint
+                .del("AdminDeleteUserCredentials", null, { ticket: ticket, user: user, credentials: credentials });
+        };
+        /** @inheritdoc */
+        AdminService.prototype.GetUserInfo = function (ticket, user) {
+            return this.endpoint
+                .post("GetUserInfo", null, { ticket: ticket, user: user })
+                .then(function (response) { return response.GetUserInfoResult; });
+        };
+        /** @inheritdoc */
+        AdminService.prototype.UnlockUserAccount = function (ticket, user) {
+            return this.endpoint
+                .put("UnlockUserAccount", null, { ticket: ticket, user: user });
+        };
+        /** @inheritdoc */
+        AdminService.prototype.SetUserAccountControl = function (ticket, user, control) {
+            return this.endpoint
+                .put("SetUserAccountControl", null, { ticket: ticket, user: user, control: control });
+        };
+        return AdminService;
+    }(Service));
 
-    exports.Attribute = Attribute;
+    exports.AdminService = AdminService;
     exports.AuthService = AuthService;
     exports.AuthenticationData = AuthenticationData;
     exports.ClaimRequest = ClaimRequest;
@@ -528,6 +601,10 @@
     exports.PolicyService = PolicyService;
     exports.SecretService = SecretService;
     exports.ServiceError = ServiceError;
+    exports.VarBlob = VarBlob;
+    exports.VarBool = VarBool;
+    exports.VarInt = VarInt;
+    exports.VarString = VarString;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

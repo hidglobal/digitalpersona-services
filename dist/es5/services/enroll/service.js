@@ -57,12 +57,19 @@ var EnrollService = /** @class */ (function (_super) {
     EnrollService.prototype.GetUserAttribute = function (ticket, user, attributeName) {
         return this.endpoint
             .post("GetUserAttribute", null, { ticket: ticket, user: user, attributeName: attributeName })
-            .then(function (result) { return result.GetUserAttributeResult; });
+            .then(function (result) { return ({
+            name: attributeName,
+            data: result.GetUserAttributeResult,
+        }); });
     };
     /** @inheritdoc */
-    EnrollService.prototype.PutUserAttribute = function (ticket, user, attributeName, action, attributeData) {
+    EnrollService.prototype.PutUserAttribute = function (ticket, user, attribute, action) {
         return this.endpoint
-            .put("PutUserAttribute", null, { ticket: ticket, user: user, attributeName: attributeName, action: action, attributeData: attributeData });
+            .put("PutUserAttribute", null, {
+            ticket: ticket, user: user, action: action,
+            attributeName: attribute.name,
+            attributeData: attribute.data
+        });
     };
     /** @inheritdoc */
     EnrollService.prototype.UnlockUser = function (user, credential) {

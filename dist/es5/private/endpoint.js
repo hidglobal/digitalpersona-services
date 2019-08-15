@@ -1,6 +1,6 @@
 import * as tslib_1 from "tslib";
 import { ServiceError } from '../common';
-import { Url } from './url';
+import { Url } from '@digitalpersona/core';
 var ServiceEndpoint = /** @class */ (function () {
     function ServiceEndpoint(endpointUrl, defaultRequest) {
         this.defaultRequest = {
@@ -8,7 +8,7 @@ var ServiceEndpoint = /** @class */ (function () {
             mode: "cors",
             headers: {
                 "Content-Type": "application/json;charset=utf-8",
-                "Accept": "application/json"
+                "Accept": "application/json",
             },
         };
         this.endpointUrl = endpointUrl;
