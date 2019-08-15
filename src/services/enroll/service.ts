@@ -1,7 +1,6 @@
 import { User, CredentialId, Ticket, Credential, Base64UrlString } from '@digitalpersona/core';
 import { Service } from '../../private';
-import { AttributeName } from '../../services';
-import { Attribute, AttributeAction } from './attribute';
+import { Attribute, AttributeAction } from '../../common';
 
 /**
  * DigitalPersona Web Enroll (DPWebEnroll) service interface.
@@ -16,8 +15,8 @@ export interface IEnrollService
     DeleteUserCredentials(securityOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>;
     EnrollAltusUserCredentials(securityOfficer: Ticket, user: User, credential: Credential): Promise<void>;
     DeleteAltusUserCredentials(securityOfficer: Ticket, user: User, credential: Credential): Promise<void>;
-    GetUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName): Promise<Attribute>;
-    PutUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName, action: AttributeAction, attributeData: Attribute): Promise<void>;
+    GetUserAttribute(ticket: Ticket, user: User, attributeName: string): Promise<Attribute>;
+    PutUserAttribute(ticket: Ticket, user: User, attribute: Attribute, action: AttributeAction): Promise<void>;
     UnlockUser(user: User, credential: Credential): Promise<void>;
     CustomAction(ticket: Ticket, user: User, credential: Credential, actionId: number): Promise<Base64UrlString>;
     IsEnrollmentAllowed(securityOfficer: Ticket, user: User, credentialId: CredentialId): Promise<void>;
@@ -85,23 +84,28 @@ export class EnrollService extends Service implements IEnrollService
             .del("DeleteAltusUserCredentials", null, { secOfficer, user, credential });
     }
     /** @inheritdoc */
-    public GetUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName): Promise<Attribute>
+    public GetUserAttribute(ticket: Ticket, user: User, attributeName: string): Promise<Attribute>
     {
         return this.endpoint
             .post("GetUserAttribute", null, { ticket, user, attributeName })
-            .then(result => result.GetUserAttributeResult);
+            .then(result => ({
+                name: attributeName,
+                data: result.GetUserAttributeResult,
+            }));
     }
     /** @inheritdoc */
     public PutUserAttribute(
         ticket: Ticket,
         user: User,
-        attributeName: AttributeName,
+        attribute: Attribute,
         action: AttributeAction,
-        attributeData: Attribute,
     ): Promise<void>
     {
         return this.endpoint
-            .put("PutUserAttribute", null, { ticket, user, attributeName, action, attributeData });
+            .put("PutUserAttribute", null, {
+                ticket, user, action,
+                attributeName: attribute.name,
+                attributeData: attribute.data });
     }
     /** @inheritdoc */
     public UnlockUser(user: User, credential: Credential): Promise<void>
