@@ -38,7 +38,7 @@
   "typings": "./dist/typings/index.d.ts",
   "scripts": {
     "clean": "rimraf ./dist",
-    "build": "npm run clean && npm run tsc-all && npm run rollup",
+    "build": "npm run clean && npm run tsc-all && npm run rollup && npm run api && npm run api-doc",
     "tsc": "tsc",
     "tsc-es5": "tsc --p ./build/tsconfig/tsconfig.es5.json",
     "tsc-es6": "tsc --p ./build/tsconfig/tsconfig.es6.json",
