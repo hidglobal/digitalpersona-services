@@ -4,7 +4,7 @@
 
 ## IAuthService interface
 
-DigitalPersona WebAuth (DPWebAuth) service interface.
+DigitalPersona Web Authentication (DPWebAuth) service interface.
 
 <b>Signature:</b>
 

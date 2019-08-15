@@ -15,13 +15,52 @@ import { User } from '@digitalpersona/core';
 // @public
 export type ADAttributeName = string;
 
+// Warning: (ae-forgotten-export) The symbol "Service" needs to be exported by the entry point index.d.ts
+// 
 // @public
-export class Attribute {
-    constructor(
-    type: AttributeType, 
-    values: AttributeValue[]);
-    readonly type: AttributeType;
-    readonly values: AttributeValue[];
+export class AdminService extends Service implements IAdminService {
+    constructor(endpointUrl: string);
+    // (undocumented)
+    AdminDeleteUserCredentials(ticket: Ticket, user: User, credentials: Credential[]): Promise<void>;
+    // Warning: (ae-forgotten-export) The symbol "SearchQuery" needs to be exported by the entry point index.d.ts
+    // 
+    // (undocumented)
+    ExecuteSearch(ticket: Ticket, query: SearchQuery): Promise<Attribute[][]>;
+    // Warning: (ae-forgotten-export) The symbol "LicenseType" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "LicenseInfo" needs to be exported by the entry point index.d.ts
+    // 
+    // (undocumented)
+    GetLicenseInfo(type: LicenseType): Promise<LicenseInfo>;
+    // (undocumented)
+    GetServerSettings(ticket: Ticket, user: User, settings: string[]): Promise<Attribute[]>;
+    // Warning: (ae-forgotten-export) The symbol "UserInfo" needs to be exported by the entry point index.d.ts
+    // 
+    // (undocumented)
+    GetUserInfo(ticket: Ticket, user: User): Promise<UserInfo>;
+    // (undocumented)
+    GetUserRecoveryPassword(ticket: Ticket, user: User, encryptedPwd: string): Promise<string>;
+    // Warning: (ae-forgotten-export) The symbol "PSKCOutput" needs to be exported by the entry point index.d.ts
+    // 
+    // (undocumented)
+    PSKCImport(ticket: Ticket, PSKCData: string, PSKCFileName?: string | null, password?: string | null, sharedKey?: string | null): Promise<PSKCOutput[]>;
+    // Warning: (ae-forgotten-export) The symbol "ServerSettingType" needs to be exported by the entry point index.d.ts
+    // 
+    // (undocumented)
+    SetServerSettings(ticket: Ticket, type: ServerSettingType, settings: Attribute[]): Promise<void>;
+    // Warning: (ae-forgotten-export) The symbol "UACFlags" needs to be exported by the entry point index.d.ts
+    // 
+    // (undocumented)
+    SetUserAccountControl(ticket: Ticket, user: User, control: UACFlags): Promise<void>;
+    // (undocumented)
+    UnlockUserAccount(ticket: Ticket, user: User): Promise<void>;
+}
+
+// @public
+export interface Attribute {
+    // (undocumented)
+    data: VarData | null;
+    // (undocumented)
+    name: string;
 }
 
 // @public
@@ -34,17 +73,6 @@ export enum AttributeAction {
 
 // @public
 export type AttributeName = ADAttributeName | LDSAttributeName;
-
-// @public
-export enum AttributeType {
-    Blob = 4,
-    Boolean = 1,
-    Integer = 2,
-    String = 3
-}
-
-// @public
-export type AttributeValue = boolean | number | string | Base64UrlString;
 
 // @public
 export class AuthenticationData {
@@ -62,8 +90,6 @@ export enum AuthenticationStatus {
     Error = 0
 }
 
-// Warning: (ae-forgotten-export) The symbol "Service" needs to be exported by the entry point index.d.ts
-// 
 // @public
 export class AuthService extends Service implements IAuthService {
     constructor(endpointUrl: string);
@@ -89,10 +115,10 @@ export class AuthService extends Service implements IAuthService {
 export class ClaimRequest {
     constructor(
     name: ClaimNames, 
-    db: Database, 
+    db: DatabaseType, 
     attr: AttributeName);
     readonly attr: AttributeName;
-    readonly db: Database;
+    readonly db: DatabaseType;
     readonly name: ClaimNames;
 }
 
@@ -128,7 +154,7 @@ export class ContextualInfo {
 }
 
 // @public
-export enum Database {
+export enum DatabaseType {
     AD = "AD",
     LDS = "ADLDS"
 }
@@ -153,13 +179,13 @@ export class EnrollService extends Service implements IEnrollService {
     // (undocumented)
     GetEnrollmentData(user: User, credentialId: CredentialId): Promise<Base64UrlString>;
     // (undocumented)
-    GetUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName): Promise<Attribute>;
+    GetUserAttribute(ticket: Ticket, user: User, attributeName: string): Promise<Attribute>;
     // (undocumented)
     GetUserCredentials(user: User): Promise<CredentialId[]>;
     // (undocumented)
     IsEnrollmentAllowed(secOfficer: Ticket, user: User, credentialId: CredentialId): Promise<void>;
     // (undocumented)
-    PutUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName, action: AttributeAction, attributeData: Attribute): Promise<void>;
+    PutUserAttribute(ticket: Ticket, user: User, attribute: Attribute, action: AttributeAction): Promise<void>;
     // (undocumented)
     UnlockUser(user: User, credential: Credential): Promise<void>;
 }
@@ -168,6 +194,20 @@ export class EnrollService extends Service implements IEnrollService {
 export interface ExtendedAuthResult extends Ticket {
     readonly authData?: string;
     readonly status: AuthenticationStatus;
+}
+
+// @public
+export interface IAdminService {
+    AdminDeleteUserCredentials(ticket: Ticket, user: User, credentials: Credential[]): Promise<void>;
+    ExecuteSearch(ticket: Ticket, query: SearchQuery): Promise<Attribute[][]>;
+    GetLicenseInfo(licenseType: LicenseType): Promise<LicenseInfo>;
+    GetServerSettings(ticket: Ticket, user: User, settings: string[]): Promise<Attribute[]>;
+    GetUserInfo(ticket: Ticket, user: User): Promise<UserInfo>;
+    GetUserRecoveryPassword(ticket: Ticket, user: User, encryptedPwd: string): Promise<string>;
+    PSKCImport(ticket: Ticket, PSKCData: Base64UrlString, PSKCFileName?: string | null, password?: string | null, sharedKey?: string | null): Promise<PSKCOutput[]>;
+    SetServerSettings(ticket: Ticket, type: ServerSettingType, settings: Attribute[]): Promise<void>;
+    SetUserAccountControl(ticket: Ticket, user: User, control: UACFlags): Promise<void>;
+    UnlockUserAccount(ticket: Ticket, user: User): Promise<void>;
 }
 
 // @public
@@ -224,13 +264,13 @@ export interface IEnrollService {
     // (undocumented)
     GetEnrollmentData(user: User, credentialId: CredentialId): Promise<Base64UrlString>;
     // (undocumented)
-    GetUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName): Promise<Attribute>;
+    GetUserAttribute(ticket: Ticket, user: User, attributeName: string): Promise<Attribute>;
     // (undocumented)
     GetUserCredentials(user: User): Promise<CredentialId[]>;
     // (undocumented)
     IsEnrollmentAllowed(securityOfficer: Ticket, user: User, credentialId: CredentialId): Promise<void>;
     // (undocumented)
-    PutUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName, action: AttributeAction, attributeData: Attribute): Promise<void>;
+    PutUserAttribute(ticket: Ticket, user: User, attribute: Attribute, action: AttributeAction): Promise<void>;
     // (undocumented)
     UnlockUser(user: User, credential: Credential): Promise<void>;
 }
@@ -354,6 +394,53 @@ export enum TriggerName {
 export type TriggerNames = {
     [K in keyof ContextualInfo]: ContextualInfo[K] extends Function ? never : K;
 }[keyof ContextualInfo];
+
+// @public
+export class VarBlob {
+    constructor(values: Base64UrlString[]);
+    // (undocumented)
+    readonly type = VarType.Blob;
+    // (undocumented)
+    readonly values: Base64UrlString[];
+}
+
+// @public
+export class VarBool {
+    constructor(values: boolean[]);
+    // (undocumented)
+    readonly type = VarType.Boolean;
+    // (undocumented)
+    readonly values: boolean[];
+}
+
+// @public
+export type VarData = VarBool | VarInt | VarString | VarBlob;
+
+// @public
+export class VarInt {
+    constructor(values: number[]);
+    // (undocumented)
+    readonly type = VarType.Integer;
+    // (undocumented)
+    readonly values: number[];
+}
+
+// @public
+export class VarString {
+    constructor(values: string[]);
+    // (undocumented)
+    readonly type = VarType.String;
+    // (undocumented)
+    readonly values: string[];
+}
+
+// @public (undocumented)
+export enum VarType {
+    Blob = 4,
+    Boolean = 1,
+    Integer = 2,
+    String = 3
+}
 
 
 // (No @packageDocumentation comment for this package)

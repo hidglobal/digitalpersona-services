@@ -8,7 +8,7 @@
 
 |  Class | Description |
 |  --- | --- |
-|  [Attribute](./services.attribute.md) | Represents a single attribute in an identity database. |
+|  [AdminService](./services.adminservice.md) | DigitalPersona WebAuth (DPWebAuth) service client wrapper. |
 |  [AuthenticationData](./services.authenticationdata.md) | Client-side authentication data used by the [IAuthenticationClient](./services.iauthenticationclient.md) during authentication handshake. |
 |  [AuthService](./services.authservice.md) | DigitalPersona WebAuth (DPWebAuth) service client wrapper. |
 |  [ClaimRequest](./services.claimrequest.md) | A request for a identity claim. The service will search an [attribute](./services.claimrequest.attr.md) in a  and return the attribute value as a claim [name](./services.claimrequest.name.md) in a token. |
@@ -18,25 +18,31 @@
 |  [PolicyService](./services.policyservice.md) | DigitalPersona Web Policy (DPWebPolicy) service client wrapper. |
 |  [SecretService](./services.secretservice.md) | DigitalPersona Web Secret (DPWebSecret) service client wrapper. |
 |  [ServiceError](./services.serviceerror.md) | Maps Web Access service faults to the Javascript exception model |
+|  [VarBlob](./services.varblob.md) | A variant data holding a binary object (in a form of a Base64Url-encoded string). |
+|  [VarBool](./services.varbool.md) | A variant data holding a boolean value. |
+|  [VarInt](./services.varint.md) | A variant data holding an integer value. |
+|  [VarString](./services.varstring.md) | A variant data holding a string value. |
 
 ## Enumerations
 
 |  Enumeration | Description |
 |  --- | --- |
 |  [AttributeAction](./services.attributeaction.md) | Enumerates supported actions that can be performed on user's attributes. |
-|  [AttributeType](./services.attributetype.md) | Value type of a user's attribute. |
 |  [AuthenticationStatus](./services.authenticationstatus.md) | Enumerated possible authentication statuses. |
-|  [Database](./services.database.md) | Enumerates supported identity databases. |
+|  [DatabaseType](./services.databasetype.md) | Enumerates supported identity databases. |
 |  [ResourceActions](./services.resourceactions.md) | Enumerates supported resource actions. |
 |  [TriggerName](./services.triggername.md) | Enumerates step-up triggers. |
+|  [VarType](./services.vartype.md) |  |
 
 ## Interfaces
 
 |  Interface | Description |
 |  --- | --- |
+|  [Attribute](./services.attribute.md) | A named attribute with a variant data value. |
 |  [ExtendedAuthResult](./services.extendedauthresult.md) | Result of authentication handshake containing  and optional authentication data payload. |
+|  [IAdminService](./services.iadminservice.md) | DigitalPersona Web Administration (DPWebAdmin) service interface. |
 |  [IAuthenticationClient](./services.iauthenticationclient.md) | Set of methods to support an authentication handshake protocol on a client side. |
-|  [IAuthService](./services.iauthservice.md) | DigitalPersona WebAuth (DPWebAuth) service interface. |
+|  [IAuthService](./services.iauthservice.md) | DigitalPersona Web Authentication (DPWebAuth) service interface. |
 |  [IClaimsService](./services.iclaimsservice.md) | DigitalPersona Web Claims (DPWebClaims) service interface.<!-- -->This service allows to request additional claims to be added to the JSON Web Token issued by the AuthService. |
 |  [IEnrollService](./services.ienrollservice.md) | DigitalPersona Web Enroll (DPWebEnroll) service interface. |
 |  [IPolicyService](./services.ipolicyservice.md) | DigitalPersona Web Policy (DPWebPolicy) service interface. |
@@ -54,8 +60,8 @@
 |  --- | --- |
 |  [ADAttributeName](./services.adattributename.md) | Alias type for ActiveDirectory attribute names. |
 |  [AttributeName](./services.attributename.md) | Supported types of attribute names. |
-|  [AttributeValue](./services.attributevalue.md) | Supported attribute value types. |
 |  [AuthenticationHandle](./services.authenticationhandle.md) | Alias type for an authentication handle. |
 |  [LDSAttributeName](./services.ldsattributename.md) | Alias type for Lightweight Directory Service (LDS) attribute names. |
 |  [TriggerNames](./services.triggernames.md) | Alias type for supported step-up trigger names. |
+|  [VarData](./services.vardata.md) | A variant data. |
 

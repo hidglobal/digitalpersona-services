@@ -23,6 +23,6 @@ export declare class ClaimRequest
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [attr](./services.claimrequest.attr.md) |  | <code>AttributeName</code> | An attribute name to search. |
-|  [db](./services.claimrequest.db.md) |  | <code>Database</code> | A database to search for an attribute. |
+|  [db](./services.claimrequest.db.md) |  | <code>DatabaseType</code> | A database to search for an attribute. |
 |  [name](./services.claimrequest.name.md) |  | <code>ClaimNames</code> | A name of a claim to return. |
 

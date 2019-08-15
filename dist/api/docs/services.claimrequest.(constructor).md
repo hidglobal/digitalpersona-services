@@ -11,7 +11,7 @@ Constructs a claim request.
 ```typescript
 constructor(
     name: ClaimNames, 
-    db: Database, 
+    db: DatabaseType, 
     attr: AttributeName);
 ```
 
@@ -20,6 +20,6 @@ constructor(
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  name | <code>ClaimNames</code> |  |
-|  db | <code>Database</code> |  |
+|  db | <code>DatabaseType</code> |  |
 |  attr | <code>AttributeName</code> |  |
 

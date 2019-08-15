@@ -9,5 +9,5 @@ A database to search for an attribute.
 <b>Signature:</b>
 
 ```typescript
-readonly db: Database;
+readonly db: DatabaseType;
 ```

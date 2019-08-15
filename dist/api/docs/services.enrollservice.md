@@ -33,6 +33,6 @@ export declare class EnrollService extends Service implements IEnrollService
 |  [GetUserAttribute(ticket, user, attributeName)](./services.enrollservice.getuserattribute.md) |  |  |
 |  [GetUserCredentials(user)](./services.enrollservice.getusercredentials.md) |  |  |
 |  [IsEnrollmentAllowed(secOfficer, user, credentialId)](./services.enrollservice.isenrollmentallowed.md) |  |  |
-|  [PutUserAttribute(ticket, user, attributeName, action, attributeData)](./services.enrollservice.putuserattribute.md) |  |  |
+|  [PutUserAttribute(ticket, user, attribute, action)](./services.enrollservice.putuserattribute.md) |  |  |
 |  [UnlockUser(user, credential)](./services.enrollservice.unlockuser.md) |  |  |
 

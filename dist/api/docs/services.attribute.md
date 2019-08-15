@@ -2,26 +2,20 @@
 
 [Home](./index.md) &gt; [@digitalpersona/services](./services.md) &gt; [Attribute](./services.attribute.md)
 
-## Attribute class
+## Attribute interface
 
-Represents a single attribute in an identity database.
+A named attribute with a variant data value.
 
 <b>Signature:</b>
 
 ```typescript
-export declare class Attribute 
+export interface Attribute 
 ```
-
-## Constructors
-
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(type, values)](./services.attribute.(constructor).md) |  | Constructs a new instance of the <code>Attribute</code> class |
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [type](./services.attribute.type.md) |  | <code>AttributeType</code> | An attribute type. |
-|  [values](./services.attribute.values.md) |  | <code>AttributeValue[]</code> | A list of attribute values. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [data](./services.attribute.data.md) | <code>VarData &#124; null</code> |  |
+|  [name](./services.attribute.name.md) | <code>string</code> |  |
 

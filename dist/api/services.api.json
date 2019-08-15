@@ -17,12 +17,1142 @@
       "members": [
         {
           "kind": "Class",
-          "canonicalReference": "(Attribute:class)",
-          "docComment": "/**\n * Represents a single attribute in an identity database.\n */\n",
+          "canonicalReference": "(AdminService:class)",
+          "docComment": "/**\n * DigitalPersona WebAuth (DPWebAuth) service client wrapper.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
               "text": "export declare class "
+            },
+            {
+              "kind": "Reference",
+              "text": "AdminService"
+            },
+            {
+              "kind": "Content",
+              "text": " extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Service"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "implements "
+            },
+            {
+              "kind": "Reference",
+              "text": "IAdminService"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "AdminService",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "(:constructor,0)",
+              "docComment": "/**\n * Constructs a service wrapper.\n *\n * @param endpointUrl - a URL to the DPWebClaims service.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "endpointUrl"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "endpointUrl",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "(AdminDeleteUserCredentials:instance,0)",
+              "docComment": "/**\n * @inheritdoc\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "AdminDeleteUserCredentials"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "user"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "User"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "credentials"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Credential"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<void>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 15,
+                "endIndex": 17
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "ticket",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "user",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  }
+                },
+                {
+                  "parameterName": "credentials",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 12,
+                    "endIndex": 14
+                  }
+                }
+              ],
+              "name": "AdminDeleteUserCredentials"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "(ExecuteSearch:instance,0)",
+              "docComment": "/**\n * @inheritdoc\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "ExecuteSearch"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "query"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SearchQuery"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Attribute"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[][]>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 10,
+                "endIndex": 14
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "ticket",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "query",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  }
+                }
+              ],
+              "name": "ExecuteSearch"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "(GetLicenseInfo:instance,0)",
+              "docComment": "/**\n * @inheritdoc\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "GetLicenseInfo"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "LicenseType"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "LicenseInfo"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 10
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "type",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                }
+              ],
+              "name": "GetLicenseInfo"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "(GetServerSettings:instance,0)",
+              "docComment": "/**\n * @inheritdoc\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "GetServerSettings"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "user"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "User"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "settings"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Attribute"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 14,
+                "endIndex": 18
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "ticket",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "user",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  }
+                },
+                {
+                  "parameterName": "settings",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 12,
+                    "endIndex": 13
+                  }
+                }
+              ],
+              "name": "GetServerSettings"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "(GetUserInfo:instance,0)",
+              "docComment": "/**\n * @inheritdoc\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "GetUserInfo"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "user"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "User"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "UserInfo"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 10,
+                "endIndex": 14
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "ticket",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "user",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  }
+                }
+              ],
+              "name": "GetUserInfo"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "(GetUserRecoveryPassword:instance,0)",
+              "docComment": "/**\n * @inheritdoc\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "GetUserRecoveryPassword"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "user"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "User"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "encryptedPwd"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 14,
+                "endIndex": 16
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "ticket",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "user",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  }
+                },
+                {
+                  "parameterName": "encryptedPwd",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 12,
+                    "endIndex": 13
+                  }
+                }
+              ],
+              "name": "GetUserRecoveryPassword"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "(PSKCImport:instance,0)",
+              "docComment": "/**\n * @inheritdoc\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "PSKCImport"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PSKCData"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PSKCFileName"
+                },
+                {
+                  "kind": "Content",
+                  "text": "?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string | null"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "password"
+                },
+                {
+                  "kind": "Content",
+                  "text": "?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string | null"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "sharedKey"
+                },
+                {
+                  "kind": "Content",
+                  "text": "?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string | null"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PSKCOutput"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 22,
+                "endIndex": 26
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "ticket",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "PSKCData",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  }
+                },
+                {
+                  "parameterName": "PSKCFileName",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 12,
+                    "endIndex": 13
+                  }
+                },
+                {
+                  "parameterName": "password",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 16,
+                    "endIndex": 17
+                  }
+                },
+                {
+                  "parameterName": "sharedKey",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 20,
+                    "endIndex": 21
+                  }
+                }
+              ],
+              "name": "PSKCImport"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "(SetServerSettings:instance,0)",
+              "docComment": "/**\n * @inheritdoc\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "SetServerSettings"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ServerSettingType"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "settings"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Attribute"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<void>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 15,
+                "endIndex": 17
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "ticket",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "type",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  }
+                },
+                {
+                  "parameterName": "settings",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 12,
+                    "endIndex": 14
+                  }
+                }
+              ],
+              "name": "SetServerSettings"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "(SetUserAccountControl:instance,0)",
+              "docComment": "/**\n * @inheritdoc\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "SetUserAccountControl"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "user"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "User"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "control"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "UACFlags"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<void>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 14,
+                "endIndex": 16
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "ticket",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "user",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  }
+                },
+                {
+                  "parameterName": "control",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 12,
+                    "endIndex": 13
+                  }
+                }
+              ],
+              "name": "SetUserAccountControl"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "(UnlockUserAccount:instance,0)",
+              "docComment": "/**\n * @inheritdoc\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "UnlockUserAccount"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "user"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "User"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<void>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 10,
+                "endIndex": 12
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "ticket",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "user",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  }
+                }
+              ],
+              "name": "UnlockUserAccount"
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 3,
+            "endIndex": 5
+          },
+          "implementsTokenRanges": [
+            {
+              "startIndex": 6,
+              "endIndex": 8
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "(Attribute:interface)",
+          "docComment": "/**\n * A named attribute with a variant data value.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface "
             },
             {
               "kind": "Reference",
@@ -37,17 +1167,13 @@
           "name": "Attribute",
           "members": [
             {
-              "kind": "Constructor",
-              "canonicalReference": "(:constructor,0)",
-              "docComment": "/**\n * Constructs a new instance of the `Attribute` class\n */\n",
+              "kind": "PropertySignature",
+              "canonicalReference": "data",
+              "docComment": "",
               "excerptTokens": [
                 {
-                  "kind": "Content",
-                  "text": "constructor(\n    "
-                },
-                {
                   "kind": "Reference",
-                  "text": "type"
+                  "text": "data"
                 },
                 {
                   "kind": "Content",
@@ -55,72 +1181,11 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "AttributeType"
+                  "text": "VarData"
                 },
                 {
                   "kind": "Content",
-                  "text": ", \n    "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "values"
-                },
-                {
-                  "kind": "Content",
-                  "text": ": "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "AttributeValue"
-                },
-                {
-                  "kind": "Content",
-                  "text": "[]"
-                },
-                {
-                  "kind": "Content",
-                  "text": ");"
-                }
-              ],
-              "releaseTag": "Public",
-              "overloadIndex": 0,
-              "parameters": [
-                {
-                  "parameterName": "type",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 3,
-                    "endIndex": 4
-                  }
-                },
-                {
-                  "parameterName": "values",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 7,
-                    "endIndex": 9
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "Property",
-              "canonicalReference": "(type:instance)",
-              "docComment": "/**\n * An attribute type.\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "readonly "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "type"
-                },
-                {
-                  "kind": "Content",
-                  "text": ": "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "AttributeType"
+                  "text": " | null"
                 },
                 {
                   "kind": "Content",
@@ -128,37 +1193,28 @@
                 }
               ],
               "releaseTag": "Public",
-              "name": "type",
+              "name": "data",
               "propertyTypeTokenRange": {
-                "startIndex": 3,
+                "startIndex": 2,
                 "endIndex": 4
-              },
-              "isStatic": false
+              }
             },
             {
-              "kind": "Property",
-              "canonicalReference": "(values:instance)",
-              "docComment": "/**\n * A list of attribute values.\n */\n",
+              "kind": "PropertySignature",
+              "canonicalReference": "name",
+              "docComment": "",
               "excerptTokens": [
                 {
-                  "kind": "Content",
-                  "text": "readonly "
-                },
-                {
                   "kind": "Reference",
-                  "text": "values"
+                  "text": "name"
                 },
                 {
                   "kind": "Content",
                   "text": ": "
                 },
                 {
-                  "kind": "Reference",
-                  "text": "AttributeValue"
-                },
-                {
                   "kind": "Content",
-                  "text": "[]"
+                  "text": "string"
                 },
                 {
                   "kind": "Content",
@@ -166,15 +1222,14 @@
                 }
               ],
               "releaseTag": "Public",
-              "name": "values",
+              "name": "name",
               "propertyTypeTokenRange": {
-                "startIndex": 3,
-                "endIndex": 5
-              },
-              "isStatic": false
+                "startIndex": 2,
+                "endIndex": 3
+              }
             }
           ],
-          "implementsTokenRanges": []
+          "extendsTokenRanges": []
         },
         {
           "kind": "Enum",
@@ -292,129 +1347,6 @@
               ],
               "releaseTag": "Public",
               "name": "Update",
-              "initializerTokenRange": {
-                "startIndex": 2,
-                "endIndex": 3
-              }
-            }
-          ]
-        },
-        {
-          "kind": "Enum",
-          "canonicalReference": "(AttributeType:enum)",
-          "docComment": "/**\n * Value type of a user's attribute.\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "export declare enum "
-            },
-            {
-              "kind": "Reference",
-              "text": "AttributeType"
-            },
-            {
-              "kind": "Content",
-              "text": " "
-            }
-          ],
-          "releaseTag": "Public",
-          "name": "AttributeType",
-          "members": [
-            {
-              "kind": "EnumMember",
-              "canonicalReference": "Blob",
-              "docComment": "/**\n * The attribute can have a binary object value.\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Reference",
-                  "text": "Blob"
-                },
-                {
-                  "kind": "Content",
-                  "text": " = "
-                },
-                {
-                  "kind": "Content",
-                  "text": "4"
-                }
-              ],
-              "releaseTag": "Public",
-              "name": "Blob",
-              "initializerTokenRange": {
-                "startIndex": 2,
-                "endIndex": 3
-              }
-            },
-            {
-              "kind": "EnumMember",
-              "canonicalReference": "Boolean",
-              "docComment": "/**\n * The attribute can have a boolean value.\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Reference",
-                  "text": "Boolean"
-                },
-                {
-                  "kind": "Content",
-                  "text": " = "
-                },
-                {
-                  "kind": "Content",
-                  "text": "1"
-                }
-              ],
-              "releaseTag": "Public",
-              "name": "Boolean",
-              "initializerTokenRange": {
-                "startIndex": 2,
-                "endIndex": 3
-              }
-            },
-            {
-              "kind": "EnumMember",
-              "canonicalReference": "Integer",
-              "docComment": "/**\n * The attribute can have an integer value.\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Reference",
-                  "text": "Integer"
-                },
-                {
-                  "kind": "Content",
-                  "text": " = "
-                },
-                {
-                  "kind": "Content",
-                  "text": "2"
-                }
-              ],
-              "releaseTag": "Public",
-              "name": "Integer",
-              "initializerTokenRange": {
-                "startIndex": 2,
-                "endIndex": 3
-              }
-            },
-            {
-              "kind": "EnumMember",
-              "canonicalReference": "String",
-              "docComment": "/**\n * The attribute can have a text value.\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Reference",
-                  "text": "String"
-                },
-                {
-                  "kind": "Content",
-                  "text": " = "
-                },
-                {
-                  "kind": "Content",
-                  "text": "3"
-                }
-              ],
-              "releaseTag": "Public",
-              "name": "String",
               "initializerTokenRange": {
                 "startIndex": 2,
                 "endIndex": 3
@@ -1476,7 +2408,7 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "Database"
+                  "text": "DatabaseType"
                 },
                 {
                   "kind": "Content",
@@ -1578,7 +2510,7 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "Database"
+                  "text": "DatabaseType"
                 },
                 {
                   "kind": "Content",
@@ -2180,7 +3112,7 @@
         },
         {
           "kind": "Enum",
-          "canonicalReference": "(Database:enum)",
+          "canonicalReference": "(DatabaseType:enum)",
           "docComment": "/**\n * Enumerates supported identity databases.\n */\n",
           "excerptTokens": [
             {
@@ -2189,7 +3121,7 @@
             },
             {
               "kind": "Reference",
-              "text": "Database"
+              "text": "DatabaseType"
             },
             {
               "kind": "Content",
@@ -2197,7 +3129,7 @@
             }
           ],
           "releaseTag": "Public",
-          "name": "Database",
+          "name": "DatabaseType",
           "members": [
             {
               "kind": "EnumMember",
@@ -3225,8 +4157,8 @@
                   "text": ": "
                 },
                 {
-                  "kind": "Reference",
-                  "text": "AttributeName"
+                  "kind": "Content",
+                  "text": "string"
                 },
                 {
                   "kind": "Content",
@@ -3506,7 +4438,7 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "attributeName"
+                  "text": "attribute"
                 },
                 {
                   "kind": "Content",
@@ -3514,7 +4446,7 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "AttributeName"
+                  "text": "Attribute"
                 },
                 {
                   "kind": "Content",
@@ -3531,22 +4463,6 @@
                 {
                   "kind": "Reference",
                   "text": "AttributeAction"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "attributeData"
-                },
-                {
-                  "kind": "Content",
-                  "text": ": "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Attribute"
                 },
                 {
                   "kind": "Content",
@@ -3567,8 +4483,8 @@
               ],
               "isStatic": false,
               "returnTypeTokenRange": {
-                "startIndex": 22,
-                "endIndex": 24
+                "startIndex": 18,
+                "endIndex": 20
               },
               "releaseTag": "Public",
               "overloadIndex": 0,
@@ -3588,7 +4504,7 @@
                   }
                 },
                 {
-                  "parameterName": "attributeName",
+                  "parameterName": "attribute",
                   "parameterTypeTokenRange": {
                     "startIndex": 12,
                     "endIndex": 13
@@ -3599,13 +4515,6 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 16,
                     "endIndex": 17
-                  }
-                },
-                {
-                  "parameterName": "attributeData",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 20,
-                    "endIndex": 21
                   }
                 }
               ],
@@ -3808,6 +4717,1059 @@
               "endIndex": 5
             }
           ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "(IAdminService:interface)",
+          "docComment": "/**\n * DigitalPersona Web Administration (DPWebAdmin) service interface.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface "
+            },
+            {
+              "kind": "Reference",
+              "text": "IAdminService"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "IAdminService",
+          "members": [
+            {
+              "kind": "MethodSignature",
+              "canonicalReference": "(AdminDeleteUserCredentials:0)",
+              "docComment": "/**\n * Deletes specified user credentias without the user's presence.\n *\n * @param ticket - a ticket with a JSON Web Token of the user who would like to delete user credentials. The owner of the token must have permissions to reset user credentials.\n *\n * @param user - a user whose credentials will be deleted.\n *\n * @param credentials - a list of credentials ID to delete. NOTE: currently the `data` part of credentials is ignored.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "AdminDeleteUserCredentials"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "user"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "User"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "credentials"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Credential"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<void>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 15,
+                "endIndex": 17
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "ticket",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "user",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  }
+                },
+                {
+                  "parameterName": "credentials",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 12,
+                    "endIndex": 14
+                  }
+                }
+              ],
+              "name": "AdminDeleteUserCredentials"
+            },
+            {
+              "kind": "MethodSignature",
+              "canonicalReference": "(ExecuteSearch:0)",
+              "docComment": "/**\n * Executes a search on the DPCA Server database and returns the result of search operation. NOTE: The result of search operation is limited to 100 records.\n *\n * @param  - ticket\n *\n * @param  - query\n *\n * @returns a promise to return a list of the rows, where each row is a list or requested object attributes. NOTE: The maximum number of rows is limited to 100, the rest of the result is truncated.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "ExecuteSearch"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "query"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SearchQuery"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Attribute"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[][]>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 10,
+                "endIndex": 14
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "ticket",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "query",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  }
+                }
+              ],
+              "name": "ExecuteSearch"
+            },
+            {
+              "kind": "MethodSignature",
+              "canonicalReference": "(GetLicenseInfo:0)",
+              "docComment": "/**\n * Query licensing information from the DPCA Server.\n *\n * @param licenseType - a type of a license to query\n *\n * @returns a license information\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "GetLicenseInfo"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "licenseType"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "LicenseType"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "LicenseInfo"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 10
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "licenseType",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                }
+              ],
+              "name": "GetLicenseInfo"
+            },
+            {
+              "kind": "MethodSignature",
+              "canonicalReference": "(GetServerSettings:0)",
+              "docComment": "/**\n * Queries a list of settings from DPCA Server.\n *\n * @param ticket - a ticket with a JSON Web Token of the user who would like to query server settings. Some settings may be queried anonymously.\n *\n * @param user - a user whom settings will be queried. User name will direct to the particular DPCA Server where information about this user saved. This parameter is optional and can be set to null. If set to null, we direct call to DPCA Server where information about ticket owner is saved. If both user and ticket set to null, we direct call to DPCA Server where Altus Confirm is installed.\n *\n * @param settings - a list of settings to query.\n *\n * @returns a promise to return a list of the settings requested\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "GetServerSettings"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "user"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "User"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "settings"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Attribute"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 14,
+                "endIndex": 18
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "ticket",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "user",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  }
+                },
+                {
+                  "parameterName": "settings",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 12,
+                    "endIndex": 13
+                  }
+                }
+              ],
+              "name": "GetServerSettings"
+            },
+            {
+              "kind": "MethodSignature",
+              "canonicalReference": "(GetUserInfo:0)",
+              "docComment": "/**\n * Queries an information about a specific user.\n *\n * @param ticket - a ticket with a JSON Web Token of the user who would like to request user information. The owner of the token must have permissions to query user information.\n *\n * @param user - a user whose information is to be requested.\n *\n * @returns - an information about the user.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "GetUserInfo"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "user"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "User"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "UserInfo"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 10,
+                "endIndex": 14
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "ticket",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "user",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  }
+                }
+              ],
+              "name": "GetUserInfo"
+            },
+            {
+              "kind": "MethodSignature",
+              "canonicalReference": "(GetUserRecoveryPassword:0)",
+              "docComment": "/**\n * Requests a user recovery password.\n *\n * @param ticket - a ticket with a JSON Web Token of the user who would like to get Recover Password from DPCA Server. The owner of the token must have permissions to get a Recovery Password.\n *\n * @param user - a user who needs a recovery password\n *\n * @param encryptedPwd - a Recovery Password encrypted by the user Recovery Key. This encrypted password is provided by our Cred Provider during Windows Logon recovery procedure.\n *\n * @returns a promise to return a recovery password.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "GetUserRecoveryPassword"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "user"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "User"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "encryptedPwd"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 14,
+                "endIndex": 16
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "ticket",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "user",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  }
+                },
+                {
+                  "parameterName": "encryptedPwd",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 12,
+                    "endIndex": 13
+                  }
+                }
+              ],
+              "name": "GetUserRecoveryPassword"
+            },
+            {
+              "kind": "MethodSignature",
+              "canonicalReference": "(PSKCImport:0)",
+              "docComment": "/**\n * Imports PSKC data to DPCA database.\n *\n * @param ticket - a ticket with a JSON Web Token of the user who would like to import PSKC data to DPCA database. The owner of the token must have permissions to import the data.\n *\n * @param PSKCData - a content of PSKC file provided by OTP vendor in Base64Url encoded format\n *\n * @param PSKCFileName - a name of PSKC file provided by OTP vendor. This name is required for audit purposes only.\n *\n * @param password - a password to protect PSKC data. This parameter is optional and will required only if Encryption Based on Passphrase-Based Keys is used for data protection in PSKC (see topic 6.2 of RFC6030, https://tools.ietf.org/html/rfc6030 for details)\n *\n * @param sharedKey - an encoded value of Pre-Shared key for PSKC secrets. The format of the encoding is manufacturer depended and unknown. It is server's responsibility to find out a proper encoding format and decode the key. This parameter is optional and it is required only if Encryption Based on Pre-Shared Keys is used for data protection in PSKC (see topic 6.1 of RFC6030, https://tools.ietf.org/html/rfc6030 for details)\n *\n * @returns a promise to return a list of objects in DPPSKCOutput format. It gives us information about result of importing operation for every OTP token inside PSKC file.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "PSKCImport"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PSKCData"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Base64UrlString"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PSKCFileName"
+                },
+                {
+                  "kind": "Content",
+                  "text": "?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string | null"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "password"
+                },
+                {
+                  "kind": "Content",
+                  "text": "?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string | null"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "sharedKey"
+                },
+                {
+                  "kind": "Content",
+                  "text": "?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string | null"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PSKCOutput"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 22,
+                "endIndex": 26
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "ticket",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "PSKCData",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  }
+                },
+                {
+                  "parameterName": "PSKCFileName",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 12,
+                    "endIndex": 13
+                  }
+                },
+                {
+                  "parameterName": "password",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 16,
+                    "endIndex": 17
+                  }
+                },
+                {
+                  "parameterName": "sharedKey",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 20,
+                    "endIndex": 21
+                  }
+                }
+              ],
+              "name": "PSKCImport"
+            },
+            {
+              "kind": "MethodSignature",
+              "canonicalReference": "(SetServerSettings:0)",
+              "docComment": "/**\n * Modifies a list of settings on the DPCA Server.\n *\n * @param ticket - a ticket with a JSON Web Token of the user who would like to modify server settings. The ticket owner has to have permissions to administer the server.\n *\n * @param type - a type of the settings\n *\n * @param settings - a collection of settings to set\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "SetServerSettings"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ServerSettingType"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "settings"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Attribute"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<void>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 15,
+                "endIndex": 17
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "ticket",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "type",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  }
+                },
+                {
+                  "parameterName": "settings",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 12,
+                    "endIndex": 14
+                  }
+                }
+              ],
+              "name": "SetServerSettings"
+            },
+            {
+              "kind": "MethodSignature",
+              "canonicalReference": "(SetUserAccountControl:0)",
+              "docComment": "/**\n * Modifies User Account Control bits for the specified user.\n *\n * @param ticket - a ticket with a JSON Web Token of the user who would like to modify UAC bits. The owner of the token must have permissions to set UAC bits.\n *\n * @param user - the user whose UAC bits are to be modified\n *\n * @param control - Account Control bits needs to be set. NOTE: The control bits provided will override any settings previously set for this particular user so we would recommend to call GetUserInfo or GetUserAttributeto find out what bits were set before the operation.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "SetUserAccountControl"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "user"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "User"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "control"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "UACFlags"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<void>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 14,
+                "endIndex": 16
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "ticket",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "user",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  }
+                },
+                {
+                  "parameterName": "control",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 12,
+                    "endIndex": 13
+                  }
+                }
+              ],
+              "name": "SetUserAccountControl"
+            },
+            {
+              "kind": "MethodSignature",
+              "canonicalReference": "(UnlockUserAccount:0)",
+              "docComment": "/**\n * Unlocks previously locked user account.\n *\n * @param ticket - a ticket with a JSON Web Token of the user who would like to unlcok the user account. The owner of the token must have permissions to unlock user accounts.\n *\n * @param user - the user whose account is to be unlocked.\n *\n * @returns a promise to unlock the user account.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "UnlockUserAccount"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Ticket"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "user"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "User"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<void>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 10,
+                "endIndex": 12
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "ticket",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "user",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  }
+                }
+              ],
+              "name": "UnlockUserAccount"
+            }
+          ],
+          "extendsTokenRanges": []
         },
         {
           "kind": "Interface",
@@ -4028,7 +5990,7 @@
         {
           "kind": "Interface",
           "canonicalReference": "(IAuthService:interface)",
-          "docComment": "/**\n * DigitalPersona WebAuth (DPWebAuth) service interface.\n */\n",
+          "docComment": "/**\n * DigitalPersona Web Authentication (DPWebAuth) service interface.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -5851,8 +7813,8 @@
                   "text": ": "
                 },
                 {
-                  "kind": "Reference",
-                  "text": "AttributeName"
+                  "kind": "Content",
+                  "text": "string"
                 },
                 {
                   "kind": "Content",
@@ -6129,7 +8091,7 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "attributeName"
+                  "text": "attribute"
                 },
                 {
                   "kind": "Content",
@@ -6137,7 +8099,7 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "AttributeName"
+                  "text": "Attribute"
                 },
                 {
                   "kind": "Content",
@@ -6157,22 +8119,6 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ", "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "attributeData"
-                },
-                {
-                  "kind": "Content",
-                  "text": ": "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Attribute"
-                },
-                {
-                  "kind": "Content",
                   "text": "): "
                 },
                 {
@@ -6189,8 +8135,8 @@
                 }
               ],
               "returnTypeTokenRange": {
-                "startIndex": 22,
-                "endIndex": 24
+                "startIndex": 18,
+                "endIndex": 20
               },
               "releaseTag": "Public",
               "overloadIndex": 0,
@@ -6210,7 +8156,7 @@
                   }
                 },
                 {
-                  "parameterName": "attributeName",
+                  "parameterName": "attribute",
                   "parameterTypeTokenRange": {
                     "startIndex": 12,
                     "endIndex": 13
@@ -6221,13 +8167,6 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 16,
                     "endIndex": 17
-                  }
-                },
-                {
-                  "parameterName": "attributeData",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 20,
-                    "endIndex": 21
                   }
                 }
               ],
@@ -8734,6 +10673,689 @@
           ]
         },
         {
+          "kind": "Class",
+          "canonicalReference": "(VarBlob:class)",
+          "docComment": "/**\n * A variant data holding a binary object (in a form of a Base64Url-encoded string).\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class "
+            },
+            {
+              "kind": "Reference",
+              "text": "VarBlob"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "VarBlob",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "(:constructor,0)",
+              "docComment": "/**\n * Constructs a new instance of the `VarBlob` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "values"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Base64UrlString"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "values",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 5
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "(type:instance)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "type"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "VarType"
+                },
+                {
+                  "kind": "Content",
+                  "text": "."
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Blob"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "type",
+              "propertyTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "(values:instance)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "values"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Base64UrlString"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "values",
+              "propertyTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "isStatic": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "(VarBool:class)",
+          "docComment": "/**\n * A variant data holding a boolean value.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class "
+            },
+            {
+              "kind": "Reference",
+              "text": "VarBool"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "VarBool",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "(:constructor,0)",
+              "docComment": "/**\n * Constructs a new instance of the `VarBool` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "values"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "values",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "(type:instance)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "type"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "VarType"
+                },
+                {
+                  "kind": "Content",
+                  "text": "."
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "type",
+              "propertyTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "(values:instance)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "values"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "values",
+              "propertyTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isStatic": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "(VarInt:class)",
+          "docComment": "/**\n * A variant data holding an integer value.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class "
+            },
+            {
+              "kind": "Reference",
+              "text": "VarInt"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "VarInt",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "(:constructor,0)",
+              "docComment": "/**\n * Constructs a new instance of the `VarInt` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "values"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "values",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "(type:instance)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "type"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "VarType"
+                },
+                {
+                  "kind": "Content",
+                  "text": "."
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Integer"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "type",
+              "propertyTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "(values:instance)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "values"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "values",
+              "propertyTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isStatic": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "(VarString:class)",
+          "docComment": "/**\n * A variant data holding a string value.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class "
+            },
+            {
+              "kind": "Reference",
+              "text": "VarString"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "VarString",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "(:constructor,0)",
+              "docComment": "/**\n * Constructs a new instance of the `VarString` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "values"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "values",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "(type:instance)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "type"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "VarType"
+                },
+                {
+                  "kind": "Content",
+                  "text": "."
+                },
+                {
+                  "kind": "Reference",
+                  "text": "String"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "type",
+              "propertyTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "(values:instance)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "values"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "values",
+              "propertyTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isStatic": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "(VarType:enum)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum "
+            },
+            {
+              "kind": "Reference",
+              "text": "VarType"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "VarType",
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "Blob",
+              "docComment": "/**\n * The variant holds a binary object (in a form of a Base64Url-encoded string).\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "Blob"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "4"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "Blob",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "Boolean",
+              "docComment": "/**\n * The variant holds a boolean value.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "Boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "1"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "Boolean",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "Integer",
+              "docComment": "/**\n * The variant holds an integer value.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "Integer"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "2"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "Integer",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "String",
+              "docComment": "/**\n * The variant holds a string value.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "String"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "3"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "String",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            }
+          ]
+        },
+        {
           "kind": "TypeAlias",
           "canonicalReference": "ADAttributeName",
           "docComment": "/**\n * Alias type for ActiveDirectory attribute names.\n */\n",
@@ -8805,43 +11427,6 @@
           "typeTokenRange": {
             "startIndex": 3,
             "endIndex": 6
-          }
-        },
-        {
-          "kind": "TypeAlias",
-          "canonicalReference": "AttributeValue",
-          "docComment": "/**\n * Supported attribute value types.\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "export declare type "
-            },
-            {
-              "kind": "Reference",
-              "text": "AttributeValue"
-            },
-            {
-              "kind": "Content",
-              "text": " = "
-            },
-            {
-              "kind": "Content",
-              "text": "boolean | number | string | "
-            },
-            {
-              "kind": "Reference",
-              "text": "Base64UrlString"
-            },
-            {
-              "kind": "Content",
-              "text": ";"
-            }
-          ],
-          "releaseTag": "Public",
-          "name": "AttributeValue",
-          "typeTokenRange": {
-            "startIndex": 3,
-            "endIndex": 5
           }
         },
         {
@@ -8997,6 +11582,63 @@
           "typeTokenRange": {
             "startIndex": 3,
             "endIndex": 18
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "VarData",
+          "docComment": "/**\n * A variant data.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare type "
+            },
+            {
+              "kind": "Reference",
+              "text": "VarData"
+            },
+            {
+              "kind": "Content",
+              "text": " = "
+            },
+            {
+              "kind": "Reference",
+              "text": "VarBool"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "VarInt"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "VarString"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "VarBlob"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "VarData",
+          "typeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 10
           }
         }
       ]

@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-PutUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName, action: AttributeAction, attributeData: Attribute): Promise<void>;
+PutUserAttribute(ticket: Ticket, user: User, attribute: Attribute, action: AttributeAction): Promise<void>;
 ```
 
 ## Parameters
@@ -16,9 +16,8 @@ PutUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName, actio
 |  --- | --- | --- |
 |  ticket | <code>Ticket</code> |  |
 |  user | <code>User</code> |  |
-|  attributeName | <code>AttributeName</code> |  |
+|  attribute | <code>Attribute</code> |  |
 |  action | <code>AttributeAction</code> |  |
-|  attributeData | <code>Attribute</code> |  |
 
 <b>Returns:</b>
 
