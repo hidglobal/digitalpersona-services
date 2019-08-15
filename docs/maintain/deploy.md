@@ -7,6 +7,6 @@ nav_order: 6
 ---
 {% include header.html %}
 
-## Deployment
+# Deployment
 
-### NPM
+## NPM
