@@ -1,32 +1,32 @@
-import { User, UserNameType, Credential, Ticket, } from '@digitalpersona/core';
+import { User, UserNameType, Credential, Ticket } from '@digitalpersona/core';
 import { ServiceError } from '../../common';
 import { AuthService, AuthenticationHandle, AuthenticationStatus } from '.';
 import { ServerStatus, HttpStatus } from '../../test';
 
-var FetchMock = require('fetch-mock');
+const FetchMock = require('fetch-mock');
 FetchMock.config.sendAsJson = true;
 
-describe("AuthService:", ()=>
+describe("AuthService:", () =>
 {
     const app = "http://test.local/service";
     const user = new User("john.doe@test.local", UserNameType.UPN);
     const ticket = new Ticket("=====ticket=====");
     const creds = [
         Credential.Password,
-        Credential.Fingerprints
-    ]
+        Credential.Fingerprints,
+    ];
     const fingerprints = new Credential(Credential.Fingerprints, "===fingerprint data===");
 
     let service: AuthService;
 
-    beforeEach(()=>{
+    beforeEach(() => {
         service = new AuthService(app);
-    })
-    afterEach(()=>{
+    });
+    afterEach(() => {
         FetchMock.restore();
-    })
+    });
 
-    describe("GetUserCredentials", ()=>
+    describe("GetUserCredentials", () =>
     {
         it('must succeed', async () => {
             const result = creds;
@@ -35,7 +35,7 @@ describe("AuthService:", ()=>
             await expectAsync(
                 service.GetUserCredentials(user))
                 .toBeResolvedTo(result);
-        })
+        });
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.getOnce(`*`
@@ -44,9 +44,9 @@ describe("AuthService:", ()=>
             await expectAsync(
                 service.GetUserCredentials(user))
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
-        })
-    })
-    describe("GetEnrollmentData", ()=>
+        });
+    });
+    describe("GetEnrollmentData", () =>
     {
         it('must succeed', async () => {
             const result = "==== enrollment data =====";
@@ -55,7 +55,7 @@ describe("AuthService:", ()=>
             await expectAsync(
                 service.GetEnrollmentData(user, Credential.Password))
                 .toBeResolvedTo(result);
-        })
+        });
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.getOnce(`*`
@@ -64,9 +64,9 @@ describe("AuthService:", ()=>
             await expectAsync(
                 service.GetEnrollmentData(user, Credential.Password))
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
-        })
-    })
-    describe("Identify", ()=>
+        });
+    });
+    describe("Identify", () =>
     {
         it('must succeed', async () => {
             const result = ticket;
@@ -75,7 +75,7 @@ describe("AuthService:", ()=>
             await expectAsync(
                 service.Identify(fingerprints))
                 .toBeResolvedTo(result);
-        })
+        });
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`
@@ -84,9 +84,9 @@ describe("AuthService:", ()=>
             await expectAsync(
                 service.Identify(fingerprints))
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
-        })
-    })
-    describe("Authenticate User", ()=>
+        });
+    });
+    describe("Authenticate User", () =>
     {
         it('must succeed', async () => {
             const result = ticket;
@@ -95,7 +95,7 @@ describe("AuthService:", ()=>
             await expectAsync(
                 service.Authenticate(user, fingerprints))
                 .toBeResolvedTo(result);
-        })
+        });
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`
@@ -104,9 +104,9 @@ describe("AuthService:", ()=>
             await expectAsync(
                 service.Authenticate(user, fingerprints))
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
-        })
-    })
-    describe("Authenticate Ticket", ()=>
+        });
+    });
+    describe("Authenticate Ticket", () =>
     {
         it('must succeed', async () => {
             const result = ticket;
@@ -115,7 +115,7 @@ describe("AuthService:", ()=>
             await expectAsync(
                 service.Authenticate(ticket, fingerprints))
                 .toBeResolvedTo(result);
-        })
+        });
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`
@@ -124,9 +124,9 @@ describe("AuthService:", ()=>
             await expectAsync(
                 service.Authenticate(ticket, fingerprints))
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
-        })
-    })
-    describe("CustomAction", ()=>
+        });
+    });
+    describe("CustomAction", () =>
     {
         it('must succeed', async () => {
             const result = "====custom action result====";
@@ -135,14 +135,14 @@ describe("AuthService:", ()=>
             await expectAsync(
                 service.CustomAction(101, ticket, user, fingerprints))
                 .toBeResolvedTo(result);
-        })
+        });
         it('must succeed, returns nothing', async () => {
             FetchMock.postOnce(`*`
                 , { CustomActionResult: null });
             await expectAsync(
                 service.CustomAction(101, ticket, user, fingerprints))
                 .toBeResolved();
-        })
+        });
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`
@@ -151,9 +151,9 @@ describe("AuthService:", ()=>
             await expectAsync(
                 service.CustomAction(101, ticket, user, fingerprints))
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
-        })
-    })
-    describe("CreateUserAuthentication", ()=>
+        });
+    });
+    describe("CreateUserAuthentication", () =>
     {
         it('must succeed', async () => {
             const result = 12345 as AuthenticationHandle;
@@ -162,7 +162,7 @@ describe("AuthService:", ()=>
             await expectAsync(
                 service.CreateAuthentication(user, Credential.Fingerprints))
                 .toBeResolvedTo(result);
-        })
+        });
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`
@@ -171,9 +171,9 @@ describe("AuthService:", ()=>
             await expectAsync(
                 service.CreateAuthentication(user, Credential.Fingerprints))
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
-        })
-    })
-    describe("CreateTicketAuthentication", ()=>
+        });
+    });
+    describe("CreateTicketAuthentication", () =>
     {
         it('must succeed', async () => {
             const result = 12345 as AuthenticationHandle;
@@ -182,7 +182,7 @@ describe("AuthService:", ()=>
             await expectAsync(
                 service.CreateAuthentication(ticket, Credential.Fingerprints))
                 .toBeResolvedTo(result);
-        })
+        });
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`
@@ -191,9 +191,10 @@ describe("AuthService:", ()=>
             await expectAsync(
                 service.CreateAuthentication(ticket, Credential.Fingerprints))
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
-        })
-    })
-    describe("ContinueAuthentication", ()=>
+        });
+    });
+
+    describe("ContinueAuthentication", () =>
     {
         it('must succeed', async () => {
             const result = {
@@ -206,7 +207,7 @@ describe("AuthService:", ()=>
             await expectAsync(
                 service.ContinueAuthentication(12345, ticket.jwt))
                 .toBeResolvedTo(result);
-        })
+        });
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`
@@ -215,16 +216,16 @@ describe("AuthService:", ()=>
             await expectAsync(
                 service.ContinueAuthentication(12345, ticket.jwt))
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
-        })
-    })
-    describe("DestroyAuthentication", ()=>
+        });
+    });
+    describe("DestroyAuthentication", () =>
     {
         it('must succeed', async () => {
             FetchMock.deleteOnce(`*`, HttpStatus.Ok);
             await expectAsync(
                 service.DestroyAuthentication(12345))
                 .toBeResolved();
-        })
+        });
         it('must fail', async () => {
             const fault = ServerStatus.E_FAIL;
             FetchMock.deleteOnce(`*`
@@ -233,7 +234,7 @@ describe("AuthService:", ()=>
             await expectAsync(
                 service.DestroyAuthentication(12345))
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
-        })
-    })
+        });
+    });
 
-})
+});

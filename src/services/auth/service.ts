@@ -5,7 +5,7 @@ import { Service } from '../../private';
 /** Alias type for an authentication handle. */
 export type AuthenticationHandle = number;
 
-/** DigitalPersona WebAuth (DPWebAuth) service interface. */
+/** DigitalPersona Web Authentication (DPWebAuth) service interface. */
 export interface IAuthService
 {
     GetUserCredentials(user: User): Promise<CredentialId[]>;
@@ -47,7 +47,7 @@ export class AuthService extends Service implements IAuthService
     {
         return this.endpoint
             .post("IdentifyUser", null, { credential })
-            .then(response => response.IdentifyUserResult);
+            .then(response => new Ticket(response.IdentifyUserResult.jwt));
     }
     /** @inheritdoc */
     public Authenticate(identity: User|Ticket, credential: Credential): Promise<Ticket>
@@ -55,10 +55,10 @@ export class AuthService extends Service implements IAuthService
         return (identity instanceof Ticket) ?
             this.endpoint
                 .post("AuthenticateUserTicket", null, { ticket: identity, credential })
-                .then(response => response.AuthenticateUserTicketResult)
+                .then(response => new Ticket(response.AuthenticateUserTicketResult.jwt))
         :   this.endpoint
                 .post("AuthenticateUser", null, { user: identity, credential })
-                .then(response => response.AuthenticateUserResult);
+                .then(response => new Ticket(response.AuthenticateUserResult.jwt));
     }
     /** @inheritdoc */
     public CustomAction(actionId: number, ticket?: Ticket, user?: User, credential?: Credential): Promise<Base64String>
