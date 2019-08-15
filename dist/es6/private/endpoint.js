@@ -1,5 +1,5 @@
 import { ServiceError } from '../common';
-import { Url } from './url';
+import { Url } from '@digitalpersona/core';
 export class ServiceEndpoint {
     constructor(endpointUrl, defaultRequest) {
         this.defaultRequest = {
@@ -7,7 +7,7 @@ export class ServiceEndpoint {
             mode: "cors",
             headers: {
                 "Content-Type": "application/json;charset=utf-8",
-                "Accept": "application/json"
+                "Accept": "application/json",
             },
         };
         this.endpointUrl = endpointUrl;

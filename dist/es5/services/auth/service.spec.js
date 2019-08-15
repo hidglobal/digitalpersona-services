@@ -1,6 +1,6 @@
 var _this = this;
 import * as tslib_1 from "tslib";
-import { User, UserNameType, Credential, Ticket, } from '@digitalpersona/core';
+import { User, UserNameType, Credential, Ticket } from '@digitalpersona/core';
 import { ServiceError } from '../../common';
 import { AuthService, AuthenticationStatus } from '.';
 import { ServerStatus, HttpStatus } from '../../test';
@@ -12,7 +12,7 @@ describe("AuthService:", function () {
     var ticket = new Ticket("=====ticket=====");
     var creds = [
         Credential.Password,
-        Credential.Fingerprints
+        Credential.Fingerprints,
     ];
     var fingerprints = new Credential(Credential.Fingerprints, "===fingerprint data===");
     var service;

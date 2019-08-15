@@ -26,17 +26,17 @@ var AuthService = /** @class */ (function (_super) {
     AuthService.prototype.Identify = function (credential) {
         return this.endpoint
             .post("IdentifyUser", null, { credential: credential })
-            .then(function (response) { return response.IdentifyUserResult; });
+            .then(function (response) { return new Ticket(response.IdentifyUserResult.jwt); });
     };
     /** @inheritdoc */
     AuthService.prototype.Authenticate = function (identity, credential) {
         return (identity instanceof Ticket) ?
             this.endpoint
                 .post("AuthenticateUserTicket", null, { ticket: identity, credential: credential })
-                .then(function (response) { return response.AuthenticateUserTicketResult; })
+                .then(function (response) { return new Ticket(response.AuthenticateUserTicketResult.jwt); })
             : this.endpoint
                 .post("AuthenticateUser", null, { user: identity, credential: credential })
-                .then(function (response) { return response.AuthenticateUserResult; });
+                .then(function (response) { return new Ticket(response.AuthenticateUserResult.jwt); });
     };
     /** @inheritdoc */
     AuthService.prototype.CustomAction = function (actionId, ticket, user, credential) {

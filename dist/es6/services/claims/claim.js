@@ -1,14 +1,4 @@
 /**
- * Enumerates supported identity databases.
- */
-export var Database;
-(function (Database) {
-    /** ActiveDirectory (AD) */
-    Database["AD"] = "AD";
-    /** Lightweight Directory Service (LDS) */
-    Database["LDS"] = "ADLDS";
-})(Database || (Database = {}));
-/**
  * A request for a identity claim.
  * The service will search an {@link ClaimRequest.attr | attribute} in a {@link ClaimRequest.database}
  * and return the attribute value as a claim {@link ClaimRequest.name | name} in a token.

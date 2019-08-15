@@ -1,19 +1,22 @@
 import * as tslib_1 from "tslib";
 import { User, UserNameType, Credential, Ticket } from '@digitalpersona/core';
-import { ServiceError } from '../../common';
-import { EnrollService, AttributeType, Attribute, AttributeAction } from '.';
+import { ServiceError, VarType, AttributeAction } from '../../common';
+import { EnrollService } from '.';
 import { ServerStatus, HttpStatus } from '../../test';
-var FetchMock = require('fetch-mock');
+const FetchMock = require('fetch-mock');
 FetchMock.config.sendAsJson = true;
 describe("EnrollService:", () => {
     const app = "http://test.local/service";
     const user = new User("john.doe@test.local", UserNameType.UPN);
     const officerTicket = new Ticket("===== security officer's ticket=====");
     const userTicket = new Ticket("===== user's officer ticket=====");
-    const attribute = new Attribute(AttributeType.String, ["Domain Users", "Authenticated Users"]);
+    const attribute = {
+        type: VarType.String,
+        values: ["Domain Users", "Authenticated Users"],
+    };
     const creds = [
         Credential.Password,
-        Credential.Fingerprints
+        Credential.Fingerprints,
     ];
     const fingerprints = new Credential(Credential.Fingerprints, "===fingerprint data===");
     let service;
@@ -131,8 +134,11 @@ describe("EnrollService:", () => {
     });
     describe("GetUserAttribute", () => {
         it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
-            const result = attribute;
-            FetchMock.postOnce(`*`, { GetUserAttributeResult: result });
+            const result = {
+                name: "group",
+                data: attribute,
+            };
+            FetchMock.postOnce(`*`, { GetUserAttributeResult: attribute });
             yield expectAsync(service.GetUserAttribute(officerTicket, user, "group"))
                 .toBeResolvedTo(result);
         }));
@@ -144,15 +150,19 @@ describe("EnrollService:", () => {
         }));
     });
     describe("PutUserAttribute", () => {
+        const attr = {
+            name: "group",
+            data: attribute,
+        };
         it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
             FetchMock.putOnce(`*`, HttpStatus.Ok);
-            yield expectAsync(service.PutUserAttribute(officerTicket, user, "group", AttributeAction.Update, attribute))
+            yield expectAsync(service.PutUserAttribute(officerTicket, user, attr, AttributeAction.Update))
                 .toBeResolved();
         }));
         it('must fail', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
             const fault = ServerStatus.E_FAIL;
             FetchMock.putOnce(`*`, new Response(JSON.stringify(fault), HttpStatus.NotFound));
-            yield expectAsync(service.PutUserAttribute(officerTicket, user, "group", AttributeAction.Update, attribute))
+            yield expectAsync(service.PutUserAttribute(officerTicket, user, attr, AttributeAction.Update))
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
         }));
     });

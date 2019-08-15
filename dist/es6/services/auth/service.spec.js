@@ -1,9 +1,9 @@
 import * as tslib_1 from "tslib";
-import { User, UserNameType, Credential, Ticket, } from '@digitalpersona/core';
+import { User, UserNameType, Credential, Ticket } from '@digitalpersona/core';
 import { ServiceError } from '../../common';
 import { AuthService, AuthenticationStatus } from '.';
 import { ServerStatus, HttpStatus } from '../../test';
-var FetchMock = require('fetch-mock');
+const FetchMock = require('fetch-mock');
 FetchMock.config.sendAsJson = true;
 describe("AuthService:", () => {
     const app = "http://test.local/service";
@@ -11,7 +11,7 @@ describe("AuthService:", () => {
     const ticket = new Ticket("=====ticket=====");
     const creds = [
         Credential.Password,
-        Credential.Fingerprints
+        Credential.Fingerprints,
     ];
     const fingerprints = new Credential(Credential.Fingerprints, "===fingerprint data===");
     let service;

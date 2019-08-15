@@ -1,7 +1,6 @@
 import { User, CredentialId, Ticket, Credential, Base64UrlString } from '@digitalpersona/core';
 import { Service } from '../../private';
-import { AttributeName } from '../../services';
-import { Attribute, AttributeAction } from './attribute';
+import { Attribute, AttributeAction } from '../../common';
 /**
  * DigitalPersona Web Enroll (DPWebEnroll) service interface.
  */
@@ -14,8 +13,8 @@ export interface IEnrollService {
     DeleteUserCredentials(securityOfficer: Ticket, owner: Ticket, credential: Credential): Promise<void>;
     EnrollAltusUserCredentials(securityOfficer: Ticket, user: User, credential: Credential): Promise<void>;
     DeleteAltusUserCredentials(securityOfficer: Ticket, user: User, credential: Credential): Promise<void>;
-    GetUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName): Promise<Attribute>;
-    PutUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName, action: AttributeAction, attributeData: Attribute): Promise<void>;
+    GetUserAttribute(ticket: Ticket, user: User, attributeName: string): Promise<Attribute>;
+    PutUserAttribute(ticket: Ticket, user: User, attribute: Attribute, action: AttributeAction): Promise<void>;
     UnlockUser(user: User, credential: Credential): Promise<void>;
     CustomAction(ticket: Ticket, user: User, credential: Credential, actionId: number): Promise<Base64UrlString>;
     IsEnrollmentAllowed(securityOfficer: Ticket, user: User, credentialId: CredentialId): Promise<void>;
@@ -45,9 +44,9 @@ export declare class EnrollService extends Service implements IEnrollService {
     /** @inheritdoc */
     DeleteAltusUserCredentials(secOfficer: Ticket, user: User, credential: Credential): Promise<void>;
     /** @inheritdoc */
-    GetUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName): Promise<Attribute>;
+    GetUserAttribute(ticket: Ticket, user: User, attributeName: string): Promise<Attribute>;
     /** @inheritdoc */
-    PutUserAttribute(ticket: Ticket, user: User, attributeName: AttributeName, action: AttributeAction, attributeData: Attribute): Promise<void>;
+    PutUserAttribute(ticket: Ticket, user: User, attribute: Attribute, action: AttributeAction): Promise<void>;
     /** @inheritdoc */
     UnlockUser(user: User, credential: Credential): Promise<void>;
     /** @inheritdoc */

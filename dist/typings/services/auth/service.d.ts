@@ -3,7 +3,7 @@ import { ExtendedAuthResult } from './extendedResult';
 import { Service } from '../../private';
 /** Alias type for an authentication handle. */
 export declare type AuthenticationHandle = number;
-/** DigitalPersona WebAuth (DPWebAuth) service interface. */
+/** DigitalPersona Web Authentication (DPWebAuth) service interface. */
 export interface IAuthService {
     GetUserCredentials(user: User): Promise<CredentialId[]>;
     GetEnrollmentData(user: User, credentialId: CredentialId): Promise<Base64String>;

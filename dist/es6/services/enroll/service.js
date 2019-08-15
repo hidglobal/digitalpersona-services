@@ -55,12 +55,19 @@ export class EnrollService extends Service {
     GetUserAttribute(ticket, user, attributeName) {
         return this.endpoint
             .post("GetUserAttribute", null, { ticket, user, attributeName })
-            .then(result => result.GetUserAttributeResult);
+            .then(result => ({
+            name: attributeName,
+            data: result.GetUserAttributeResult,
+        }));
     }
     /** @inheritdoc */
-    PutUserAttribute(ticket, user, attributeName, action, attributeData) {
+    PutUserAttribute(ticket, user, attribute, action) {
         return this.endpoint
-            .put("PutUserAttribute", null, { ticket, user, attributeName, action, attributeData });
+            .put("PutUserAttribute", null, {
+            ticket, user, action,
+            attributeName: attribute.name,
+            attributeData: attribute.data
+        });
     }
     /** @inheritdoc */
     UnlockUser(user, credential) {
