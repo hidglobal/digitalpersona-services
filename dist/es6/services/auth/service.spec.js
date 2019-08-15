@@ -6,7 +6,7 @@ import { ServerStatus, HttpStatus } from '../../test';
 const FetchMock = require('fetch-mock');
 FetchMock.config.sendAsJson = true;
 describe("AuthService:", () => {
-    const app = "http://test.local/service";
+    const app = "http://test.local";
     const user = new User("john.doe@test.local", UserNameType.UPN);
     const ticket = new Ticket("=====ticket=====");
     const creds = [
@@ -24,7 +24,7 @@ describe("AuthService:", () => {
     describe("GetUserCredentials", () => {
         it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
             const result = creds;
-            FetchMock.getOnce(`*`, { GetUserCredentialsResult: result });
+            FetchMock.getOnce(`path:/GetUserCredentials`, { GetUserCredentialsResult: result });
             yield expectAsync(service.GetUserCredentials(user))
                 .toBeResolvedTo(result);
         }));
@@ -38,7 +38,7 @@ describe("AuthService:", () => {
     describe("GetEnrollmentData", () => {
         it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
             const result = "==== enrollment data =====";
-            FetchMock.getOnce(`*`, { GetEnrollmentDataResult: result });
+            FetchMock.getOnce(`path:/GetEnrollmentData`, { GetEnrollmentDataResult: result });
             yield expectAsync(service.GetEnrollmentData(user, Credential.Password))
                 .toBeResolvedTo(result);
         }));
@@ -49,10 +49,10 @@ describe("AuthService:", () => {
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
         }));
     });
-    describe("Identify", () => {
+    describe("IdentifyUser", () => {
         it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
             const result = ticket;
-            FetchMock.postOnce(`*`, { IdentifyUserResult: result });
+            FetchMock.postOnce(`path:/IdentifyUser`, { IdentifyUserResult: result });
             yield expectAsync(service.Identify(fingerprints))
                 .toBeResolvedTo(result);
         }));
@@ -63,10 +63,10 @@ describe("AuthService:", () => {
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
         }));
     });
-    describe("Authenticate User", () => {
+    describe("AuthenticateUser", () => {
         it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
             const result = ticket;
-            FetchMock.postOnce(`*`, { AuthenticateUserResult: result });
+            FetchMock.postOnce(`path:/AuthenticateUser`, { AuthenticateUserResult: result });
             yield expectAsync(service.Authenticate(user, fingerprints))
                 .toBeResolvedTo(result);
         }));
@@ -77,10 +77,10 @@ describe("AuthService:", () => {
                 .toBeRejectedWith(ServiceError.fromServiceFault(fault));
         }));
     });
-    describe("Authenticate Ticket", () => {
+    describe("AuthenticateUserTicket", () => {
         it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
             const result = ticket;
-            FetchMock.postOnce(`*`, { AuthenticateUserTicketResult: result });
+            FetchMock.postOnce(`path:/AuthenticateUserTicket`, { AuthenticateUserTicketResult: result });
             yield expectAsync(service.Authenticate(ticket, fingerprints))
                 .toBeResolvedTo(result);
         }));
@@ -94,7 +94,7 @@ describe("AuthService:", () => {
     describe("CustomAction", () => {
         it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
             const result = "====custom action result====";
-            FetchMock.postOnce(`*`, { CustomActionResult: result });
+            FetchMock.postOnce(`path:/CustomAction`, { CustomActionResult: result });
             yield expectAsync(service.CustomAction(101, ticket, user, fingerprints))
                 .toBeResolvedTo(result);
         }));
@@ -113,7 +113,7 @@ describe("AuthService:", () => {
     describe("CreateUserAuthentication", () => {
         it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
             const result = 12345;
-            FetchMock.postOnce(`*`, { CreateUserAuthenticationResult: result });
+            FetchMock.postOnce(`path:/CreateUserAuthentication`, { CreateUserAuthenticationResult: result });
             yield expectAsync(service.CreateAuthentication(user, Credential.Fingerprints))
                 .toBeResolvedTo(result);
         }));
@@ -127,7 +127,7 @@ describe("AuthService:", () => {
     describe("CreateTicketAuthentication", () => {
         it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
             const result = 12345;
-            FetchMock.postOnce(`*`, { CreateTicketAuthenticationResult: result });
+            FetchMock.postOnce(`path:/CreateTicketAuthentication`, { CreateTicketAuthenticationResult: result });
             yield expectAsync(service.CreateAuthentication(ticket, Credential.Fingerprints))
                 .toBeResolvedTo(result);
         }));
@@ -141,7 +141,7 @@ describe("AuthService:", () => {
     describe("ContinueAuthentication", () => {
         it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
             const result = Object.assign({}, ticket, { status: AuthenticationStatus.Continue, authData: "==== auth data ====" });
-            FetchMock.postOnce(`*`, { ContinueAuthenticationResult: result });
+            FetchMock.postOnce(`path:/ContinueAuthentication`, { ContinueAuthenticationResult: result });
             yield expectAsync(service.ContinueAuthentication(12345, ticket.jwt))
                 .toBeResolvedTo(result);
         }));
@@ -154,7 +154,7 @@ describe("AuthService:", () => {
     });
     describe("DestroyAuthentication", () => {
         it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
-            FetchMock.deleteOnce(`*`, HttpStatus.Ok);
+            FetchMock.deleteOnce(`path:/DestroyAuthentication`, HttpStatus.Ok);
             yield expectAsync(service.DestroyAuthentication(12345))
                 .toBeResolved();
         }));

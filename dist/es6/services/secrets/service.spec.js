@@ -3,16 +3,16 @@ import { User, UserNameType, Credential, Ticket } from '@digitalpersona/core';
 import { ResourceActions, ServiceError } from '../../common';
 import { SecretService } from '.';
 import { ServerStatus, HttpStatus } from '../../test';
-var FetchMock = require('fetch-mock');
+const FetchMock = require('fetch-mock');
 FetchMock.config.sendAsJson = true;
 describe("SecretService:", () => {
-    const app = "http://test.local/service";
+    const app = "http://test.local";
     const user = new User("john.doe@test.local", UserNameType.UPN);
     const officerTicket = new Ticket("===== security officer's ticket=====");
     const userTicket = new Ticket("===== user's officer ticket=====");
     const creds = [
         Credential.Password,
-        Credential.Fingerprints
+        Credential.Fingerprints,
     ];
     const fingerprints = new Credential(Credential.Fingerprints, "===fingerprint data===");
     const policySet = [
@@ -32,7 +32,7 @@ describe("SecretService:", () => {
     describe("GetAuthPolicy", () => {
         it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
             const result = policySet;
-            FetchMock.getOnce(`*`, { GetAuthPolicyResult: result });
+            FetchMock.getOnce(`path:/GetAuthPolicy`, { GetAuthPolicyResult: result });
             yield expectAsync(service.GetAuthPolicy(user, "DPSECRET", ResourceActions.Read))
                 .toBeResolvedTo(result);
         }));
@@ -46,7 +46,7 @@ describe("SecretService:", () => {
     describe("DoesSecretExist", () => {
         it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
             const result = true;
-            FetchMock.getOnce(`*`, { DoesSecretExistResult: result });
+            FetchMock.getOnce(`path:/DoesSecretExist`, { DoesSecretExistResult: result });
             yield expectAsync(service.DoesSecretExist(user, "DPSECRET"))
                 .toBeResolvedTo(result);
         }));
@@ -60,7 +60,7 @@ describe("SecretService:", () => {
     describe("ReadSecret", () => {
         it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
             const result = secret;
-            FetchMock.postOnce(`*`, { ReadSecretResult: result });
+            FetchMock.postOnce(`path:/ReadSecret`, { ReadSecretResult: result });
             yield expectAsync(service.ReadSecret(userTicket, "DPSECRET"))
                 .toBeResolvedTo(result);
         }));
@@ -73,7 +73,7 @@ describe("SecretService:", () => {
     });
     describe("WriteSecret", () => {
         it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
-            FetchMock.putOnce(`*`, HttpStatus.Ok);
+            FetchMock.putOnce(`path:/WriteSecret`, HttpStatus.Ok);
             yield expectAsync(service.WriteSecret(userTicket, "DPSECRET", secret))
                 .toBeResolved();
         }));
@@ -86,7 +86,7 @@ describe("SecretService:", () => {
     });
     describe("DeleteSecret", () => {
         it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
-            FetchMock.deleteOnce(`*`, HttpStatus.Ok);
+            FetchMock.deleteOnce(`path:/DeleteSecret`, HttpStatus.Ok);
             yield expectAsync(service.DeleteSecret(userTicket, "DPSECRET"))
                 .toBeResolved();
         }));

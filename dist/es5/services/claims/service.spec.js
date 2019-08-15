@@ -2,13 +2,12 @@ var _this = this;
 import * as tslib_1 from "tslib";
 import { ClaimName } from '@digitalpersona/core';
 import { ServiceError, DatabaseType } from '../../common';
-import { ClaimsService } from '.';
+import { ClaimsService, ClaimRequest } from '.';
 import { ServerStatus, HttpStatus } from '../../test';
-import { ClaimRequest } from './claim';
 var FetchMock = require('fetch-mock');
 FetchMock.config.sendAsJson = true;
 describe("ClaimsService:", function () {
-    var app = "http://test.local/service";
+    var app = "http://test.local";
     var ticket = {
         jwt: "=====ticket=====",
     };
@@ -28,7 +27,7 @@ describe("ClaimsService:", function () {
                         result = {
                             ticket: ticket,
                         };
-                        FetchMock.postOnce("*", { GetConfiguredClaimsResult: result });
+                        FetchMock.postOnce("path:/GetConfiguredClaims", { GetConfiguredClaimsResult: result });
                         return [4 /*yield*/, expectAsync(service.GetConfiguredClaims(ticket))
                                 .toBeResolvedTo(ticket)];
                     case 1:
@@ -55,7 +54,7 @@ describe("ClaimsService:", function () {
     });
     describe("GetClaims", function () {
         var request = [
-            new ClaimRequest(ClaimName.Group, DatabaseType.AD, "memberOf")
+            new ClaimRequest(ClaimName.Group, DatabaseType.AD, "memberOf"),
         ];
         it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
             var result;
@@ -65,7 +64,7 @@ describe("ClaimsService:", function () {
                         result = {
                             ticket: ticket,
                         };
-                        FetchMock.postOnce("*", { GetClaimsResult: result });
+                        FetchMock.postOnce("path:/GetClaims", { GetClaimsResult: result });
                         return [4 /*yield*/, expectAsync(service.GetClaims(ticket, request))
                                 .toBeResolvedTo(ticket)];
                     case 1:

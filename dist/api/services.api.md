@@ -22,33 +22,20 @@ export class AdminService extends Service implements IAdminService {
     constructor(endpointUrl: string);
     // (undocumented)
     AdminDeleteUserCredentials(ticket: Ticket, user: User, credentials: Credential[]): Promise<void>;
-    // Warning: (ae-forgotten-export) The symbol "SearchQuery" needs to be exported by the entry point index.d.ts
-    // 
     // (undocumented)
     ExecuteSearch(ticket: Ticket, query: SearchQuery): Promise<Attribute[][]>;
-    // Warning: (ae-forgotten-export) The symbol "LicenseType" needs to be exported by the entry point index.d.ts
-    // Warning: (ae-forgotten-export) The symbol "LicenseInfo" needs to be exported by the entry point index.d.ts
-    // 
     // (undocumented)
     GetLicenseInfo(type: LicenseType): Promise<LicenseInfo>;
     // (undocumented)
     GetServerSettings(ticket: Ticket, user: User, settings: string[]): Promise<Attribute[]>;
-    // Warning: (ae-forgotten-export) The symbol "UserInfo" needs to be exported by the entry point index.d.ts
-    // 
     // (undocumented)
     GetUserInfo(ticket: Ticket, user: User): Promise<UserInfo>;
     // (undocumented)
     GetUserRecoveryPassword(ticket: Ticket, user: User, encryptedPwd: string): Promise<string>;
-    // Warning: (ae-forgotten-export) The symbol "PSKCOutput" needs to be exported by the entry point index.d.ts
-    // 
     // (undocumented)
     PSKCImport(ticket: Ticket, PSKCData: string, PSKCFileName?: string | null, password?: string | null, sharedKey?: string | null): Promise<PSKCOutput[]>;
-    // Warning: (ae-forgotten-export) The symbol "ServerSettingType" needs to be exported by the entry point index.d.ts
-    // 
     // (undocumented)
     SetServerSettings(ticket: Ticket, type: ServerSettingType, settings: Attribute[]): Promise<void>;
-    // Warning: (ae-forgotten-export) The symbol "UACFlags" needs to be exported by the entry point index.d.ts
-    // 
     // (undocumented)
     SetUserAccountControl(ticket: Ticket, user: User, control: UACFlags): Promise<void>;
     // (undocumented)
@@ -303,6 +290,24 @@ export interface IService {
 // @public
 export type LDSAttributeName = string;
 
+// @public (undocumented)
+export interface LicenseInfo {
+    // (undocumented)
+    licenses_deployed: number;
+    // (undocumented)
+    licenses_used: number;
+    // (undocumented)
+    type: LicenseType;
+}
+
+// @public (undocumented)
+export enum LicenseType {
+    // (undocumented)
+    ADUser = 1,
+    // (undocumented)
+    LDSUser = 2
+}
+
 // @public
 export interface Policy {
     policy: PolicyElement[];
@@ -332,11 +337,37 @@ export interface PolicyTrigger {
     trigger: TriggerNames;
 }
 
+// @public (undocumented)
+export interface PSKCOutput {
+    error?: number;
+    error_text?: string;
+    serial_number?: string;
+}
+
 // @public
 export enum ResourceActions {
     Delete = 2,
     Read = 0,
     Write = 1
+}
+
+// @public (undocumented)
+export interface SearchQuery {
+    attributes: string[];
+    baseDN?: string;
+    filter: string;
+    scope: SearchScope;
+    sort?: string;
+}
+
+// @public (undocumented)
+export enum SearchScope {
+    // (undocumented)
+    Base = 0,
+    // (undocumented)
+    OneLevel = 1,
+    // (undocumented)
+    Subtree = 2
 }
 
 // @public
@@ -352,6 +383,23 @@ export class SecretService extends Service implements ISecretService {
     ReadSecret(ticket: Ticket, secretName: string): Promise<Base64String>;
     // (undocumented)
     WriteSecret(ticket: Ticket, secretName: string, secretData: Base64String): Promise<void>;
+}
+
+// @public (undocumented)
+export enum ServerSettings {
+    // (undocumented)
+    "LockoutDuration" = 1,
+    // (undocumented)
+    "LockoutReset" = 2,
+    // (undocumented)
+    "LockoutThreshold" = 0
+}
+
+// @public (undocumented)
+export enum ServerSettingType {
+    Admin = 1,
+    Public = 2,
+    Unknown = 0
 }
 
 // @public
@@ -394,6 +442,42 @@ export enum TriggerName {
 export type TriggerNames = {
     [K in keyof ContextualInfo]: ContextualInfo[K] extends Function ? never : K;
 }[keyof ContextualInfo];
+
+// @public
+export enum UACFlags {
+    // (undocumented)
+    FingerprintOnly = 16,
+    // (undocumented)
+    FingerprintRequired = 8,
+    // (undocumented)
+    OtpAndFingerprint = 128,
+    // (undocumented)
+    OtpAndPwd = 64,
+    // (undocumented)
+    PasswordNotAllowed = 2,
+    // (undocumented)
+    PinRequired = 4,
+    // (undocumented)
+    RevertToWindows = 1
+}
+
+// @public (undocumented)
+export enum UserAccountType {
+    ActiveDirectory = 2,
+    ADLDS = 3,
+    Local = 1,
+    Unknown = 0
+}
+
+// @public (undocumented)
+export interface UserInfo {
+    accountControl: UACFlags;
+    displayName: string;
+    licensed: boolean;
+    locked: boolean;
+    type: UserAccountType;
+    uid: string;
+}
 
 // @public
 export class VarBlob {

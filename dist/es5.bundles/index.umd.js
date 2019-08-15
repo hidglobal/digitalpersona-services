@@ -523,6 +523,52 @@
         return SecretService;
     }(Service));
 
+    (function (LicenseType) {
+        LicenseType[LicenseType["ADUser"] = 1] = "ADUser";
+        LicenseType[LicenseType["LDSUser"] = 2] = "LDSUser";
+    })(exports.LicenseType || (exports.LicenseType = {}));
+
+    (function (SearchScope) {
+        SearchScope[SearchScope["Base"] = 0] = "Base";
+        SearchScope[SearchScope["OneLevel"] = 1] = "OneLevel";
+        SearchScope[SearchScope["Subtree"] = 2] = "Subtree";
+    })(exports.SearchScope || (exports.SearchScope = {}));
+
+    (function (ServerSettingType) {
+        /** Unknown Server Settings Type. */
+        ServerSettingType[ServerSettingType["Unknown"] = 0] = "Unknown";
+        /** Server Settings will be accessible only for Domain Administrators. */
+        ServerSettingType[ServerSettingType["Admin"] = 1] = "Admin";
+        /** Server Settings will be accessible for anybody (public). */
+        ServerSettingType[ServerSettingType["Public"] = 2] = "Public";
+    })(exports.ServerSettingType || (exports.ServerSettingType = {}));
+    (function (ServerSettings) {
+        ServerSettings[ServerSettings["LockoutThreshold"] = 0] = "LockoutThreshold";
+        ServerSettings[ServerSettings["LockoutDuration"] = 1] = "LockoutDuration";
+        ServerSettings[ServerSettings["LockoutReset"] = 2] = "LockoutReset";
+    })(exports.ServerSettings || (exports.ServerSettings = {}));
+
+    /** DPCA Useraccount control flags. */
+    (function (UACFlags) {
+        UACFlags[UACFlags["RevertToWindows"] = 1] = "RevertToWindows";
+        UACFlags[UACFlags["PasswordNotAllowed"] = 2] = "PasswordNotAllowed";
+        UACFlags[UACFlags["PinRequired"] = 4] = "PinRequired";
+        UACFlags[UACFlags["FingerprintRequired"] = 8] = "FingerprintRequired";
+        UACFlags[UACFlags["FingerprintOnly"] = 16] = "FingerprintOnly";
+        UACFlags[UACFlags["OtpAndPwd"] = 64] = "OtpAndPwd";
+        UACFlags[UACFlags["OtpAndFingerprint"] = 128] = "OtpAndFingerprint";
+    })(exports.UACFlags || (exports.UACFlags = {}));
+    (function (UserAccountType) {
+        /** User account type is unknown. */
+        UserAccountType[UserAccountType["Unknown"] = 0] = "Unknown";
+        /** A local user account. */
+        UserAccountType[UserAccountType["Local"] = 1] = "Local";
+        /** ActiveDirectory user */
+        UserAccountType[UserAccountType["ActiveDirectory"] = 2] = "ActiveDirectory";
+        /** AD LDS (DPCA) user.  */
+        UserAccountType[UserAccountType["ADLDS"] = 3] = "ADLDS";
+    })(exports.UserAccountType || (exports.UserAccountType = {}));
+
     /** DigitalPersona WebAuth (DPWebAuth) service client wrapper. */
     var AdminService = /** @class */ (function (_super) {
         __extends(AdminService, _super);

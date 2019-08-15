@@ -1,13 +1,12 @@
 import * as tslib_1 from "tslib";
 import { ClaimName } from '@digitalpersona/core';
 import { ServiceError, DatabaseType } from '../../common';
-import { ClaimsService } from '.';
+import { ClaimsService, ClaimRequest } from '.';
 import { ServerStatus, HttpStatus } from '../../test';
-import { ClaimRequest } from './claim';
 const FetchMock = require('fetch-mock');
 FetchMock.config.sendAsJson = true;
 describe("ClaimsService:", () => {
-    const app = "http://test.local/service";
+    const app = "http://test.local";
     const ticket = {
         jwt: "=====ticket=====",
     };
@@ -23,7 +22,7 @@ describe("ClaimsService:", () => {
             const result = {
                 ticket,
             };
-            FetchMock.postOnce(`*`, { GetConfiguredClaimsResult: result });
+            FetchMock.postOnce(`path:/GetConfiguredClaims`, { GetConfiguredClaimsResult: result });
             yield expectAsync(service.GetConfiguredClaims(ticket))
                 .toBeResolvedTo(ticket);
         }));
@@ -36,13 +35,13 @@ describe("ClaimsService:", () => {
     });
     describe("GetClaims", () => {
         const request = [
-            new ClaimRequest(ClaimName.Group, DatabaseType.AD, "memberOf")
+            new ClaimRequest(ClaimName.Group, DatabaseType.AD, "memberOf"),
         ];
         it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
             const result = {
                 ticket,
             };
-            FetchMock.postOnce(`*`, { GetClaimsResult: result });
+            FetchMock.postOnce(`path:/GetClaims`, { GetClaimsResult: result });
             yield expectAsync(service.GetClaims(ticket, request))
                 .toBeResolvedTo(ticket);
         }));

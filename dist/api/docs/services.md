@@ -30,8 +30,14 @@
 |  [AttributeAction](./services.attributeaction.md) | Enumerates supported actions that can be performed on user's attributes. |
 |  [AuthenticationStatus](./services.authenticationstatus.md) | Enumerated possible authentication statuses. |
 |  [DatabaseType](./services.databasetype.md) | Enumerates supported identity databases. |
+|  [LicenseType](./services.licensetype.md) |  |
 |  [ResourceActions](./services.resourceactions.md) | Enumerates supported resource actions. |
+|  [SearchScope](./services.searchscope.md) |  |
+|  [ServerSettings](./services.serversettings.md) |  |
+|  [ServerSettingType](./services.serversettingtype.md) |  |
 |  [TriggerName](./services.triggername.md) | Enumerates step-up triggers. |
+|  [UACFlags](./services.uacflags.md) | DPCA Useraccount control flags. |
+|  [UserAccountType](./services.useraccounttype.md) |  |
 |  [VarType](./services.vartype.md) |  |
 
 ## Interfaces
@@ -48,11 +54,15 @@
 |  [IPolicyService](./services.ipolicyservice.md) | DigitalPersona Web Policy (DPWebPolicy) service interface. |
 |  [ISecretService](./services.isecretservice.md) | DigitalPersona Web Secret (DPWebSecret) service interface. |
 |  [IService](./services.iservice.md) | Web Access service base class. |
+|  [LicenseInfo](./services.licenseinfo.md) |  |
 |  [Policy](./services.policy.md) | A single authentication policy rule, as a list of [policy elements](./services.policyelement.md)<!-- -->. When matching a list of  against the policy, the policy is satisfied when \*\*every\*\* [policy elements](./services.policyelement.md) in the list is satisfied too. |
 |  [PolicyElement](./services.policyelement.md) | A single authentication policy element. Used to match  against the policy.<!-- -->\\ The policy element is satisfied when a list of  contains the [PolicyElement.cred\_id](./services.policyelement.cred_id.md)<!-- -->. |
 |  [PolicyInfo](./services.policyinfo.md) | An information about authentication policy. |
 |  [PolicyTrigger](./services.policytrigger.md) | A policy step-up trigger. |
+|  [PSKCOutput](./services.pskcoutput.md) |  |
+|  [SearchQuery](./services.searchquery.md) |  |
 |  [ServiceFault](./services.servicefault.md) | A server fault object. When server error occurs, the server returns the fault object in a response body. |
+|  [UserInfo](./services.userinfo.md) |  |
 
 ## Type Aliases
 

@@ -1,12 +1,8 @@
 import * as tslib_1 from "tslib";
 import { User, UserNameType, Credential, Ticket } from '@digitalpersona/core';
 import { ServiceError, VarType, VarString, VarInt } from '../../common';
-import { AdminService } from '.';
 import { ServerStatus, HttpStatus } from '../../test';
-import { SearchScope } from './search';
-import { ServerSettingType } from './settings';
-import { LicenseType } from './license';
-import { UserAccountType, UACFlags } from './uac';
+import { AdminService, SearchScope, ServerSettingType, LicenseType, UserAccountType, UACFlags } from '.';
 const FetchMock = require('fetch-mock');
 FetchMock.config.sendAsJson = true;
 describe("AdminService:", () => {

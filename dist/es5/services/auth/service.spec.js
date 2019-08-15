@@ -7,7 +7,7 @@ import { ServerStatus, HttpStatus } from '../../test';
 var FetchMock = require('fetch-mock');
 FetchMock.config.sendAsJson = true;
 describe("AuthService:", function () {
-    var app = "http://test.local/service";
+    var app = "http://test.local";
     var user = new User("john.doe@test.local", UserNameType.UPN);
     var ticket = new Ticket("=====ticket=====");
     var creds = [
@@ -29,7 +29,7 @@ describe("AuthService:", function () {
                 switch (_a.label) {
                     case 0:
                         result = creds;
-                        FetchMock.getOnce("*", { GetUserCredentialsResult: result });
+                        FetchMock.getOnce("path:/GetUserCredentials", { GetUserCredentialsResult: result });
                         return [4 /*yield*/, expectAsync(service.GetUserCredentials(user))
                                 .toBeResolvedTo(result)];
                     case 1:
@@ -61,7 +61,7 @@ describe("AuthService:", function () {
                 switch (_a.label) {
                     case 0:
                         result = "==== enrollment data =====";
-                        FetchMock.getOnce("*", { GetEnrollmentDataResult: result });
+                        FetchMock.getOnce("path:/GetEnrollmentData", { GetEnrollmentDataResult: result });
                         return [4 /*yield*/, expectAsync(service.GetEnrollmentData(user, Credential.Password))
                                 .toBeResolvedTo(result)];
                     case 1:
@@ -86,14 +86,14 @@ describe("AuthService:", function () {
             });
         }); });
     });
-    describe("Identify", function () {
+    describe("IdentifyUser", function () {
         it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
             var result;
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         result = ticket;
-                        FetchMock.postOnce("*", { IdentifyUserResult: result });
+                        FetchMock.postOnce("path:/IdentifyUser", { IdentifyUserResult: result });
                         return [4 /*yield*/, expectAsync(service.Identify(fingerprints))
                                 .toBeResolvedTo(result)];
                     case 1:
@@ -118,14 +118,14 @@ describe("AuthService:", function () {
             });
         }); });
     });
-    describe("Authenticate User", function () {
+    describe("AuthenticateUser", function () {
         it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
             var result;
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         result = ticket;
-                        FetchMock.postOnce("*", { AuthenticateUserResult: result });
+                        FetchMock.postOnce("path:/AuthenticateUser", { AuthenticateUserResult: result });
                         return [4 /*yield*/, expectAsync(service.Authenticate(user, fingerprints))
                                 .toBeResolvedTo(result)];
                     case 1:
@@ -150,14 +150,14 @@ describe("AuthService:", function () {
             });
         }); });
     });
-    describe("Authenticate Ticket", function () {
+    describe("AuthenticateUserTicket", function () {
         it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
             var result;
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         result = ticket;
-                        FetchMock.postOnce("*", { AuthenticateUserTicketResult: result });
+                        FetchMock.postOnce("path:/AuthenticateUserTicket", { AuthenticateUserTicketResult: result });
                         return [4 /*yield*/, expectAsync(service.Authenticate(ticket, fingerprints))
                                 .toBeResolvedTo(result)];
                     case 1:
@@ -189,7 +189,7 @@ describe("AuthService:", function () {
                 switch (_a.label) {
                     case 0:
                         result = "====custom action result====";
-                        FetchMock.postOnce("*", { CustomActionResult: result });
+                        FetchMock.postOnce("path:/CustomAction", { CustomActionResult: result });
                         return [4 /*yield*/, expectAsync(service.CustomAction(101, ticket, user, fingerprints))
                                 .toBeResolvedTo(result)];
                     case 1:
@@ -234,7 +234,7 @@ describe("AuthService:", function () {
                 switch (_a.label) {
                     case 0:
                         result = 12345;
-                        FetchMock.postOnce("*", { CreateUserAuthenticationResult: result });
+                        FetchMock.postOnce("path:/CreateUserAuthentication", { CreateUserAuthenticationResult: result });
                         return [4 /*yield*/, expectAsync(service.CreateAuthentication(user, Credential.Fingerprints))
                                 .toBeResolvedTo(result)];
                     case 1:
@@ -266,7 +266,7 @@ describe("AuthService:", function () {
                 switch (_a.label) {
                     case 0:
                         result = 12345;
-                        FetchMock.postOnce("*", { CreateTicketAuthenticationResult: result });
+                        FetchMock.postOnce("path:/CreateTicketAuthentication", { CreateTicketAuthenticationResult: result });
                         return [4 /*yield*/, expectAsync(service.CreateAuthentication(ticket, Credential.Fingerprints))
                                 .toBeResolvedTo(result)];
                     case 1:
@@ -298,7 +298,7 @@ describe("AuthService:", function () {
                 switch (_a.label) {
                     case 0:
                         result = tslib_1.__assign({}, ticket, { status: AuthenticationStatus.Continue, authData: "==== auth data ====" });
-                        FetchMock.postOnce("*", { ContinueAuthenticationResult: result });
+                        FetchMock.postOnce("path:/ContinueAuthentication", { ContinueAuthenticationResult: result });
                         return [4 /*yield*/, expectAsync(service.ContinueAuthentication(12345, ticket.jwt))
                                 .toBeResolvedTo(result)];
                     case 1:
@@ -328,7 +328,7 @@ describe("AuthService:", function () {
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        FetchMock.deleteOnce("*", HttpStatus.Ok);
+                        FetchMock.deleteOnce("path:/DestroyAuthentication", HttpStatus.Ok);
                         return [4 /*yield*/, expectAsync(service.DestroyAuthentication(12345))
                                 .toBeResolved()];
                     case 1:

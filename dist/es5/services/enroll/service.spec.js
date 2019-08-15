@@ -7,7 +7,7 @@ import { ServerStatus, HttpStatus } from '../../test';
 var FetchMock = require('fetch-mock');
 FetchMock.config.sendAsJson = true;
 describe("EnrollService:", function () {
-    var app = "http://test.local/service";
+    var app = "http://test.local";
     var user = new User("john.doe@test.local", UserNameType.UPN);
     var officerTicket = new Ticket("===== security officer's ticket=====");
     var userTicket = new Ticket("===== user's officer ticket=====");
@@ -34,7 +34,7 @@ describe("EnrollService:", function () {
                 switch (_a.label) {
                     case 0:
                         result = creds;
-                        FetchMock.getOnce("*", { GetUserCredentialsResult: result });
+                        FetchMock.getOnce("path:/GetUserCredentials", { GetUserCredentialsResult: result });
                         return [4 /*yield*/, expectAsync(service.GetUserCredentials(user))
                                 .toBeResolvedTo(result)];
                     case 1:
@@ -66,7 +66,7 @@ describe("EnrollService:", function () {
                 switch (_a.label) {
                     case 0:
                         result = "==== enrollment data =====";
-                        FetchMock.getOnce("*", { GetEnrollmentDataResult: result });
+                        FetchMock.getOnce("path:/GetEnrollmentData", { GetEnrollmentDataResult: result });
                         return [4 /*yield*/, expectAsync(service.GetEnrollmentData(user, Credential.Password))
                                 .toBeResolvedTo(result)];
                     case 1:
@@ -96,7 +96,7 @@ describe("EnrollService:", function () {
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        FetchMock.putOnce("*", HttpStatus.Ok);
+                        FetchMock.putOnce("path:/CreateUser", HttpStatus.Ok);
                         return [4 /*yield*/, expectAsync(service.CreateUser(officerTicket, user, "password"))
                                 .toBeResolved()];
                     case 1:
@@ -126,7 +126,7 @@ describe("EnrollService:", function () {
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        FetchMock.deleteOnce("*", HttpStatus.Ok);
+                        FetchMock.deleteOnce("path:/DeleteUser", HttpStatus.Ok);
                         return [4 /*yield*/, expectAsync(service.DeleteUser(officerTicket, user))
                                 .toBeResolved()];
                     case 1:
@@ -156,7 +156,7 @@ describe("EnrollService:", function () {
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        FetchMock.putOnce("*", HttpStatus.Ok);
+                        FetchMock.putOnce("path:/EnrollUserCredentials", HttpStatus.Ok);
                         return [4 /*yield*/, expectAsync(service.EnrollUserCredentials(officerTicket, userTicket, fingerprints))
                                 .toBeResolved()];
                     case 1:
@@ -186,7 +186,7 @@ describe("EnrollService:", function () {
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        FetchMock.deleteOnce("*", HttpStatus.Ok);
+                        FetchMock.deleteOnce("path:/DeleteUserCredentials", HttpStatus.Ok);
                         return [4 /*yield*/, expectAsync(service.DeleteUserCredentials(officerTicket, userTicket, fingerprints))
                                 .toBeResolved()];
                     case 1:
@@ -216,7 +216,7 @@ describe("EnrollService:", function () {
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        FetchMock.putOnce("*", HttpStatus.Ok);
+                        FetchMock.putOnce("path:/EnrollAltusUserCredentials", HttpStatus.Ok);
                         return [4 /*yield*/, expectAsync(service.EnrollAltusUserCredentials(officerTicket, user, fingerprints))
                                 .toBeResolved()];
                     case 1:
@@ -246,7 +246,7 @@ describe("EnrollService:", function () {
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        FetchMock.deleteOnce("*", HttpStatus.Ok);
+                        FetchMock.deleteOnce("path:/DeleteAltusUserCredentials", HttpStatus.Ok);
                         return [4 /*yield*/, expectAsync(service.DeleteAltusUserCredentials(officerTicket, user, fingerprints))
                                 .toBeResolved()];
                     case 1:
@@ -281,7 +281,7 @@ describe("EnrollService:", function () {
                             name: "group",
                             data: attribute,
                         };
-                        FetchMock.postOnce("*", { GetUserAttributeResult: attribute });
+                        FetchMock.postOnce("path:/GetUserAttribute", { GetUserAttributeResult: attribute });
                         return [4 /*yield*/, expectAsync(service.GetUserAttribute(officerTicket, user, "group"))
                                 .toBeResolvedTo(result)];
                     case 1:
@@ -315,7 +315,7 @@ describe("EnrollService:", function () {
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        FetchMock.putOnce("*", HttpStatus.Ok);
+                        FetchMock.putOnce("path:/PutUserAttribute", HttpStatus.Ok);
                         return [4 /*yield*/, expectAsync(service.PutUserAttribute(officerTicket, user, attr, AttributeAction.Update))
                                 .toBeResolved()];
                     case 1:
@@ -345,7 +345,7 @@ describe("EnrollService:", function () {
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        FetchMock.postOnce("*", HttpStatus.Ok);
+                        FetchMock.postOnce("path:/UnlockUser", HttpStatus.Ok);
                         return [4 /*yield*/, expectAsync(service.UnlockUser(user, fingerprints))
                                 .toBeResolved()];
                     case 1:
@@ -376,7 +376,7 @@ describe("EnrollService:", function () {
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        FetchMock.postOnce("*", { CustomActionResult: result });
+                        FetchMock.postOnce("path:/CustomAction", { CustomActionResult: result });
                         return [4 /*yield*/, expectAsync(service.CustomAction(officerTicket, user, fingerprints, 123))
                                 .toBeResolvedTo(result)];
                     case 1:
@@ -406,7 +406,7 @@ describe("EnrollService:", function () {
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        FetchMock.postOnce("*", HttpStatus.Ok);
+                        FetchMock.postOnce("path:/IsEnrollmentAllowed", HttpStatus.Ok);
                         return [4 /*yield*/, expectAsync(service.IsEnrollmentAllowed(officerTicket, user, Credential.Password))
                                 .toBeResolved()];
                     case 1:

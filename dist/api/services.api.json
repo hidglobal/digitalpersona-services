@@ -8974,6 +8974,190 @@
         },
         {
           "kind": "Interface",
+          "canonicalReference": "(LicenseInfo:interface)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface "
+            },
+            {
+              "kind": "Reference",
+              "text": "LicenseInfo"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "LicenseInfo",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "licenses_deployed",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "licenses_deployed"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "licenses_deployed",
+              "propertyTypeTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "licenses_used",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "licenses_used"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "licenses_used",
+              "propertyTypeTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "type",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "LicenseType"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "type",
+              "propertyTypeTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "(LicenseType:enum)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum "
+            },
+            {
+              "kind": "Reference",
+              "text": "LicenseType"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "LicenseType",
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "ADUser",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "ADUser"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "1"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "ADUser",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "LDSUser",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "LDSUser"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "2"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "LDSUser",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
           "canonicalReference": "(Policy:interface)",
           "docComment": "/**\n * A single authentication policy rule, as a list of {@link PolicyElement | policy elements}. When matching a list of {@CredentialUsed | used credentials} against the policy, the policy is satisfied when **every** {@link PolicyElement | policy elements} in the list is satisfied too.\n */\n",
           "excerptTokens": [
@@ -9454,6 +9638,117 @@
           "extendsTokenRanges": []
         },
         {
+          "kind": "Interface",
+          "canonicalReference": "(PSKCOutput:interface)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface "
+            },
+            {
+              "kind": "Reference",
+              "text": "PSKCOutput"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "PSKCOutput",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "error",
+              "docComment": "/**\n * An errror occurred during OTP token import. The error is 0 if OTP token is imported successfully.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "error"
+                },
+                {
+                  "kind": "Content",
+                  "text": "?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "error",
+              "propertyTypeTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "error_text",
+              "docComment": "/**\n * An error message if OTP token failed to import.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "error_text"
+                },
+                {
+                  "kind": "Content",
+                  "text": "?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "error_text",
+              "propertyTypeTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "serial_number",
+              "docComment": "/**\n * A serial number of the hardware OTP token imported.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "serial_number"
+                },
+                {
+                  "kind": "Content",
+                  "text": "?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "serial_number",
+              "propertyTypeTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
           "kind": "Enum",
           "canonicalReference": "(ResourceActions:enum)",
           "docComment": "/**\n * Enumerates supported resource actions.\n */\n",
@@ -9544,6 +9839,273 @@
               ],
               "releaseTag": "Public",
               "name": "Write",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "(SearchQuery:interface)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface "
+            },
+            {
+              "kind": "Reference",
+              "text": "SearchQuery"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "SearchQuery",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "attributes",
+              "docComment": "/**\n * A list of strings with object attributes requested. NOTE: the bigger list of attributes requested, the slower the search, and the larger amount of data to be transferred over networks.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "attributes"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "attributes",
+              "propertyTypeTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "baseDN",
+              "docComment": "/**\n * A distinguished name of the entry at which to start the search. This is an optional parameter and if it set to `null` we will perform the search from a default base (an AD root for the DPCA AD Server, LDS partition root for the DPCA LDS Server)\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "baseDN"
+                },
+                {
+                  "kind": "Content",
+                  "text": "?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "baseDN",
+              "propertyTypeTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "filter",
+              "docComment": "/**\n * A search filter. Check https://msdn.microsoft.com/en-us/library/aa746475(v=vs.85).aspx for LDAP filter syntax.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "filter"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "filter",
+              "propertyTypeTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "scope",
+              "docComment": "/**\n * A scope of the search.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "scope"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SearchScope"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "scope",
+              "propertyTypeTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "sort",
+              "docComment": "/**\n * A name of the attribute to perform result sorting. For example, `\"cn\"` will sort users search results based on the “cn” (Common Name) attribute. NOTE: Sorting can be performed only on indexed attributes. This is optional parameter and it can be set to null if sorting is not required.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "sort"
+                },
+                {
+                  "kind": "Content",
+                  "text": "?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "sort",
+              "propertyTypeTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "(SearchScope:enum)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum "
+            },
+            {
+              "kind": "Reference",
+              "text": "SearchScope"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "SearchScope",
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "Base",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "Base"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "0"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "Base",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "OneLevel",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "OneLevel"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "1"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "OneLevel",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "Subtree",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "Subtree"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "2"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "Subtree",
               "initializerTokenRange": {
                 "startIndex": 2,
                 "endIndex": 3
@@ -10120,6 +10682,190 @@
           ]
         },
         {
+          "kind": "Enum",
+          "canonicalReference": "(ServerSettings:enum)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum "
+            },
+            {
+              "kind": "Reference",
+              "text": "ServerSettings"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ServerSettings",
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "LockoutDuration",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "\"LockoutDuration\" = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "1"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "LockoutDuration",
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "LockoutReset",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "\"LockoutReset\" = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "2"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "LockoutReset",
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "LockoutThreshold",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "\"LockoutThreshold\" = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "0"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "LockoutThreshold",
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ]
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "(ServerSettingType:enum)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum "
+            },
+            {
+              "kind": "Reference",
+              "text": "ServerSettingType"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ServerSettingType",
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "Admin",
+              "docComment": "/**\n * Server Settings will be accessible only for Domain Administrators.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "Admin"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "1"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "Admin",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "Public",
+              "docComment": "/**\n * Server Settings will be accessible for anybody (public).\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "Public"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "2"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "Public",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "Unknown",
+              "docComment": "/**\n * Unknown Server Settings Type.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "Unknown"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "0"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "Unknown",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            }
+          ]
+        },
+        {
           "kind": "Class",
           "canonicalReference": "(ServiceError:class)",
           "docComment": "/**\n * Maps Web Access service faults to the Javascript exception model\n */\n",
@@ -10671,6 +11417,525 @@
               }
             }
           ]
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "(UACFlags:enum)",
+          "docComment": "/**\n * DPCA Useraccount control flags.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum "
+            },
+            {
+              "kind": "Reference",
+              "text": "UACFlags"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "UACFlags",
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "FingerprintOnly",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "FingerprintOnly"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "16"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "FingerprintOnly",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "FingerprintRequired",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "FingerprintRequired"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "8"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "FingerprintRequired",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "OtpAndFingerprint",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "OtpAndFingerprint"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "128"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "OtpAndFingerprint",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "OtpAndPwd",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "OtpAndPwd"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "64"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "OtpAndPwd",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "PasswordNotAllowed",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "PasswordNotAllowed"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "2"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "PasswordNotAllowed",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "PinRequired",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "PinRequired"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "4"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "PinRequired",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "RevertToWindows",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "RevertToWindows"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "1"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "RevertToWindows",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            }
+          ]
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "(UserAccountType:enum)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum "
+            },
+            {
+              "kind": "Reference",
+              "text": "UserAccountType"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "UserAccountType",
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "ActiveDirectory",
+              "docComment": "/**\n * ActiveDirectory user\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "ActiveDirectory"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "2"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "ActiveDirectory",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "ADLDS",
+              "docComment": "/**\n * AD LDS (DPCA) user.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "ADLDS"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "3"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "ADLDS",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "Local",
+              "docComment": "/**\n * A local user account.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "Local"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "1"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "Local",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "Unknown",
+              "docComment": "/**\n * User account type is unknown.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "Unknown"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "0"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "Unknown",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "(UserInfo:interface)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface "
+            },
+            {
+              "kind": "Reference",
+              "text": "UserInfo"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "UserInfo",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "accountControl",
+              "docComment": "/**\n * User account control bits, stored in the `dpUserAccountControl` attribute of the user's LDAP record.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "accountControl"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "UACFlags"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "accountControl",
+              "propertyTypeTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "displayName",
+              "docComment": "/**\n * User's display name, stored in the `displayName` attribute of the user's LDAP record.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "displayName"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "displayName",
+              "propertyTypeTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "licensed",
+              "docComment": "/**\n * `true` if the user holds DPCA license.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "licensed"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "licensed",
+              "propertyTypeTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "locked",
+              "docComment": "/**\n * `true` if user account locked.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "locked"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "locked",
+              "propertyTypeTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "type",
+              "docComment": "/**\n * User account type.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "UserAccountType"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "type",
+              "propertyTypeTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "uid",
+              "docComment": "/**\n * User's unuque identifier (UID), stored in the `objectGUID` attribute of the user's LDAP record.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "uid"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "uid",
+              "propertyTypeTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            }
+          ],
+          "extendsTokenRanges": []
         },
         {
           "kind": "Class",

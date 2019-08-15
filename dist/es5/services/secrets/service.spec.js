@@ -7,13 +7,13 @@ import { ServerStatus, HttpStatus } from '../../test';
 var FetchMock = require('fetch-mock');
 FetchMock.config.sendAsJson = true;
 describe("SecretService:", function () {
-    var app = "http://test.local/service";
+    var app = "http://test.local";
     var user = new User("john.doe@test.local", UserNameType.UPN);
     var officerTicket = new Ticket("===== security officer's ticket=====");
     var userTicket = new Ticket("===== user's officer ticket=====");
     var creds = [
         Credential.Password,
-        Credential.Fingerprints
+        Credential.Fingerprints,
     ];
     var fingerprints = new Credential(Credential.Fingerprints, "===fingerprint data===");
     var policySet = [
@@ -37,7 +37,7 @@ describe("SecretService:", function () {
                 switch (_a.label) {
                     case 0:
                         result = policySet;
-                        FetchMock.getOnce("*", { GetAuthPolicyResult: result });
+                        FetchMock.getOnce("path:/GetAuthPolicy", { GetAuthPolicyResult: result });
                         return [4 /*yield*/, expectAsync(service.GetAuthPolicy(user, "DPSECRET", ResourceActions.Read))
                                 .toBeResolvedTo(result)];
                     case 1:
@@ -69,7 +69,7 @@ describe("SecretService:", function () {
                 switch (_a.label) {
                     case 0:
                         result = true;
-                        FetchMock.getOnce("*", { DoesSecretExistResult: result });
+                        FetchMock.getOnce("path:/DoesSecretExist", { DoesSecretExistResult: result });
                         return [4 /*yield*/, expectAsync(service.DoesSecretExist(user, "DPSECRET"))
                                 .toBeResolvedTo(result)];
                     case 1:
@@ -101,7 +101,7 @@ describe("SecretService:", function () {
                 switch (_a.label) {
                     case 0:
                         result = secret;
-                        FetchMock.postOnce("*", { ReadSecretResult: result });
+                        FetchMock.postOnce("path:/ReadSecret", { ReadSecretResult: result });
                         return [4 /*yield*/, expectAsync(service.ReadSecret(userTicket, "DPSECRET"))
                                 .toBeResolvedTo(result)];
                     case 1:
@@ -131,7 +131,7 @@ describe("SecretService:", function () {
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        FetchMock.putOnce("*", HttpStatus.Ok);
+                        FetchMock.putOnce("path:/WriteSecret", HttpStatus.Ok);
                         return [4 /*yield*/, expectAsync(service.WriteSecret(userTicket, "DPSECRET", secret))
                                 .toBeResolved()];
                     case 1:
@@ -161,7 +161,7 @@ describe("SecretService:", function () {
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        FetchMock.deleteOnce("*", HttpStatus.Ok);
+                        FetchMock.deleteOnce("path:/DeleteSecret", HttpStatus.Ok);
                         return [4 /*yield*/, expectAsync(service.DeleteSecret(userTicket, "DPSECRET"))
                                 .toBeResolved()];
                     case 1:
