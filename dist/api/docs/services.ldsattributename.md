@@ -9,5 +9,7 @@ Alias type for Lightweight Directory Service (LDS) attribute names.
 <b>Signature:</b>
 
 ```typescript
-export declare type LDSAttributeName = string;
+export declare type LDSAttributeName = string & {
+    brand?: "dp.services.LDSAttributeName";
+};
 ```

@@ -17,5 +17,5 @@ export declare class AuthenticationData
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [data](./services.authenticationdata.data.md) |  | <code>string</code> | Client's authentication data to pass to the server. |
-|  [handle](./services.authenticationdata.handle.md) |  | <code>number</code> | An authentication handle. The client must create the handle on [IAuthenticationClient.init()](./services.iauthenticationclient.init.md)<!-- -->, and destroy on . |
+|  [handle](./services.authenticationdata.handle.md) |  | <code>AuthenticationHandle</code> | An authentication handle. The client must create the handle on [IAuthenticationClient.init()](./services.iauthenticationclient.init.md)<!-- -->, and destroy on . |
 

@@ -13,7 +13,9 @@ import { Ticket } from '@digitalpersona/core';
 import { User } from '@digitalpersona/core';
 
 // @public
-export type ADAttributeName = string;
+export type ADAttributeName = string & {
+    brand?: "dp.services.ADAttributeName";
+};
 
 // Warning: (ae-forgotten-export) The symbol "Service" needs to be exported by the entry point index.d.ts
 // 
@@ -64,11 +66,13 @@ export type AttributeName = ADAttributeName | LDSAttributeName;
 // @public
 export class AuthenticationData {
     readonly data: string;
-    readonly handle: number;
+    readonly handle: AuthenticationHandle;
 }
 
 // @public
-export type AuthenticationHandle = number;
+export type AuthenticationHandle = number & {
+    brand?: "dp.services.AuthenticationHandle";
+};
 
 // @public
 export enum AuthenticationStatus {
@@ -288,7 +292,9 @@ export interface IService {
 }
 
 // @public
-export type LDSAttributeName = string;
+export type LDSAttributeName = string & {
+    brand?: "dp.services.LDSAttributeName";
+};
 
 // @public (undocumented)
 export interface LicenseInfo {

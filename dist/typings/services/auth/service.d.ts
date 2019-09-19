@@ -2,7 +2,9 @@ import { User, Ticket, Credential, CredentialId, Base64String } from '@digitalpe
 import { ExtendedAuthResult } from './extendedResult';
 import { Service } from '../../private';
 /** Alias type for an authentication handle. */
-export declare type AuthenticationHandle = number;
+export declare type AuthenticationHandle = number & {
+    brand?: "dp.services.AuthenticationHandle";
+};
 /** DigitalPersona Web Authentication (DPWebAuth) service interface. */
 export interface IAuthService {
     GetUserCredentials(user: User): Promise<CredentialId[]>;

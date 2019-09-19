@@ -9,5 +9,5 @@ An authentication handle. The client must create the handle on [IAuthenticationC
 <b>Signature:</b>
 
 ```typescript
-readonly handle: number;
+readonly handle: AuthenticationHandle;
 ```

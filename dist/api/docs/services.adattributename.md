@@ -9,5 +9,7 @@ Alias type for ActiveDirectory attribute names.
 <b>Signature:</b>
 
 ```typescript
-export declare type ADAttributeName = string;
+export declare type ADAttributeName = string & {
+    brand?: "dp.services.ADAttributeName";
+};
 ```

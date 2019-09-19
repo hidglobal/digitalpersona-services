@@ -9,5 +9,7 @@ Alias type for an authentication handle.
 <b>Signature:</b>
 
 ```typescript
-export declare type AuthenticationHandle = number;
+export declare type AuthenticationHandle = number & {
+    brand?: "dp.services.AuthenticationHandle";
+};
 ```

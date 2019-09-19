@@ -1,8 +1,12 @@
 import { VarData } from "./variant";
 /** Alias type for ActiveDirectory attribute names. */
-export declare type ADAttributeName = string;
+export declare type ADAttributeName = string & {
+    brand?: "dp.services.ADAttributeName";
+};
 /** Alias type for Lightweight Directory Service (LDS) attribute names. */
-export declare type LDSAttributeName = string;
+export declare type LDSAttributeName = string & {
+    brand?: "dp.services.LDSAttributeName";
+};
 /** Supported types of attribute names. */
 export declare type AttributeName = ADAttributeName | LDSAttributeName;
 /** Enumerates supported actions that can be performed on user's attributes. */

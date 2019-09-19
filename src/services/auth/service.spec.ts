@@ -156,7 +156,7 @@ describe("AuthService:", () =>
     describe("CreateUserAuthentication", () =>
     {
         it('must succeed', async () => {
-            const result = 12345 as AuthenticationHandle;
+            const result: AuthenticationHandle = 12345;
             FetchMock.postOnce(`path:/CreateUserAuthentication`
                 , { CreateUserAuthenticationResult: result });
             await expectAsync(
@@ -176,7 +176,7 @@ describe("AuthService:", () =>
     describe("CreateTicketAuthentication", () =>
     {
         it('must succeed', async () => {
-            const result = 12345 as AuthenticationHandle;
+            const result: AuthenticationHandle = 12345;
             FetchMock.postOnce(`path:/CreateTicketAuthentication`
                 , { CreateTicketAuthenticationResult: result });
             await expectAsync(

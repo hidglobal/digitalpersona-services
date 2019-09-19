@@ -1427,8 +1427,8 @@
                   "text": ": "
                 },
                 {
-                  "kind": "Content",
-                  "text": "number"
+                  "kind": "Reference",
+                  "text": "AuthenticationHandle"
                 },
                 {
                   "kind": "Content",
@@ -12639,7 +12639,15 @@
             },
             {
               "kind": "Content",
-              "text": "string"
+              "text": "string & {\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "brand"
+            },
+            {
+              "kind": "Content",
+              "text": "?: \"dp.services.ADAttributeName\";\n}"
             },
             {
               "kind": "Content",
@@ -12650,7 +12658,7 @@
           "name": "ADAttributeName",
           "typeTokenRange": {
             "startIndex": 3,
-            "endIndex": 4
+            "endIndex": 6
           }
         },
         {
@@ -12713,7 +12721,15 @@
             },
             {
               "kind": "Content",
-              "text": "number"
+              "text": "number & {\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "brand"
+            },
+            {
+              "kind": "Content",
+              "text": "?: \"dp.services.AuthenticationHandle\";\n}"
             },
             {
               "kind": "Content",
@@ -12724,7 +12740,7 @@
           "name": "AuthenticationHandle",
           "typeTokenRange": {
             "startIndex": 3,
-            "endIndex": 4
+            "endIndex": 6
           }
         },
         {
@@ -12746,7 +12762,15 @@
             },
             {
               "kind": "Content",
-              "text": "string"
+              "text": "string & {\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "brand"
+            },
+            {
+              "kind": "Content",
+              "text": "?: \"dp.services.LDSAttributeName\";\n}"
             },
             {
               "kind": "Content",
@@ -12757,7 +12781,7 @@
           "name": "LDSAttributeName",
           "typeTokenRange": {
             "startIndex": 3,
-            "endIndex": 4
+            "endIndex": 6
           }
         },
         {
