@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __awaiter } from "tslib";
 import { User } from '@digitalpersona/core';
 import { ResourceActions, ServiceError } from '../../common';
 import { PolicyService } from '.';
@@ -20,7 +20,7 @@ describe('PolicyService: ', () => {
         FetchMock.restore();
     });
     describe('GetPolicyinfo', () => {
-        it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must succeed', () => __awaiter(void 0, void 0, void 0, function* () {
             const result = {
                 policyList: [],
                 policyTriggers: [],
@@ -29,7 +29,7 @@ describe('PolicyService: ', () => {
             yield expectAsync(service.GetPolicyInfo(user, resource, ResourceActions.Read, context))
                 .toBeResolvedTo(result);
         }));
-        it('must fail', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must fail', () => __awaiter(void 0, void 0, void 0, function* () {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`, new Response(JSON.stringify(fault), HttpStatus.NotFound));
             yield expectAsync(service.GetPolicyInfo(user, resource, ResourceActions.Read, context))

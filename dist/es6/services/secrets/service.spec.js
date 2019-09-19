@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __awaiter } from "tslib";
 import { User, UserNameType, Credential, Ticket } from '@digitalpersona/core';
 import { ResourceActions, ServiceError } from '../../common';
 import { SecretService } from '.';
@@ -30,13 +30,13 @@ describe("SecretService:", () => {
         FetchMock.restore();
     });
     describe("GetAuthPolicy", () => {
-        it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must succeed', () => __awaiter(void 0, void 0, void 0, function* () {
             const result = policySet;
             FetchMock.getOnce(`path:/GetAuthPolicy`, { GetAuthPolicyResult: result });
             yield expectAsync(service.GetAuthPolicy(user, "DPSECRET", ResourceActions.Read))
                 .toBeResolvedTo(result);
         }));
-        it('must fail', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must fail', () => __awaiter(void 0, void 0, void 0, function* () {
             const fault = ServerStatus.E_FAIL;
             FetchMock.getOnce(`*`, new Response(JSON.stringify(fault), HttpStatus.NotFound));
             yield expectAsync(service.GetAuthPolicy(user, "DPSECRET", ResourceActions.Read))
@@ -44,13 +44,13 @@ describe("SecretService:", () => {
         }));
     });
     describe("DoesSecretExist", () => {
-        it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must succeed', () => __awaiter(void 0, void 0, void 0, function* () {
             const result = true;
             FetchMock.getOnce(`path:/DoesSecretExist`, { DoesSecretExistResult: result });
             yield expectAsync(service.DoesSecretExist(user, "DPSECRET"))
                 .toBeResolvedTo(result);
         }));
-        it('must fail', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must fail', () => __awaiter(void 0, void 0, void 0, function* () {
             const fault = ServerStatus.E_FAIL;
             FetchMock.getOnce(`*`, new Response(JSON.stringify(fault), HttpStatus.NotFound));
             yield expectAsync(service.DoesSecretExist(user, "DPSECRET"))
@@ -58,13 +58,13 @@ describe("SecretService:", () => {
         }));
     });
     describe("ReadSecret", () => {
-        it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must succeed', () => __awaiter(void 0, void 0, void 0, function* () {
             const result = secret;
             FetchMock.postOnce(`path:/ReadSecret`, { ReadSecretResult: result });
             yield expectAsync(service.ReadSecret(userTicket, "DPSECRET"))
                 .toBeResolvedTo(result);
         }));
-        it('must fail', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must fail', () => __awaiter(void 0, void 0, void 0, function* () {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`, new Response(JSON.stringify(fault), HttpStatus.NotFound));
             yield expectAsync(service.ReadSecret(userTicket, "DPSECRET"))
@@ -72,12 +72,12 @@ describe("SecretService:", () => {
         }));
     });
     describe("WriteSecret", () => {
-        it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must succeed', () => __awaiter(void 0, void 0, void 0, function* () {
             FetchMock.putOnce(`path:/WriteSecret`, HttpStatus.Ok);
             yield expectAsync(service.WriteSecret(userTicket, "DPSECRET", secret))
                 .toBeResolved();
         }));
-        it('must fail', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must fail', () => __awaiter(void 0, void 0, void 0, function* () {
             const fault = ServerStatus.E_FAIL;
             FetchMock.putOnce(`*`, new Response(JSON.stringify(fault), HttpStatus.NotFound));
             yield expectAsync(service.WriteSecret(userTicket, "DPSECRET", secret))
@@ -85,12 +85,12 @@ describe("SecretService:", () => {
         }));
     });
     describe("DeleteSecret", () => {
-        it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must succeed', () => __awaiter(void 0, void 0, void 0, function* () {
             FetchMock.deleteOnce(`path:/DeleteSecret`, HttpStatus.Ok);
             yield expectAsync(service.DeleteSecret(userTicket, "DPSECRET"))
                 .toBeResolved();
         }));
-        it('must fail', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must fail', () => __awaiter(void 0, void 0, void 0, function* () {
             const fault = ServerStatus.E_FAIL;
             FetchMock.deleteOnce(`*`, new Response(JSON.stringify(fault), HttpStatus.NotFound));
             yield expectAsync(service.DeleteSecret(userTicket, "DPSECRET"))

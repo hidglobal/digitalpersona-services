@@ -1,10 +1,10 @@
-import * as tslib_1 from "tslib";
+import { __extends } from "tslib";
 import { Service } from '../../private';
 /**
  * DigitalPersona Web Enroll (DPWebEnroll) service client wrapper.
  */
 var EnrollService = /** @class */ (function (_super) {
-    tslib_1.__extends(EnrollService, _super);
+    __extends(EnrollService, _super);
     /** Constructs a service wrapper.
      * @param endpointUrl - a URL to the DPWebClaims service.
      */

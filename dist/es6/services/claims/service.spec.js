@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __awaiter } from "tslib";
 import { ClaimName } from '@digitalpersona/core';
 import { ServiceError, DatabaseType } from '../../common';
 import { ClaimsService, ClaimRequest } from '.';
@@ -18,7 +18,7 @@ describe("ClaimsService:", () => {
         FetchMock.restore();
     });
     describe("GetConfiguredClaims", () => {
-        it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must succeed', () => __awaiter(void 0, void 0, void 0, function* () {
             const result = {
                 ticket,
             };
@@ -26,7 +26,7 @@ describe("ClaimsService:", () => {
             yield expectAsync(service.GetConfiguredClaims(ticket))
                 .toBeResolvedTo(ticket);
         }));
-        it('must fail', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must fail', () => __awaiter(void 0, void 0, void 0, function* () {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`, new Response(JSON.stringify(fault), HttpStatus.NotFound));
             yield expectAsync(service.GetConfiguredClaims(ticket))
@@ -37,7 +37,7 @@ describe("ClaimsService:", () => {
         const request = [
             new ClaimRequest(ClaimName.Group, DatabaseType.AD, "memberOf"),
         ];
-        it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must succeed', () => __awaiter(void 0, void 0, void 0, function* () {
             const result = {
                 ticket,
             };
@@ -45,7 +45,7 @@ describe("ClaimsService:", () => {
             yield expectAsync(service.GetClaims(ticket, request))
                 .toBeResolvedTo(ticket);
         }));
-        it('must fail', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must fail', () => __awaiter(void 0, void 0, void 0, function* () {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`, new Response(JSON.stringify(fault), HttpStatus.NotFound));
             yield expectAsync(service.GetClaims(ticket, request))

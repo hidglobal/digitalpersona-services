@@ -1,8 +1,8 @@
-import * as tslib_1 from "tslib";
+import { __assign, __extends } from "tslib";
 import { Service } from '../../private';
 /** DigitalPersona WebAuth (DPWebAuth) service client wrapper. */
 var AdminService = /** @class */ (function (_super) {
-    tslib_1.__extends(AdminService, _super);
+    __extends(AdminService, _super);
     /** Constructs a service wrapper.
      * @param endpointUrl - a URL to the DPWebClaims service.
      */
@@ -12,7 +12,7 @@ var AdminService = /** @class */ (function (_super) {
     /** @inheritdoc */
     AdminService.prototype.ExecuteSearch = function (ticket, query) {
         return this.endpoint
-            .post("ExecuteSearch", null, tslib_1.__assign({ ticket: ticket }, query))
+            .post("ExecuteSearch", null, __assign({ ticket: ticket }, query))
             .then(function (response) { return JSON.parse(response.ExecuteSearchResult); });
     };
     /** @inheritdoc */

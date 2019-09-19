@@ -1,5 +1,4 @@
-var _this = this;
-import * as tslib_1 from "tslib";
+import { __awaiter, __generator } from "tslib";
 import { User, UserNameType, Credential, Ticket } from '@digitalpersona/core';
 import { ServiceError, VarType, VarString, VarInt } from '../../common';
 import { ServerStatus, HttpStatus } from '../../test';
@@ -57,8 +56,8 @@ describe("AdminService:", function () {
                 },
             ],
         ];
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.postOnce("path:/ExecuteSearch", { ExecuteSearchResult: JSON.stringify(searchResult) });
@@ -70,9 +69,9 @@ describe("AdminService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -92,8 +91,8 @@ describe("AdminService:", function () {
             { serial_number: "1234" },
             { error: 9876, error_text: "Error 9876" },
         ];
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.postOnce('path:/PSKCImport', { PSKCImportResult: output });
@@ -105,9 +104,9 @@ describe("AdminService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -128,8 +127,8 @@ describe("AdminService:", function () {
             { name: "LockoutDuration", data: new VarInt([30]) },
             { name: "LockoutReset", data: new VarInt([5]) },
         ];
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.postOnce('path:/GetServerSettings', { GetServerSettingsResult: output });
@@ -141,9 +140,9 @@ describe("AdminService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -163,8 +162,8 @@ describe("AdminService:", function () {
             { name: "LockoutDuration", data: new VarInt([30]) },
             { name: "LockoutReset", data: new VarInt([5]) },
         ];
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.putOnce('path:/SetServerSettings', HttpStatus.Ok);
@@ -176,9 +175,9 @@ describe("AdminService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -198,8 +197,8 @@ describe("AdminService:", function () {
             licenses_deployed: 100,
             licenses_used: 50,
         };
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.getOnce(app + "/GetLicenseInfo?type=1", { GetLicenseInfoResult: result });
@@ -211,9 +210,9 @@ describe("AdminService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -230,8 +229,8 @@ describe("AdminService:", function () {
     describe("GetUserRecoveryPassword", function () {
         var encPassword = "==== Encrypted Password ===";
         var result = "==== Recovery Password ===";
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.postOnce("path:/GetUserRecoveryPassword", { GetUserRecoveryPasswordResult: result });
@@ -243,9 +242,9 @@ describe("AdminService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -264,8 +263,8 @@ describe("AdminService:", function () {
             new Credential(Credential.Password),
             new Credential(Credential.Fingerprints),
         ];
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.deleteOnce("path:/AdminDeleteUserCredentials", HttpStatus.Ok);
@@ -277,9 +276,9 @@ describe("AdminService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -302,8 +301,8 @@ describe("AdminService:", function () {
             locked: false,
             licensed: true,
         };
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.postOnce("path:/GetUserInfo", { GetUserInfoResult: result });
@@ -315,9 +314,9 @@ describe("AdminService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -332,8 +331,8 @@ describe("AdminService:", function () {
         }); });
     });
     describe("UnlockUserAccount", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.putOnce("path:/UnlockUserAccount", HttpStatus.Ok);
@@ -345,9 +344,9 @@ describe("AdminService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -363,8 +362,8 @@ describe("AdminService:", function () {
     });
     describe("SetUserAccountControl", function () {
         var control = UACFlags.OtpAndFingerprint;
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.putOnce('path:/SetUserAccountControl', HttpStatus.Ok);
@@ -376,9 +375,9 @@ describe("AdminService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;

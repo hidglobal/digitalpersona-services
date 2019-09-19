@@ -35,24 +35,24 @@ export class ServiceEndpoint {
         throw new ServiceError(response.status, response.statusText);
     }
     get(path, query, request) {
-        return fetch(Url.create(this.endpointUrl, path, query), Object.assign({}, this.defaultRequest, request, { method: 'GET' }))
+        return fetch(Url.create(this.endpointUrl, path, query), Object.assign(Object.assign(Object.assign({}, this.defaultRequest), request), { method: 'GET' }))
             .then(ServiceEndpoint.handleResponse);
     }
     post(path, query, body, request) {
-        return fetch(Url.create(this.endpointUrl, path, query), Object.assign({}, this.defaultRequest, request, { method: 'POST' }, (body ? { body: JSON.stringify(body) } : {})))
+        return fetch(Url.create(this.endpointUrl, path, query), Object.assign(Object.assign(Object.assign(Object.assign({}, this.defaultRequest), request), { method: 'POST' }), (body ? { body: JSON.stringify(body) } : {})))
             .then(ServiceEndpoint.handleResponse);
     }
     put(path, query, body, request) {
-        return fetch(Url.create(this.endpointUrl, path, query), Object.assign({}, this.defaultRequest, request, { method: 'PUT' }, (body ? { body: JSON.stringify(body) } : {})))
+        return fetch(Url.create(this.endpointUrl, path, query), Object.assign(Object.assign(Object.assign(Object.assign({}, this.defaultRequest), request), { method: 'PUT' }), (body ? { body: JSON.stringify(body) } : {})))
             .then(ServiceEndpoint.handleResponse);
     }
     // cannot use "delete" as it is a reserved Javascript word
     del(path, query, body, request) {
-        return fetch(Url.create(this.endpointUrl, path, query), Object.assign({}, this.defaultRequest, request, { method: 'DELETE' }, (body ? { body: JSON.stringify(body) } : {})))
+        return fetch(Url.create(this.endpointUrl, path, query), Object.assign(Object.assign(Object.assign(Object.assign({}, this.defaultRequest), request), { method: 'DELETE' }), (body ? { body: JSON.stringify(body) } : {})))
             .then(ServiceEndpoint.handleResponse);
     }
     ping(path = 'Ping') {
-        return fetch(Url.create(this.endpointUrl, path), Object.assign({}, this.defaultRequest, { method: "GET" }))
+        return fetch(Url.create(this.endpointUrl, path), Object.assign(Object.assign({}, this.defaultRequest), { method: "GET" }))
             .then(response => response.ok)
             .catch(reason => false);
     }

@@ -11,7 +11,7 @@ export class ServiceEndpoint
             "Content-Type": "application/json;charset=utf-8",
             "Accept": "application/json",
         },
-    }
+    };
 
     public constructor(endpointUrl: string, defaultRequest?: RequestInit) {
         this.endpointUrl = endpointUrl;
@@ -47,7 +47,7 @@ export class ServiceEndpoint
             Url.create(this.endpointUrl, path, query)
             , { ...this.defaultRequest
                 , ...request
-                , method: 'GET'
+                , method: 'GET',
             })
             .then(ServiceEndpoint.handleResponse);
     }
@@ -59,7 +59,7 @@ export class ServiceEndpoint
             , { ...this.defaultRequest
                 , ...request
                 , method: 'POST'
-                , ...(body ? { body: JSON.stringify(body) } : {})
+                , ...(body ? { body: JSON.stringify(body) } : {}),
             })
             .then(ServiceEndpoint.handleResponse);
         }
@@ -71,7 +71,7 @@ export class ServiceEndpoint
             , { ...this.defaultRequest
                 , ...request
                 , method: 'PUT'
-                , ...(body ? { body: JSON.stringify(body) } : {})
+                , ...(body ? { body: JSON.stringify(body) } : {}),
             })
             .then(ServiceEndpoint.handleResponse);
         }
@@ -84,7 +84,7 @@ export class ServiceEndpoint
             , { ...this.defaultRequest
                 , ...request
                 , method: 'DELETE'
-                , ...(body ? { body: JSON.stringify(body) } : {})
+                , ...(body ? { body: JSON.stringify(body) } : {}),
             })
             .then(ServiceEndpoint.handleResponse);
         }

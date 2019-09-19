@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __awaiter } from "tslib";
 import { User, UserNameType, Credential, Ticket } from '@digitalpersona/core';
 import { ServiceError, VarType, VarString, VarInt } from '../../common';
 import { ServerStatus, HttpStatus } from '../../test';
@@ -56,12 +56,12 @@ describe("AdminService:", () => {
                 },
             ],
         ];
-        it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must succeed', () => __awaiter(void 0, void 0, void 0, function* () {
             FetchMock.postOnce(`path:/ExecuteSearch`, { ExecuteSearchResult: JSON.stringify(searchResult) });
             yield expectAsync(service.ExecuteSearch(officerTicket, query))
                 .toBeResolvedTo(JSON.parse(JSON.stringify(searchResult)));
         }));
-        it('must fail', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must fail', () => __awaiter(void 0, void 0, void 0, function* () {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`, new Response(JSON.stringify(fault), HttpStatus.NotFound));
             yield expectAsync(service.ExecuteSearch(officerTicket, query))
@@ -74,12 +74,12 @@ describe("AdminService:", () => {
             { serial_number: "1234" },
             { error: 9876, error_text: "Error 9876" },
         ];
-        it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must succeed', () => __awaiter(void 0, void 0, void 0, function* () {
             FetchMock.postOnce('path:/PSKCImport', { PSKCImportResult: output });
             yield expectAsync(service.PSKCImport(officerTicket, input))
                 .toBeResolvedTo(output);
         }));
-        it('must fail', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must fail', () => __awaiter(void 0, void 0, void 0, function* () {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`, new Response(JSON.stringify(fault), HttpStatus.NotFound));
             yield expectAsync(service.PSKCImport(officerTicket, input))
@@ -93,12 +93,12 @@ describe("AdminService:", () => {
             { name: "LockoutDuration", data: new VarInt([30]) },
             { name: "LockoutReset", data: new VarInt([5]) },
         ];
-        it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must succeed', () => __awaiter(void 0, void 0, void 0, function* () {
             FetchMock.postOnce('path:/GetServerSettings', { GetServerSettingsResult: output });
             yield expectAsync(service.GetServerSettings(officerTicket, user, settingNames))
                 .toBeResolvedTo(JSON.parse(JSON.stringify(output)));
         }));
-        it('must fail', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must fail', () => __awaiter(void 0, void 0, void 0, function* () {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`, new Response(JSON.stringify(fault), HttpStatus.NotFound));
             yield expectAsync(service.GetServerSettings(officerTicket, user, settingNames))
@@ -111,12 +111,12 @@ describe("AdminService:", () => {
             { name: "LockoutDuration", data: new VarInt([30]) },
             { name: "LockoutReset", data: new VarInt([5]) },
         ];
-        it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must succeed', () => __awaiter(void 0, void 0, void 0, function* () {
             FetchMock.putOnce('path:/SetServerSettings', HttpStatus.Ok);
             yield expectAsync(service.SetServerSettings(officerTicket, ServerSettingType.Admin, settings))
                 .toBeResolved();
         }));
-        it('must fail', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must fail', () => __awaiter(void 0, void 0, void 0, function* () {
             const fault = ServerStatus.E_FAIL;
             FetchMock.putOnce(`*`, new Response(JSON.stringify(fault), HttpStatus.NotFound));
             yield expectAsync(service.SetServerSettings(officerTicket, ServerSettingType.Admin, settings))
@@ -129,12 +129,12 @@ describe("AdminService:", () => {
             licenses_deployed: 100,
             licenses_used: 50,
         };
-        it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must succeed', () => __awaiter(void 0, void 0, void 0, function* () {
             FetchMock.getOnce(`${app}/GetLicenseInfo?type=1`, { GetLicenseInfoResult: result });
             yield expectAsync(service.GetLicenseInfo(LicenseType.ADUser))
                 .toBeResolvedTo(result);
         }));
-        it('must fail', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must fail', () => __awaiter(void 0, void 0, void 0, function* () {
             const fault = ServerStatus.E_FAIL;
             FetchMock.getOnce(`*`, new Response(JSON.stringify(fault), HttpStatus.NotFound));
             yield expectAsync(service.GetLicenseInfo(LicenseType.ADUser))
@@ -144,12 +144,12 @@ describe("AdminService:", () => {
     describe("GetUserRecoveryPassword", () => {
         const encPassword = "==== Encrypted Password ===";
         const result = "==== Recovery Password ===";
-        it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must succeed', () => __awaiter(void 0, void 0, void 0, function* () {
             FetchMock.postOnce(`path:/GetUserRecoveryPassword`, { GetUserRecoveryPasswordResult: result });
             yield expectAsync(service.GetUserRecoveryPassword(officerTicket, user, encPassword))
                 .toBeResolvedTo(result);
         }));
-        it('must fail', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must fail', () => __awaiter(void 0, void 0, void 0, function* () {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`, new Response(JSON.stringify(fault), HttpStatus.NotFound));
             yield expectAsync(service.GetUserRecoveryPassword(officerTicket, user, encPassword))
@@ -161,12 +161,12 @@ describe("AdminService:", () => {
             new Credential(Credential.Password),
             new Credential(Credential.Fingerprints),
         ];
-        it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must succeed', () => __awaiter(void 0, void 0, void 0, function* () {
             FetchMock.deleteOnce(`path:/AdminDeleteUserCredentials`, HttpStatus.Ok);
             yield expectAsync(service.AdminDeleteUserCredentials(officerTicket, user, credentials))
                 .toBeResolved();
         }));
-        it('must fail', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must fail', () => __awaiter(void 0, void 0, void 0, function* () {
             const fault = ServerStatus.E_FAIL;
             FetchMock.deleteOnce(`*`, new Response(JSON.stringify(fault), HttpStatus.NotFound));
             yield expectAsync(service.AdminDeleteUserCredentials(officerTicket, user, credentials))
@@ -182,12 +182,12 @@ describe("AdminService:", () => {
             locked: false,
             licensed: true,
         };
-        it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must succeed', () => __awaiter(void 0, void 0, void 0, function* () {
             FetchMock.postOnce(`path:/GetUserInfo`, { GetUserInfoResult: result });
             yield expectAsync(service.GetUserInfo(officerTicket, user))
                 .toBeResolvedTo(result);
         }));
-        it('must fail', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must fail', () => __awaiter(void 0, void 0, void 0, function* () {
             const fault = ServerStatus.E_FAIL;
             FetchMock.postOnce(`*`, new Response(JSON.stringify(fault), HttpStatus.NotFound));
             yield expectAsync(service.GetUserInfo(officerTicket, user))
@@ -195,12 +195,12 @@ describe("AdminService:", () => {
         }));
     });
     describe("UnlockUserAccount", () => {
-        it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must succeed', () => __awaiter(void 0, void 0, void 0, function* () {
             FetchMock.putOnce(`path:/UnlockUserAccount`, HttpStatus.Ok);
             yield expectAsync(service.UnlockUserAccount(officerTicket, user))
                 .toBeResolved();
         }));
-        it('must fail', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must fail', () => __awaiter(void 0, void 0, void 0, function* () {
             const fault = ServerStatus.E_FAIL;
             FetchMock.putOnce(`*`, new Response(JSON.stringify(fault), HttpStatus.NotFound));
             yield expectAsync(service.UnlockUserAccount(officerTicket, user))
@@ -209,12 +209,12 @@ describe("AdminService:", () => {
     });
     describe("SetUserAccountControl", () => {
         const control = UACFlags.OtpAndFingerprint;
-        it('must succeed', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must succeed', () => __awaiter(void 0, void 0, void 0, function* () {
             FetchMock.putOnce('path:/SetUserAccountControl', HttpStatus.Ok);
             yield expectAsync(service.SetUserAccountControl(officerTicket, user, control))
                 .toBeResolved();
         }));
-        it('must fail', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+        it('must fail', () => __awaiter(void 0, void 0, void 0, function* () {
             const fault = ServerStatus.E_FAIL;
             FetchMock.putOnce(`*`, new Response(JSON.stringify(fault), HttpStatus.NotFound));
             yield expectAsync(service.SetUserAccountControl(officerTicket, user, control))

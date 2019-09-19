@@ -1,5 +1,4 @@
-var _this = this;
-import * as tslib_1 from "tslib";
+import { __awaiter, __generator } from "tslib";
 import { User, UserNameType, Credential, Ticket } from '@digitalpersona/core';
 import { ServiceError, VarType, AttributeAction } from '../../common';
 import { EnrollService } from '.';
@@ -28,9 +27,9 @@ describe("EnrollService:", function () {
         FetchMock.restore();
     });
     describe("GetUserCredentials", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
             var result;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         result = creds;
@@ -43,9 +42,9 @@ describe("EnrollService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -60,9 +59,9 @@ describe("EnrollService:", function () {
         }); });
     });
     describe("GetEnrollmentData", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
             var result;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         result = "==== enrollment data =====";
@@ -75,9 +74,9 @@ describe("EnrollService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -92,8 +91,8 @@ describe("EnrollService:", function () {
         }); });
     });
     describe("CreateUser", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.putOnce("path:/CreateUser", HttpStatus.Ok);
@@ -105,9 +104,9 @@ describe("EnrollService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -122,8 +121,8 @@ describe("EnrollService:", function () {
         }); });
     });
     describe("DeleteUser", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.deleteOnce("path:/DeleteUser", HttpStatus.Ok);
@@ -135,9 +134,9 @@ describe("EnrollService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -152,8 +151,8 @@ describe("EnrollService:", function () {
         }); });
     });
     describe("EnrollUserCredentials", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.putOnce("path:/EnrollUserCredentials", HttpStatus.Ok);
@@ -165,9 +164,9 @@ describe("EnrollService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -182,8 +181,8 @@ describe("EnrollService:", function () {
         }); });
     });
     describe("DeleteUserCredentials", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.deleteOnce("path:/DeleteUserCredentials", HttpStatus.Ok);
@@ -195,9 +194,9 @@ describe("EnrollService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -212,8 +211,8 @@ describe("EnrollService:", function () {
         }); });
     });
     describe("EnrollAltusUserCredentials", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.putOnce("path:/EnrollAltusUserCredentials", HttpStatus.Ok);
@@ -225,9 +224,9 @@ describe("EnrollService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -242,8 +241,8 @@ describe("EnrollService:", function () {
         }); });
     });
     describe("DeleteAltusUserCredentials", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.deleteOnce("path:/DeleteAltusUserCredentials", HttpStatus.Ok);
@@ -255,9 +254,9 @@ describe("EnrollService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -272,9 +271,9 @@ describe("EnrollService:", function () {
         }); });
     });
     describe("GetUserAttribute", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
             var result;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         result = {
@@ -290,9 +289,9 @@ describe("EnrollService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -311,8 +310,8 @@ describe("EnrollService:", function () {
             name: "group",
             data: attribute,
         };
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.putOnce("path:/PutUserAttribute", HttpStatus.Ok);
@@ -324,9 +323,9 @@ describe("EnrollService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -341,8 +340,8 @@ describe("EnrollService:", function () {
         }); });
     });
     describe("UnlockUser", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.postOnce("path:/UnlockUser", HttpStatus.Ok);
@@ -354,9 +353,9 @@ describe("EnrollService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -372,8 +371,8 @@ describe("EnrollService:", function () {
     });
     describe("CustomAction", function () {
         var result = "==== custom action result ===";
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.postOnce("path:/CustomAction", { CustomActionResult: result });
@@ -385,9 +384,9 @@ describe("EnrollService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -402,8 +401,8 @@ describe("EnrollService:", function () {
         }); });
     });
     describe("IsEnrollmentAllowed", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.postOnce("path:/IsEnrollmentAllowed", HttpStatus.Ok);
@@ -415,9 +414,9 @@ describe("EnrollService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;

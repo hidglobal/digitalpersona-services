@@ -1,9 +1,9 @@
-import * as tslib_1 from "tslib";
+import { __extends } from "tslib";
 import { Ticket } from '@digitalpersona/core';
 import { Service } from '../../private';
 /** DigitalPersona WebAuth (DPWebAuth) service client wrapper. */
 var AuthService = /** @class */ (function (_super) {
-    tslib_1.__extends(AuthService, _super);
+    __extends(AuthService, _super);
     /** Constructs a service wrapper.
      * @param endpointUrl - a URL to the DPWebClaims service.
      */

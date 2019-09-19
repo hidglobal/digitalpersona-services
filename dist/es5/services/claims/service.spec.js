@@ -1,5 +1,4 @@
-var _this = this;
-import * as tslib_1 from "tslib";
+import { __awaiter, __generator } from "tslib";
 import { ClaimName } from '@digitalpersona/core';
 import { ServiceError, DatabaseType } from '../../common';
 import { ClaimsService, ClaimRequest } from '.';
@@ -19,9 +18,9 @@ describe("ClaimsService:", function () {
         FetchMock.restore();
     });
     describe("GetConfiguredClaims", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
             var result;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         result = {
@@ -36,9 +35,9 @@ describe("ClaimsService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -56,9 +55,9 @@ describe("ClaimsService:", function () {
         var request = [
             new ClaimRequest(ClaimName.Group, DatabaseType.AD, "memberOf"),
         ];
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
             var result;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         result = {
@@ -73,9 +72,9 @@ describe("ClaimsService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;

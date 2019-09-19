@@ -1,9 +1,9 @@
-import * as tslib_1 from "tslib";
+import { __extends } from "tslib";
 /**
  * Maps Web Access service faults to the Javascript exception model
  */
 var ServiceError = /** @class */ (function (_super) {
-    tslib_1.__extends(ServiceError, _super);
+    __extends(ServiceError, _super);
     /** Constructs the object. */
     function ServiceError(code, message) {
         var _newTarget = this.constructor;

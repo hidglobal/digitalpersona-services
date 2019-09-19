@@ -1,14 +1,13 @@
-var _this = this;
-import * as tslib_1 from "tslib";
+import { __awaiter, __generator } from "tslib";
 import { Service } from "./service";
 import { HttpStatus } from '../test';
 var fetchMock = require('fetch-mock');
 describe("Base service: ", function () {
     var app = "http://test.local/service";
     var ping = app + "/Ping";
-    it("must return true when can ping", function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+    it("must return true when can ping", function () { return __awaiter(void 0, void 0, void 0, function () {
         var service, _a;
-        return tslib_1.__generator(this, function (_b) {
+        return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
                     fetchMock.get(ping, HttpStatus.Ok.status);
@@ -22,9 +21,9 @@ describe("Base service: ", function () {
             }
         });
     }); });
-    it("must return false when cannot ping", function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+    it("must return false when cannot ping", function () { return __awaiter(void 0, void 0, void 0, function () {
         var service, _a;
-        return tslib_1.__generator(this, function (_b) {
+        return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
                     fetchMock.get(ping, HttpStatus.InternalError.status);

@@ -1,5 +1,4 @@
-var _this = this;
-import * as tslib_1 from "tslib";
+import { __assign, __awaiter, __generator } from "tslib";
 import { User, UserNameType, Credential, Ticket } from '@digitalpersona/core';
 import { ServiceError } from '../../common';
 import { AuthService, AuthenticationStatus } from '.';
@@ -23,9 +22,9 @@ describe("AuthService:", function () {
         FetchMock.restore();
     });
     describe("GetUserCredentials", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
             var result;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         result = creds;
@@ -38,9 +37,9 @@ describe("AuthService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -55,9 +54,9 @@ describe("AuthService:", function () {
         }); });
     });
     describe("GetEnrollmentData", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
             var result;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         result = "==== enrollment data =====";
@@ -70,9 +69,9 @@ describe("AuthService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -87,9 +86,9 @@ describe("AuthService:", function () {
         }); });
     });
     describe("IdentifyUser", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
             var result;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         result = ticket;
@@ -102,9 +101,9 @@ describe("AuthService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -119,9 +118,9 @@ describe("AuthService:", function () {
         }); });
     });
     describe("AuthenticateUser", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
             var result;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         result = ticket;
@@ -134,9 +133,9 @@ describe("AuthService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -151,9 +150,9 @@ describe("AuthService:", function () {
         }); });
     });
     describe("AuthenticateUserTicket", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
             var result;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         result = ticket;
@@ -166,9 +165,9 @@ describe("AuthService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -183,9 +182,9 @@ describe("AuthService:", function () {
         }); });
     });
     describe("CustomAction", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
             var result;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         result = "====custom action result====";
@@ -198,8 +197,8 @@ describe("AuthService:", function () {
                 }
             });
         }); });
-        it('must succeed, returns nothing', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed, returns nothing', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.postOnce("*", { CustomActionResult: null });
@@ -211,9 +210,9 @@ describe("AuthService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -228,9 +227,9 @@ describe("AuthService:", function () {
         }); });
     });
     describe("CreateUserAuthentication", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
             var result;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         result = 12345;
@@ -243,9 +242,9 @@ describe("AuthService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -260,9 +259,9 @@ describe("AuthService:", function () {
         }); });
     });
     describe("CreateTicketAuthentication", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
             var result;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         result = 12345;
@@ -275,9 +274,9 @@ describe("AuthService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -292,12 +291,12 @@ describe("AuthService:", function () {
         }); });
     });
     describe("ContinueAuthentication", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
             var result;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        result = tslib_1.__assign({}, ticket, { status: AuthenticationStatus.Continue, authData: "==== auth data ====" });
+                        result = __assign(__assign({}, ticket), { status: AuthenticationStatus.Continue, authData: "==== auth data ====" });
                         FetchMock.postOnce("path:/ContinueAuthentication", { ContinueAuthenticationResult: result });
                         return [4 /*yield*/, expectAsync(service.ContinueAuthentication(12345, ticket.jwt))
                                 .toBeResolvedTo(result)];
@@ -307,9 +306,9 @@ describe("AuthService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;
@@ -324,8 +323,8 @@ describe("AuthService:", function () {
         }); });
     });
     describe("DestroyAuthentication", function () {
-        it('must succeed', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        it('must succeed', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         FetchMock.deleteOnce("path:/DestroyAuthentication", HttpStatus.Ok);
@@ -337,9 +336,9 @@ describe("AuthService:", function () {
                 }
             });
         }); });
-        it('must fail', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
+        it('must fail', function () { return __awaiter(void 0, void 0, void 0, function () {
             var fault;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         fault = ServerStatus.E_FAIL;

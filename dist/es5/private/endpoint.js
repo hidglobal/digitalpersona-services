@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __assign } from "tslib";
 import { ServiceError } from '../common';
 import { Url } from '@digitalpersona/core';
 var ServiceEndpoint = /** @class */ (function () {
@@ -36,25 +36,25 @@ var ServiceEndpoint = /** @class */ (function () {
         throw new ServiceError(response.status, response.statusText);
     };
     ServiceEndpoint.prototype.get = function (path, query, request) {
-        return fetch(Url.create(this.endpointUrl, path, query), tslib_1.__assign({}, this.defaultRequest, request, { method: 'GET' }))
+        return fetch(Url.create(this.endpointUrl, path, query), __assign(__assign(__assign({}, this.defaultRequest), request), { method: 'GET' }))
             .then(ServiceEndpoint.handleResponse);
     };
     ServiceEndpoint.prototype.post = function (path, query, body, request) {
-        return fetch(Url.create(this.endpointUrl, path, query), tslib_1.__assign({}, this.defaultRequest, request, { method: 'POST' }, (body ? { body: JSON.stringify(body) } : {})))
+        return fetch(Url.create(this.endpointUrl, path, query), __assign(__assign(__assign(__assign({}, this.defaultRequest), request), { method: 'POST' }), (body ? { body: JSON.stringify(body) } : {})))
             .then(ServiceEndpoint.handleResponse);
     };
     ServiceEndpoint.prototype.put = function (path, query, body, request) {
-        return fetch(Url.create(this.endpointUrl, path, query), tslib_1.__assign({}, this.defaultRequest, request, { method: 'PUT' }, (body ? { body: JSON.stringify(body) } : {})))
+        return fetch(Url.create(this.endpointUrl, path, query), __assign(__assign(__assign(__assign({}, this.defaultRequest), request), { method: 'PUT' }), (body ? { body: JSON.stringify(body) } : {})))
             .then(ServiceEndpoint.handleResponse);
     };
     // cannot use "delete" as it is a reserved Javascript word
     ServiceEndpoint.prototype.del = function (path, query, body, request) {
-        return fetch(Url.create(this.endpointUrl, path, query), tslib_1.__assign({}, this.defaultRequest, request, { method: 'DELETE' }, (body ? { body: JSON.stringify(body) } : {})))
+        return fetch(Url.create(this.endpointUrl, path, query), __assign(__assign(__assign(__assign({}, this.defaultRequest), request), { method: 'DELETE' }), (body ? { body: JSON.stringify(body) } : {})))
             .then(ServiceEndpoint.handleResponse);
     };
     ServiceEndpoint.prototype.ping = function (path) {
         if (path === void 0) { path = 'Ping'; }
-        return fetch(Url.create(this.endpointUrl, path), tslib_1.__assign({}, this.defaultRequest, { method: "GET" }))
+        return fetch(Url.create(this.endpointUrl, path), __assign(__assign({}, this.defaultRequest), { method: "GET" }))
             .then(function (response) { return response.ok; })
             .catch(function (reason) { return false; });
     };

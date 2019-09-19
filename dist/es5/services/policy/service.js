@@ -1,10 +1,10 @@
-import * as tslib_1 from "tslib";
+import { __extends } from "tslib";
 import { Service } from '../../private';
 /**
  * DigitalPersona Web Policy (DPWebPolicy) service client wrapper.
  */
 var PolicyService = /** @class */ (function (_super) {
-    tslib_1.__extends(PolicyService, _super);
+    __extends(PolicyService, _super);
     /** Constructs a service wrapper.
      * @param endpointUrl - a URL to the DPWebClaims service.
      */
