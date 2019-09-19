@@ -4,7 +4,7 @@
 
 ## LDSAttributeName type
 
-Alias type for Lightweight Directory Service (LDS) attribute names.
+Branded alias type for Lightweight Directory Service (LDS) attribute names.
 
 <b>Signature:</b>
 

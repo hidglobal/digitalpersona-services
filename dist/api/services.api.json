@@ -12623,7 +12623,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "ADAttributeName",
-          "docComment": "/**\n * Alias type for ActiveDirectory attribute names.\n */\n",
+          "docComment": "/**\n * Branded alias type for ActiveDirectory attribute names.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -12705,7 +12705,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "AuthenticationHandle",
-          "docComment": "/**\n * Alias type for an authentication handle.\n */\n",
+          "docComment": "/**\n * Branded alias type for an authentication handle.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -12746,7 +12746,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "LDSAttributeName",
-          "docComment": "/**\n * Alias type for Lightweight Directory Service (LDS) attribute names.\n */\n",
+          "docComment": "/**\n * Branded alias type for Lightweight Directory Service (LDS) attribute names.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",

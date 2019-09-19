@@ -1,7 +1,7 @@
 {
   "name": "@digitalpersona/services",
   "globalObject": "dp.services",
-  "version": "0.2.5",
+  "version": "0.2.7",
   "repository": {
     "type": "git",
     "url": "https://github.com/hidglobal/digitalpersona-services"
@@ -63,17 +63,16 @@
     "api": "npx api-extractor run --local --verbose",
     "api-doc": "npx api-documenter markdown -i ./dist/api -o ./dist/api/docs",
     "api-all": "tsc && npm run api && npm run api-doc",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build && npm run test-once"
   },
   "dependencies": {
     "@digitalpersona/core": "^0.2",
     "tslib": "^1.9.3"
   },
-  "peerDependencies": {
-  },
+  "peerDependencies": {},
   "devDependencies": {
     "@types/jasmine": "^3.3",
-    "@types/node": "^11.12",
+    "@types/node": "^12.0",
     "fetch-mock": "^7.3",
     "jasmine": "^3.4",
     "jasmine-core": "^3.3",
@@ -87,12 +86,9 @@
     "rollup": "^1.6",
     "rollup-plugin-node-resolve": "^4.0",
     "rollup-plugin-terser": "^4.0",
-    "rollup-plugin-typescript2": "^0.20",
+    "rollup-plugin-typescript2": "^0.21",
     "terser": "^3.17",
     "tslint": "^5.14",
     "typescript": "^3.5"
-  },
-  "resolutions": {
-    "lodash": "^4.17.13"
   }
 }

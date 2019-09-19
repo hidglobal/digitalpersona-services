@@ -68,10 +68,10 @@
 
 |  Type Alias | Description |
 |  --- | --- |
-|  [ADAttributeName](./services.adattributename.md) | Alias type for ActiveDirectory attribute names. |
+|  [ADAttributeName](./services.adattributename.md) | Branded alias type for ActiveDirectory attribute names. |
 |  [AttributeName](./services.attributename.md) | Supported types of attribute names. |
-|  [AuthenticationHandle](./services.authenticationhandle.md) | Alias type for an authentication handle. |
-|  [LDSAttributeName](./services.ldsattributename.md) | Alias type for Lightweight Directory Service (LDS) attribute names. |
+|  [AuthenticationHandle](./services.authenticationhandle.md) | Branded alias type for an authentication handle. |
+|  [LDSAttributeName](./services.ldsattributename.md) | Branded alias type for Lightweight Directory Service (LDS) attribute names. |
 |  [TriggerNames](./services.triggernames.md) | Alias type for supported step-up trigger names. |
 |  [VarData](./services.vardata.md) | A variant data. |
 

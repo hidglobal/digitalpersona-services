@@ -4,7 +4,7 @@
 
 ## ADAttributeName type
 
-Alias type for ActiveDirectory attribute names.
+Branded alias type for ActiveDirectory attribute names.
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## AuthenticationHandle type
 
-Alias type for an authentication handle.
+Branded alias type for an authentication handle.
 
 <b>Signature:</b>
 
