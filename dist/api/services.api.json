@@ -2003,7 +2003,7 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "Base64String"
+                  "text": "Base64UrlString"
                 },
                 {
                   "kind": "Content",
@@ -2168,7 +2168,7 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "Base64String"
+                  "text": "Base64UrlString"
                 },
                 {
                   "kind": "Content",
@@ -6385,7 +6385,7 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "Base64String"
+                  "text": "Base64UrlString"
                 },
                 {
                   "kind": "Content",
@@ -6548,7 +6548,7 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "Base64String"
+                  "text": "Base64UrlString"
                 },
                 {
                   "kind": "Content",
@@ -8770,7 +8770,7 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "Base64String"
+                  "text": "Base64UrlString"
                 },
                 {
                   "kind": "Content",
@@ -8860,7 +8860,7 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "Base64String"
+                  "text": "Base64UrlString"
                 },
                 {
                   "kind": "Content",
@@ -10527,7 +10527,7 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "Base64String"
+                  "text": "Base64UrlString"
                 },
                 {
                   "kind": "Content",
@@ -10618,7 +10618,7 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "Base64String"
+                  "text": "Base64UrlString"
                 },
                 {
                   "kind": "Content",

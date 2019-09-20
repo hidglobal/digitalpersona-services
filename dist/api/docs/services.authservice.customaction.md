@@ -8,7 +8,7 @@
 <b>Signature:</b>
 
 ```typescript
-CustomAction(actionId: number, ticket?: Ticket, user?: User, credential?: Credential): Promise<Base64String>;
+CustomAction(actionId: number, ticket?: Ticket, user?: User, credential?: Credential): Promise<Base64UrlString>;
 ```
 
 ## Parameters
@@ -22,5 +22,5 @@ CustomAction(actionId: number, ticket?: Ticket, user?: User, credential?: Creden
 
 <b>Returns:</b>
 
-`Promise<Base64String>`
+`Promise<Base64UrlString>`
 

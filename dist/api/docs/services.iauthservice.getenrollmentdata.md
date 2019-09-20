@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-GetEnrollmentData(user: User, credentialId: CredentialId): Promise<Base64String>;
+GetEnrollmentData(user: User, credentialId: CredentialId): Promise<Base64UrlString>;
 ```
 
 ## Parameters
@@ -19,5 +19,5 @@ GetEnrollmentData(user: User, credentialId: CredentialId): Promise<Base64String>
 
 <b>Returns:</b>
 
-`Promise<Base64String>`
+`Promise<Base64UrlString>`
 

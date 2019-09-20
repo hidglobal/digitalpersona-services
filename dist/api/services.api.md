@@ -4,7 +4,6 @@
 
 ```ts
 
-import { Base64String } from '@digitalpersona/core';
 import { Base64UrlString } from '@digitalpersona/core';
 import { ClaimNames } from '@digitalpersona/core';
 import { Credential } from '@digitalpersona/core';
@@ -91,11 +90,11 @@ export class AuthService extends Service implements IAuthService {
     // (undocumented)
     CreateAuthentication(identity: User | Ticket | null, credentialId: CredentialId): Promise<AuthenticationHandle>;
     // (undocumented)
-    CustomAction(actionId: number, ticket?: Ticket, user?: User, credential?: Credential): Promise<Base64String>;
+    CustomAction(actionId: number, ticket?: Ticket, user?: User, credential?: Credential): Promise<Base64UrlString>;
     // (undocumented)
     DestroyAuthentication(authId: AuthenticationHandle): Promise<void>;
     // (undocumented)
-    GetEnrollmentData(user: User, credentialId: CredentialId): Promise<Base64String>;
+    GetEnrollmentData(user: User, credentialId: CredentialId): Promise<Base64UrlString>;
     // (undocumented)
     GetUserCredentials(user: User): Promise<CredentialId[]>;
     // (undocumented)
@@ -217,11 +216,11 @@ export interface IAuthService {
     // (undocumented)
     CreateAuthentication(identity: User | Ticket | null, credentialId: CredentialId): Promise<AuthenticationHandle>;
     // (undocumented)
-    CustomAction(actionId: number, ticket: Ticket, user: User, credential: Credential): Promise<Base64String>;
+    CustomAction(actionId: number, ticket: Ticket, user: User, credential: Credential): Promise<Base64UrlString>;
     // (undocumented)
     DestroyAuthentication(auth: AuthenticationHandle): Promise<void>;
     // (undocumented)
-    GetEnrollmentData(user: User, credentialId: CredentialId): Promise<Base64String>;
+    GetEnrollmentData(user: User, credentialId: CredentialId): Promise<Base64UrlString>;
     // (undocumented)
     GetUserCredentials(user: User): Promise<CredentialId[]>;
     // (undocumented)
@@ -281,9 +280,9 @@ export interface ISecretService {
     // (undocumented)
     GetAuthPolicy(user: User, secretName: string, action: ResourceActions): Promise<Policy[]>;
     // (undocumented)
-    ReadSecret(ticket: Ticket, secretName: string): Promise<Base64String>;
+    ReadSecret(ticket: Ticket, secretName: string): Promise<Base64UrlString>;
     // (undocumented)
-    WriteSecret(ticket: Ticket, secretName: string, secretData: Base64String): Promise<void>;
+    WriteSecret(ticket: Ticket, secretName: string, secretData: Base64UrlString): Promise<void>;
 }
 
 // @public
@@ -386,9 +385,9 @@ export class SecretService extends Service implements ISecretService {
     // (undocumented)
     GetAuthPolicy(user: User, secretName: string, action: ResourceActions): Promise<Policy[]>;
     // (undocumented)
-    ReadSecret(ticket: Ticket, secretName: string): Promise<Base64String>;
+    ReadSecret(ticket: Ticket, secretName: string): Promise<Base64UrlString>;
     // (undocumented)
-    WriteSecret(ticket: Ticket, secretName: string, secretData: Base64String): Promise<void>;
+    WriteSecret(ticket: Ticket, secretName: string, secretData: Base64UrlString): Promise<void>;
 }
 
 // @public (undocumented)

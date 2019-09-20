@@ -8,7 +8,7 @@
 <b>Signature:</b>
 
 ```typescript
-WriteSecret(ticket: Ticket, secretName: string, secretData: Base64String): Promise<void>;
+WriteSecret(ticket: Ticket, secretName: string, secretData: Base64UrlString): Promise<void>;
 ```
 
 ## Parameters
@@ -17,7 +17,7 @@ WriteSecret(ticket: Ticket, secretName: string, secretData: Base64String): Promi
 |  --- | --- | --- |
 |  ticket | <code>Ticket</code> |  |
 |  secretName | <code>string</code> |  |
-|  secretData | <code>Base64String</code> |  |
+|  secretData | <code>Base64UrlString</code> |  |
 
 <b>Returns:</b>
 

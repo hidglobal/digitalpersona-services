@@ -1,4 +1,4 @@
-import { User, Ticket, Credential, CredentialId, Base64String } from '@digitalpersona/core';
+import { User, Ticket, Credential, CredentialId, Base64UrlString } from '@digitalpersona/core';
 import { ExtendedAuthResult } from './extendedResult';
 import { Service } from '../../private';
 
@@ -10,10 +10,10 @@ export type AuthenticationHandle = number
 export interface IAuthService
 {
     GetUserCredentials(user: User): Promise<CredentialId[]>;
-    GetEnrollmentData(user: User, credentialId: CredentialId): Promise<Base64String>;
+    GetEnrollmentData(user: User, credentialId: CredentialId): Promise<Base64UrlString>;
     Identify(credential: Credential): Promise<Ticket>;
     Authenticate(identity: User|Ticket, credential: Credential): Promise<Ticket>;
-    CustomAction(actionId: number, ticket: Ticket, user: User, credential: Credential): Promise<Base64String>;
+    CustomAction(actionId: number, ticket: Ticket, user: User, credential: Credential): Promise<Base64UrlString>;
     CreateAuthentication(identity: User|Ticket|null, credentialId: CredentialId): Promise<AuthenticationHandle>;
     ContinueAuthentication(auth: AuthenticationHandle, data: string): Promise<ExtendedAuthResult>;
     DestroyAuthentication(auth: AuthenticationHandle): Promise<void>;
@@ -37,7 +37,7 @@ export class AuthService extends Service implements IAuthService
             .then(response => response.GetUserCredentialsResult);
     }
     /** @inheritdoc */
-    public GetEnrollmentData(user: User, credentialId: CredentialId): Promise<Base64String>
+    public GetEnrollmentData(user: User, credentialId: CredentialId): Promise<Base64UrlString>
     {
         return this.endpoint
             .get("GetEnrollmentData", { user: user.name, type: user.type, cred_id: credentialId })
@@ -62,7 +62,8 @@ export class AuthService extends Service implements IAuthService
                 .then(response => new Ticket(response.AuthenticateUserResult.jwt));
     }
     /** @inheritdoc */
-    public CustomAction(actionId: number, ticket?: Ticket, user?: User, credential?: Credential): Promise<Base64String>
+    public CustomAction(actionId: number, ticket?: Ticket, user?: User, credential?: Credential)
+    : Promise<Base64UrlString>
     {
         return this.endpoint
             .post("CustomAction", null, { actionId, ticket, user, credential })

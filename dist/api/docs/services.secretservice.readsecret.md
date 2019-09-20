@@ -8,7 +8,7 @@
 <b>Signature:</b>
 
 ```typescript
-ReadSecret(ticket: Ticket, secretName: string): Promise<Base64String>;
+ReadSecret(ticket: Ticket, secretName: string): Promise<Base64UrlString>;
 ```
 
 ## Parameters
@@ -20,5 +20,5 @@ ReadSecret(ticket: Ticket, secretName: string): Promise<Base64String>;
 
 <b>Returns:</b>
 
-`Promise<Base64String>`
+`Promise<Base64UrlString>`
 

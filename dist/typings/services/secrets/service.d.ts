@@ -1,4 +1,4 @@
-import { User, Ticket, Base64String } from '@digitalpersona/core';
+import { User, Ticket, Base64UrlString } from '@digitalpersona/core';
 import { ResourceActions, Policy } from '../../common';
 import { Service } from '../../private';
 /**
@@ -7,8 +7,8 @@ import { Service } from '../../private';
 export interface ISecretService {
     GetAuthPolicy(user: User, secretName: string, action: ResourceActions): Promise<Policy[]>;
     DoesSecretExist(user: User, secretName: string): Promise<boolean>;
-    ReadSecret(ticket: Ticket, secretName: string): Promise<Base64String>;
-    WriteSecret(ticket: Ticket, secretName: string, secretData: Base64String): Promise<void>;
+    ReadSecret(ticket: Ticket, secretName: string): Promise<Base64UrlString>;
+    WriteSecret(ticket: Ticket, secretName: string, secretData: Base64UrlString): Promise<void>;
     DeleteSecret(ticket: Ticket, secretName: string): Promise<void>;
 }
 /**
@@ -24,9 +24,9 @@ export declare class SecretService extends Service implements ISecretService {
     /** @inheritdoc */
     DoesSecretExist(user: User, secretName: string): Promise<boolean>;
     /** @inheritdoc */
-    ReadSecret(ticket: Ticket, secretName: string): Promise<Base64String>;
+    ReadSecret(ticket: Ticket, secretName: string): Promise<Base64UrlString>;
     /** @inheritdoc */
-    WriteSecret(ticket: Ticket, secretName: string, secretData: Base64String): Promise<void>;
+    WriteSecret(ticket: Ticket, secretName: string, secretData: Base64UrlString): Promise<void>;
     /** @inheritdoc */
     DeleteSecret(ticket: Ticket, secretName: string): Promise<void>;
 }
